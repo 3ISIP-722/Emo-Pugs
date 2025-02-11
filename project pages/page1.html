@@ -6,23 +6,57 @@
     <title>Page 10.02</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      .zad {
+        display: flex;
+      }
+    </style>
     </head>
     <body>
-    <p>
-    Составить программу вычисления значений функций:<br>
-    <div>
-        
-    $$ z=\frac{x+\frac{2+y}{x^2}}{y+\frac{1}{x^2+10}}$$
-    </div>
-    <div>
-    $$S = \sum_{k=1}^{10} k^3 \cdot \sum_{i=2}^{k+1} (i-1)^2 $$
-    </div>
-    <div>
-    $$S = \sum_{i=1}^{n} (((R_i-R_ср )^2)/n)$$
-    </div>
-    <div>
-    $$S_1 = \sum_{i=1}^{\infty} \frac{1}{1 + (2i)!}$$
-    </div>
-    <br>и q=7,25sinx-|y|<br> при любых значениях x и y </p>
+      <div class="zad">
+        <p>
+          2.18 Составить программу вычисления значений функций:<br>
+          <div>
+          $$ z=\frac{x+\frac{2+y}{x^2}}{y+\frac{1}{\sqrt[]{x^2+10}}}$$</div>
+          <br>и q=7,25sinx-|y| при любых значениях x и y 
+        </p>
+      </div>
+      <button onclick="first()">Посчитать</button>
+      <div class="zad">
+        <p>
+          2.19 Составить программу рассчёта значений функций:<br>
+        <div>
+          $$ x=\frac{\frac{2}{a^2+25}+b}{y+\frac{1}{\sqrt[]{x^2+10}}}$$</div><pre> </pre><br>и<pre> </pre><div>$$y=\frac{|a|+2sinb}{5,5a}$$ </div> 
+          <br> при любых значениях a и b
+        </p>
+      </div>
+      <button onclick="second()">Посчитать</button>
+      <div class="zad">
+        <p>
+          2.20 Составить программу расчёта значений функций:<br>
+          <div>
+          $$ a=\sqrt[]{|e-\frac{3}{f}|^3+g}, b=sin e + cos^2h$$</div><pre> </pre><br>и<pre> </pre><div>$$c=\frac{33g}{ef-3}$$</div>
+          <br>при любых значениях e,f,g и h.
+        </p>
+      </div>
+      <button onclick="third()">Посчитать</button>
+      <div class="zad">
+        <p>
+          2.21 Составить программу расчёта значений функций:<br>
+          <div>
+          $$ a=\frac{e+\frac{f}{2}}{3}, b=|h^2-g|$$</div><pre> </pre><br>и<pre> </pre><div>$$c=\sqrt[]{(g-h)^2-3sine}$$</div>
+          <br> при любых значениях e,f,g и h.
+        </br>
+      </div>
+      <button onclick="four()">Посчитать</button>
+      <script>
+        function first() {
+          const x=prompt("Введите х");
+          const y=prompt("Введите y");
+          let z = (x+((2+y)/(x**2)))/(y+1/Math.sqrt(x**2+10));
+          let q = 7.25*Math.sin(x)-Math.abs(y);
+          alert("При х="+x+"и y="+y+" z="+z+", a q="+q)
+        }
+      </script>
   </body>
 </html>
