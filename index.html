@@ -3,11 +3,314 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pugs</title>
-    <style></style>
+    <title>Главная</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("img/main.jpg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      .button {
+        background-color: rgba(
+          128,
+          102,
+          128,
+          0.5
+        ); /* Фиолетовый, полупрозрачный */
+        color: #fff;
+        border: none;
+        padding: 15px; /* Увеличен внутренний отступ */
+        text-align: left; /* Текст слева */
+        text-decoration: none;
+        display: flex; /* Для расположения иконки и текста */
+        align-items: center; /*  Выравнивание по вертикали */
+        font-size: 16px; /* Увеличен размер шрифта */
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom: 20px; /* Увеличен отступ между кнопками */
+        width: 300px; /* Увеличена ширина */
+        position: relative; /*  Для позиционирования даты */
+      }
+
+      .button:hover {
+        background-color: rgba(128, 102, 128, 0.7);
+      }
+
+      .button-icon {
+        width: 30px; /* Увеличена ширина иконки */
+        height: 30px; /* Увеличена высота иконки */
+        margin-right: 15px; /* Увеличен отступ справа от иконки */
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 5px;
+        display: flex; /* Центрирование иконки */
+        justify-content: center;
+        align-items: center;
+      }
+
+      .button-icon img {
+        width: 18px; /* Увеличен размер изображения иконки */
+        height: 18px;
+      }
+
+      .button-title {
+        font-weight: bold;
+        margin-bottom: 5px; /* Отступ между заголовком и описанием */
+      }
+
+      .button-description {
+        font-size: 14px; /* Увеличен размер описания */
+      }
+
+      .button-date {
+        position: absolute;
+        top: 10px; /* Позиционируем дату сверху */
+        right: 10px; /* Справа */
+        font-size: 14px; /* Увеличен размер */
+        color: #eee; /* Цвет даты */
+      }
+
+      .button-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        position: static;
+      }
+
+      /* Стили для модальных окон */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 2;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 50px auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 900px;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 15px;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .modal-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        flex-grow: 1;
+      }
+
+      .modal-header {
+        padding: 2px 16px;
+        background-color: #f59bcf;
+        color: white;
+      }
+
+      .modal-body {
+        padding: 2px 16px;
+      }
+
+      .icon {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        stroke-width: 0;
+        stroke: currentColor;
+        fill: currentColor;
+      }
+    </style>
   </head>
   <body>
-    <h1>Мопсы</h1>
-    <script></script>
+    <div class="container">
+      <ul class="button-list">
+        <li>
+          <button class="button" data-modal="modal1">
+            <div class="button-icon">
+              <img src="heart_5259461.png" alt="Icon" />
+            </div>
+            <div>
+              <div class="button-title">Проект 1</div>
+              <div class="button-description">
+                Отображение математических формул
+              </div>
+            </div>
+            <span class="button-date">10.02.2025</span>
+          </button>
+        </li>
+        <li>
+          <button class="button" data-modal="modal2">
+            <div class="button-icon">
+              <img src="heart_5259461.png" alt="Icon" />
+            </div>
+            <div>
+              <div class="button-title">Проект 2</div>
+              <div class="button-description">Описание</div>
+            </div>
+            <span class="button-date">дата</span>
+          </button>
+        </li>
+        <li>
+          <button class="button" data-modal="modal3">
+            <div class="button-icon">
+              <img src="heart_5259461.png" alt="Icon" />
+            </div>
+            <div>
+              <div class="button-title">Проект 3</div>
+              <div class="button-description">Описание</div>
+            </div>
+            <span class="button-date">дата</span>
+          </button>
+        </li>
+        <li>
+          <button class="button" data-modal="modal4">
+            <div class="button-icon">
+              <img src="heart_5259461.png" alt="Icon" />
+            </div>
+            <div>
+              <div class="button-title">Проект 4</div>
+              <div class="button-description">Описание</div>
+            </div>
+            <span class="button-date">дата</span>
+          </button>
+        </li>
+        <li>
+          <button class="button" data-modal="modal5">
+            <div class="button-icon">
+              <img src="heart_5259461.png" alt="Icon" />
+            </div>
+            <div>
+              <div class="button-title">Проект 5</div>
+              <div class="button-description">Описание</div>
+            </div>
+            <span class="button-date">дата</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Модальные окна -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+          <h5 class="modal-title">Проект 1</h5>
+        </div>
+        <iframe class="modal-iframe" src="page1.html"></iframe>
+      </div>
+    </div>
+
+    <div id="modal2" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+          <h5 class="modal-title">Уведомление</h5>
+        </div>
+        <iframe class="modal-iframe" src="page2.html"></iframe>
+      </div>
+    </div>
+
+    <div id="modal3" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+          <h5 class="modal-title">Уведомление</h5>
+        </div>
+        <iframe class="modal-iframe" src="page3.html"></iframe>
+      </div>
+    </div>
+    <div id="modal4" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+          <h5 class="modal-title">Уведомление</h5>
+        </div>
+        <iframe class="modal-iframe" src="page4.html"></iframe>
+      </div>
+    </div>
+    <div id="modal5" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-header">
+          <h5 class="modal-title">Уведомление</h5>
+        </div>
+        <iframe class="modal-iframe" src="page5.html"></iframe>
+      </div>
+    </div>
+
+    <script>
+      // Получаем все кнопки и модальные окна
+      const buttons = document.querySelectorAll(".button");
+      const modals = document.querySelectorAll(".modal");
+
+      // Добавляем обработчики событий для каждой кнопки
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const modalId = button.dataset.modal;
+          const modal = document.getElementById(modalId);
+          modal.style.display = "block";
+        });
+      });
+
+      // Добавляем обработчики событий для закрытия модальных окон
+      modals.forEach((modal) => {
+        const closeButton = modal.querySelector(".close");
+        closeButton.addEventListener("click", () => {
+          modal.style.display = "none";
+        });
+
+        // Закрытие модального окна при клике вне его
+        window.addEventListener("click", (event) => {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        });
+      });
+    </script>
   </body>
 </html>
