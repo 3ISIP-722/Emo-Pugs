@@ -47,6 +47,38 @@
           image: "/img/osheinik.jpg",
           description: "Ошейник для собак нейлоновый",
         },
+        {
+          id: 1,
+          name: "Корм PetJet сухой для собак",
+          price: 2879,
+          category: "Корм",
+          image: "/img/korm.jpg",
+          description: "Сухой корм для собак с говядиной",
+        },
+        {
+          id: 2,
+          name: "Масло лососевое для кошек",
+          price: 869,
+          category: "Витамины",
+          image: "/img/oil.jpg",
+          description: "Масло лососевое для кошек от фирмы PetJet",
+        },
+        {
+          id: 3,
+          name: "Клетка для грызунов",
+          price: 1299,
+          category: "Клетки",
+          image: "/img/kletka.jpg",
+          description: "Клетка для мелких грызунов двухэтажная. 40 Х 80 Х 60",
+        },
+        {
+          id: 4,
+          name: "Ошейник",
+          price: 499,
+          category: "Аксессуары",
+          image: "/img/osheinik.jpg",
+          description: "Ошейник для собак нейлоновый",
+        },
       ];
       function formatPrice(price) {
         return price.toLocaleString("ru-RU") + " ₽";
@@ -62,30 +94,44 @@
 </div>
 `;
       }
-      function createScrollbar(product) {
+      function createScrollbar(category) {
         return `
-<button class="razdel">${product.category}</button>
+<button class="razdel" onclick="filterProducts('${category}')">${category}</button>
 `;
       }
+
       function addToCart() {
         alert("Товар добавлен в корзину!");
       }
-      function renderProducts() {
-        let productHTML = products
+
+      function renderProducts(filteredProducts = products) {
+        let productHTML = filteredProducts
           .map(function (product) {
             return createProductCard(product);
           })
           .join("");
         document.getElementById("productContainer").innerHTML = productHTML;
       }
+
       function renderRazdel() {
-        let razdelHTML = products
-          .map(function (product) {
-            return createScrollbar(product);
+        const categories = [
+          ...new Set(products.map((product) => product.category)),
+        ];
+        let razdelHTML = categories
+          .map(function (category) {
+            return createScrollbar(category);
           })
           .join("");
         document.getElementById("scrollbar").innerHTML = razdelHTML;
       }
+
+      function filterProducts(category) {
+        const filteredProducts = products.filter(
+          (product) => product.category === category
+        );
+        renderProducts(filteredProducts);
+      }
+
       renderProducts();
       renderRazdel();
     </script>
