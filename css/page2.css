@@ -1,5 +1,136 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #b264e2; /* Фиолетовый цвет */
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 2%;
+}
+.logo {
+  height: 90px; /* Высота логотипа */
+  margin-left: 3%;
+  margin-bottom: 10px;
+}
+nav {
+  display: flex;
+  gap: 20px;
+}
+nav a {
+  color: white; /* Цвет текста */
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+nav a:hover {
+  color: #e8d5ad;
+}
+.cerb img {
+  margin-left: 5px; /* Отступ между текстом и изображением */
+  transition: fill 0.3s; /* Плавный переход для цвета SVG */
+  fill: white;
+}
+.cerb:hover img {
+  filter: brightness(0) invert(0.8); /* Отключение инверсии, чтобы цвета подходили */
+}
+.cerb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer {
+  margin-top: 10%;
+  background-color: #62208a; /* Фиолетовый фон */
+  color: white; /* Цвет текста */
+  display: flex;
+  text-align: start;
+  justify-content: center;
+  gap: 15%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 24px;
+  height: 180px;
+}
+
+.footer-section {
+  margin: 0 10px;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  font-weight: bold;
+  font-size: 28px;
+  text-decoration: underline;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin: 5px 0;
+  opacity: 70%;
+}
+
+.footer-section a {
+  color: white; /* Цвет ссылок */
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline; /* Подчеркивание ссылок при наведении */
+}
+
+.social-icons a {
+  margin-right: 10px; /* Отступы между иконками */
+}
+
+.social-icons img {
+  width: 50px; /* Размер иконок соцсетей */
+  height: 50px;
+}
+
+.burger-menu {
+  background-color: #b264e2; /* Цвет верхней панели */
+  padding: 10px;
+}
+
+.menu-icon {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 30px;
+  height: 20px;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+
+.bar {
+  height: 3px;
+  background-color: white;
+  transition: 0.3s;
+}
+
+.nav-menu {
+  display: none; /* Скрыто по умолчанию */
+  background-color: white;
+  position: absolute;
+  top: 60px; /* Расположено под менюшкой */
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: black;
+}
+
+/* Показать меню при активации */
+.nav-menu.active {
+  display: block;
+}
+
 .body {
   font-family: "Crimson Text", serif;
+  margin: 0;
+  padding: 0;
 }
 
 main {
@@ -248,5 +379,47 @@ main {
     padding: 2% 0;
     text-align: center;
     border-bottom: 2px solid #dedede;
+  }
+}
+
+@media (width<930px) {
+  .footer {
+    gap: 10%;
+    font-size: 22px;
+  }
+  .footer-section p {
+    font-size: 24px;
+  }
+  .social-icons img {
+    width: 25px; /* Размер иконок соцсетей */
+    height: 25px;
+  }
+}
+
+@media (width<500px) {
+  .footer {
+    flex-direction: column; /* Меняет направление на вертикальное */
+    gap: 0%;
+    height: 470px;
+  }
+
+  .footer-section {
+    width: 100%; /* Каждая секция будет занимать всю ширину */
+    margin-left: 10%; /* Уменьшает отступы между секциями */
+    margin-right: 10%;
+  }
+
+  .men {
+    display: block;
+  }
+
+  header {
+    display: none;
+  }
+}
+
+@media (min-width: 500px) {
+  .men {
+    display: none;
   }
 }
