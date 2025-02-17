@@ -13,6 +13,8 @@
       <div class="products" id="productContainer"></div>
     </main>
     <footer></footer>
+
+    <!-- Модальное окно -->
     <div id="productModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -102,22 +104,24 @@
 
       function createProductCard(product) {
         return `
-        <div class="product-wrapper" data-product-id="${product.id}">
-          <div class="card">
-            <img src="" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>${product.description}</p>
-            <div class="price">${formatPrice(product.price)}</div>
-            <button class="btn">Подробнее</button>
-          </div>
-        </div>
-        `;
+              <div class="product-wrapper" data-product-id="${product.id}">
+                <div class="card">
+                  <img src="${product.image}" alt="${
+          product.name
+        }" loading="lazy">
+                  <h3>${product.name}</h3>
+                  <p>${product.description}</p>
+                  <div class="price">${formatPrice(product.price)}</div>
+                  <button class="btn">Подробнее</button>
+                </div>
+              </div>
+              `;
       }
 
       function createScrollbar(category) {
         return `
-          <button class="razdel" onclick="filterProducts('${category}')">${category}</button>
-        `;
+                <button class="razdel" onclick="filterProducts('${category}')">${category}</button>
+              `;
       }
 
       function renderProducts(filteredProducts = products) {
@@ -127,8 +131,6 @@
           })
           .join("");
         document.getElementById("productContainer").innerHTML = productHTML;
-
-        // После отрисовки товаров добавляем обработчики событий
         const productWrappers = document.querySelectorAll(".product-wrapper");
         productWrappers.forEach((wrapper) => {
           wrapper.addEventListener("click", () => {
@@ -166,6 +168,7 @@
 
         if (product) {
           document.querySelector(".modal-image").src = product.image;
+          document.querySelector(".modal-image").alt = product.name; // Добавляем alt
           document.querySelector(".modal-title").textContent = product.name;
           document.querySelector(".modal-description").textContent =
             product.description;
