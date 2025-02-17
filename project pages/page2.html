@@ -13,8 +13,6 @@
       <div class="products" id="productContainer"></div>
     </main>
     <footer></footer>
-
-    <!-- Модальное окно -->
     <div id="productModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -65,7 +63,7 @@
           description: "Клетка для мелких грызунов двухэтажная. 40 Х 80 Х 60",
         },
         {
-          id: 5, // Исправил id, чтобы были уникальными
+          id: 5,
           name: "Корм PetJet сухой для собак",
           price: 2879,
           category: "Корм",
@@ -73,7 +71,7 @@
           description: "Сухой корм для собак с говядиной",
         },
         {
-          id: 6, // Исправил id, чтобы были уникальными
+          id: 6,
           name: "Масло лососевое для кошек",
           price: 869,
           category: "Витамины",
@@ -81,7 +79,7 @@
           description: "Масло лососевое для кошек от фирмы PetJet",
         },
         {
-          id: 7, // Исправил id, чтобы были уникальными
+          id: 7,
           name: "Ошейник",
           price: 499,
           category: "Аксессуары",
@@ -89,7 +87,7 @@
           description: "Ошейник для собак нейлоновый",
         },
         {
-          id: 8, // Исправил id, чтобы были уникальными
+          id: 8,
           name: "Клетка для грызунов",
           price: 1299,
           category: "Клетки",
@@ -171,8 +169,9 @@
           document.querySelector(".modal-title").textContent = product.name;
           document.querySelector(".modal-description").textContent =
             product.description;
-          document.querySelector(".modal-price").textContent =
-            formatPrice(product.price);
+          document.querySelector(".modal-price").textContent = formatPrice(
+            product.price
+          );
           modal.style.display = "block";
         } else {
           console.error("Product not found with id:", productId);
