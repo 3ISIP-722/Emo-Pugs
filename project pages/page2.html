@@ -13,6 +13,23 @@
       <div class="products" id="productContainer"></div>
     </main>
     <footer></footer>
+
+    <!-- Модальное окно -->
+    <div id="productModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+          <img src="" alt="" class="modal-image" />
+          <div class="modal-details">
+            <h2 class="modal-title"></h2>
+            <p class="modal-description"></p>
+            <div class="modal-price"></div>
+            <button class="modal-order-button">Заказать</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
       let products = [
         {
@@ -48,7 +65,7 @@
           description: "Клетка для мелких грызунов двухэтажная. 40 Х 80 Х 60",
         },
         {
-          id: 1,
+          id: 5, // Исправил id, чтобы были уникальными
           name: "Корм PetJet сухой для собак",
           price: 2879,
           category: "Корм",
@@ -56,7 +73,7 @@
           description: "Сухой корм для собак с говядиной",
         },
         {
-          id: 2,
+          id: 6, // Исправил id, чтобы были уникальными
           name: "Масло лососевое для кошек",
           price: 869,
           category: "Витамины",
@@ -64,7 +81,7 @@
           description: "Масло лососевое для кошек от фирмы PetJet",
         },
         {
-          id: 3,
+          id: 7, // Исправил id, чтобы были уникальными
           name: "Ошейник",
           price: 499,
           category: "Аксессуары",
@@ -72,7 +89,7 @@
           description: "Ошейник для собак нейлоновый",
         },
         {
-          id: 4,
+          id: 8, // Исправил id, чтобы были уникальными
           name: "Клетка для грызунов",
           price: 1299,
           category: "Клетки",
@@ -80,28 +97,29 @@
           description: "Клетка для мелких грызунов двухэтажная. 40 Х 80 Х 60",
         },
       ];
+
       function formatPrice(price) {
         return price.toLocaleString("ru-RU") + " ₽";
       }
+
       function createProductCard(product) {
         return `
-<div class="card">
-<img src="${product.image}" alt="${product.name}">
-<h3>${product.name}</h3>
-<p>${product.description}</p>
-<div class="price">${formatPrice(product.price)}</div>
-<button class="btn" onclick="addToCart()">Заказать</button>
-</div>
-`;
-      }
-      function createScrollbar(category) {
-        return `
-<button class="razdel" onclick="filterProducts('${category}')">${category}</button>
-`;
+        <div class="product-wrapper" data-product-id="${product.id}">
+          <div class="card">
+            <img src="" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <div class="price">${formatPrice(product.price)}</div>
+            <button class="btn">Подробнее</button>
+          </div>
+        </div>
+        `;
       }
 
-      function addToCart() {
-        alert("Товар добавлен в корзину!");
+      function createScrollbar(category) {
+        return `
+          <button class="razdel" onclick="filterProducts('${category}')">${category}</button>
+        `;
       }
 
       function renderProducts(filteredProducts = products) {
@@ -111,6 +129,15 @@
           })
           .join("");
         document.getElementById("productContainer").innerHTML = productHTML;
+
+        // После отрисовки товаров добавляем обработчики событий
+        const productWrappers = document.querySelectorAll(".product-wrapper");
+        productWrappers.forEach((wrapper) => {
+          wrapper.addEventListener("click", () => {
+            const productId = parseInt(wrapper.dataset.productId); // Получаем ID товара
+            openModal(productId); // Открываем модальное окно
+          });
+        });
       }
 
       function renderRazdel() {
@@ -131,6 +158,41 @@
         );
         renderProducts(filteredProducts);
       }
+
+      // Получаем модальное окно
+      const modal = document.getElementById("productModal");
+
+      // Функция для открытия модального окна и заполнения данными
+      function openModal(productId) {
+        const product = products.find((p) => p.id === productId);
+
+        if (product) {
+          document.querySelector(".modal-image").src = product.image;
+          document.querySelector(".modal-title").textContent = product.name;
+          document.querySelector(".modal-description").textContent =
+            product.description;
+          document.querySelector(".modal-price").textContent =
+            formatPrice(product.price);
+          modal.style.display = "block";
+        } else {
+          console.error("Product not found with id:", productId);
+        }
+      }
+
+      // Получаем кнопку закрытия
+      const closeBtn = document.querySelector(".modal .close");
+
+      // Обработчик закрытия модального окна по крестику
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      // Обработчик закрытия модального окна при клике вне его
+      window.addEventListener("click", (event) => {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      });
 
       renderProducts();
       renderRazdel();
