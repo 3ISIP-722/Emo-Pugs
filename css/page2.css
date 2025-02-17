@@ -15,14 +15,14 @@ nav {
   display: flex;
   gap: 20px;
 }
+
 nav a {
-  color: white; /* Цвет текста */
   text-decoration: none;
   font-size: 24px;
   font-weight: bold;
 }
 nav a:hover {
-  color: #f4c5b0;
+  color: #500081;
 }
 .cerb img {
   margin-left: 5px; /* Отступ между текстом и изображением */
