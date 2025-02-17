@@ -158,18 +158,15 @@ main {
   margin: 1.5% 0;
   padding: 0;
   font-family: "Crimson Text", serif;
-}
-
-.price {
-  font-weight: bolder;
-}
-
-.descr {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+}
+
+.price {
+  font-weight: bolder;
 }
 
 @-webkit-keyframes animatetop {
@@ -191,6 +188,18 @@ main {
   to {
     top: 0;
     opacity: 1;
+  }
+}
+
+@media (width<1000px) {
+  .products {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (width<880px) {
+  .scrollbar {
+    font-size: smaller;
   }
 }
 
@@ -216,13 +225,7 @@ main {
   }
 }
 
-@media (width<1000px) {
-  .products {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-@media (width<=650px) {
+@media (width<=755px) {
   .products {
     grid-template-columns: 1fr 1fr;
   }
@@ -230,7 +233,14 @@ main {
     display: block;
   }
   .scrollbar {
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 2%;
+    border: none;
+  }
+  .razdel {
+    padding: 2% 0;
+    text-align: center;
+    border-bottom: 2px solid #dedede;
   }
 }
