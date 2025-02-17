@@ -1,25 +1,38 @@
+.body {
+  font-family: "Crimson Text", serif;
+}
+
 .products {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 3%;
-}
-
-.card img {
-  width: 100%;
+  gap: 2%;
+  margin: 0 1%;
 }
 
 main {
   display: flex;
-  gap: 3%;
+  gap: 0.5%;
 }
 
 .scrollbar {
   display: flex;
   flex-direction: column;
-  gap: 2%;
+  border-right: 2px solid #dedede;
+  min-width: 15%;
 }
 
-/* Стили для модального окна */
+.razdel {
+  border: none;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  text-align: left;
+  padding: 8%;
+  border-bottom: 2px solid #dedede;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+/*Модалки*/
 .modal {
   display: none;
   position: fixed;
@@ -29,47 +42,36 @@ main {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
   position: relative;
   background-color: #fefefe;
-  margin: 10% auto; /* Центрирование */
-  padding: 0; /* Убираем padding */
+  margin: 10% auto;
+  padding: 0;
   border: 1px solid #888;
   width: 80%;
-  max-width: 900px; /* Максимальная ширина */
+  max-width: 900px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
   animation-duration: 0.4s;
-  border-radius: 15px; /* Закругленные углы */
-}
-
-/* Анимация появления */
-@-webkit-keyframes animatetop {
-  from {top:-300px; opacity:0}
-  to {top:0; opacity:1}
-}
-
-@keyframes animatetop {
-  from {top:-300px; opacity:0}
-  to {top:0; opacity:1}
+  border-radius: 15px;
 }
 
 .close {
-  color: white; /* Белый крестик */
-  position: absolute; /* Абсолютное позиционирование */
-  top: 10px; /* Отступ от верха */
-  right: 20px; /* Отступ от права */
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 20px;
   font-size: 30px;
   font-weight: bold;
   cursor: pointer;
-  z-index: 1001; /* Над контентом модалки */
-  background-color: rgba(0, 0, 0, 0.5); /* Фон для крестика */
-  border-radius: 50%; /* Круглый крестик */
+  z-index: 1001;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
   width: 30px;
   height: 30px;
   text-align: center;
@@ -83,22 +85,21 @@ main {
   cursor: pointer;
 }
 
-/* Стили для тела модального окна */
 .modal-body {
   padding: 20px;
-  display: flex; /* Flexbox для размещения изображения и деталей рядом */
-  align-items: center; /* Выравнивание по вертикали */
+  display: flex;
+  align-items: center;
 }
 
 .modal-image {
-  max-width: 40%; /* Максимальная ширина изображения */
+  max-width: 40%;
   height: auto;
-  border-radius: 10px; /* Закругление углов для изображения */
-  margin-right: 20px; /* Отступ справа от изображения */
+  border-radius: 10px;
+  margin-right: 20px;
 }
 
 .modal-details {
-  flex: 1; /* Занимает оставшееся пространство */
+  flex: 1;
 }
 
 .modal-title {
@@ -124,25 +125,75 @@ main {
   margin-bottom: 20px;
 }
 
-.modal-order-button {
-  background-color: #e67e22; /* Оранжевый цвет */
+.modal-order-button,
+.btn {
+  background-color: #ee8b2e;
   color: white;
   padding: 12px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
-  display: block; /* Занимает всю ширину */
+  display: block;
   width: 100%;
-  box-sizing: border-box; /* Чтобы padding не увеличивал ширину кнопки */
+  box-sizing: border-box;
+  font-family: "Source Serif 4", serif;
 }
 
-.modal-order-button:hover {
-  background-color: #d35400;
+.modal-order-button:hover,
+.btn:hover {
+  background-color: #c86100;
 }
 
-/* Адаптивность */
+/*карточки товаров*/
+
+.card img {
+  width: 100%;
+}
+
+.card h3,
+.descr,
+.price {
+  margin: 1.5% 0;
+  padding: 0;
+  font-family: "Crimson Text", serif;
+}
+
+.price {
+  font-weight: bolder;
+}
+
+.descr {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .modal-content {
     width: 95%;
@@ -150,18 +201,18 @@ main {
   }
 
   .modal-body {
-    flex-direction: column; /* Изображение и детали располагаются вертикально */
-    align-items: stretch; /* Растягиваем элементы на всю ширину */
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .modal-image {
-    max-width: 100%; /* Изображение занимает всю ширину */
+    max-width: 100%;
     margin-right: 0;
     margin-bottom: 20px;
   }
 
   .modal-details {
-    text-align: center; /* Центрируем текст в деталях */
+    text-align: center;
   }
 }
 
