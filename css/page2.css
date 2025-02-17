@@ -2,13 +2,6 @@
   font-family: "Crimson Text", serif;
 }
 
-.products {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2%;
-  margin: 0 1%;
-}
-
 main {
   display: flex;
   gap: 0.5%;
@@ -30,6 +23,18 @@ main {
   border-bottom: 2px solid #dedede;
   font-weight: bolder;
   font-size: larger;
+  cursor: pointer;
+}
+
+.razdel:hover {
+  color: #a748e2;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2%;
+  margin: 0 1%;
 }
 
 /*Модалки*/
@@ -150,6 +155,7 @@ main {
 
 .card img {
   width: 100%;
+  cursor: pointer;
 }
 
 .card h3,
