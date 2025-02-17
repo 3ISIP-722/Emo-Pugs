@@ -36,7 +36,7 @@ nav a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #000000;
+  color: #ffffff;
 }
 
 .footer {
@@ -45,16 +45,13 @@ nav a:hover {
   color: white; /* Цвет текста */
   display: flex;
   text-align: start;
-  justify-content: center;
-  gap: 15%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  justify-content: space-around;
+  padding: 0 1%;
   font-size: 24px;
-  height: 180px;
 }
 
 .footer-section {
-  margin: 0 10px;
+  margin: 0;
   margin-bottom: 10px;
 }
 
@@ -62,15 +59,17 @@ nav a:hover {
   font-weight: bold;
   font-size: 28px;
   text-decoration: underline;
+  margin: 3% 0;
 }
 
 .footer-section ul {
   list-style-type: none;
   padding: 0;
+  margin: 3% 0;
 }
 
 .footer-section li {
-  margin: 5px 0;
+  margin: 3px 0;
   opacity: 70%;
 }
 
@@ -80,11 +79,11 @@ nav a:hover {
 }
 
 .footer-section a:hover {
-  text-decoration: underline; /* Подчеркивание ссылок при наведении */
+  text-decoration: underline;
 }
 
 .social-icons a {
-  margin-right: 10px; /* Отступы между иконками */
+  margin-right: 2%; /* Отступы между иконками */
 }
 
 .social-icons img {
@@ -337,6 +336,7 @@ main {
 @media (width<1000px) {
   .products {
     grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 20%;
   }
 }
 
@@ -371,6 +371,7 @@ main {
 @media (width<=755px) {
   .products {
     grid-template-columns: 1fr 1fr;
+    margin-bottom: 92%;
   }
   main {
     display: block;
@@ -393,32 +394,52 @@ main {
   header {
     display: none;
   }
+  .cerb {
+    color: #000000;
+  }
 }
 
 @media (width<960px) {
   .footer {
-    gap: 10%;
     font-size: 22px;
   }
   .footer-section p {
     font-size: 24px;
   }
   .social-icons img {
-    width: 25px; /* Размер иконок соцсетей */
-    height: 25px;
+    width: 35px; /* Размер иконок соцсетей */
+    height: 35px;
   }
 }
 
-@media (width<500px) {
+@media (width<580px) {
   .footer {
-    flex-direction: column; /* Меняет направление на вертикальное */
-    gap: 0%;
-    height: 470px;
+    flex-direction: column;
+  }
+
+  .footer p,
+  ul {
+    margin: 1.5% 0;
+    font-size: smaller;
+  }
+
+  .products {
+    margin-bottom: 100%;
   }
 
   .footer-section {
-    width: 100%; /* Каждая секция будет занимать всю ширину */
-    margin-left: 10%; /* Уменьшает отступы между секциями */
-    margin-right: 10%;
+    width: 90%;
+    margin: auto;
+  }
+}
+
+@media (width<430px) {
+  .products {
+    margin-bottom: 110%;
+  }
+  .modal-order-button,
+  .btn {
+    padding: 6px 10px;
+    border-radius: 8px;
   }
 }
