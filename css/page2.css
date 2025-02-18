@@ -20,23 +20,24 @@ nav a {
   text-decoration: none;
   font-size: 24px;
   font-weight: bold;
+  color: white;
 }
 nav a:hover {
-  color: #500081;
+  color: #e8d5ad;
 }
 .cerb img {
-  margin-left: 5px; /* Отступ между текстом и изображением */
-  transition: fill 0.3s; /* Плавный переход для цвета SVG */
-  fill: #000000;
+  margin-left: 5px;
+  transition: fill 0.3s;
+  fill: white;
 }
 .cerb:hover img {
-  filter: brightness(0) invert(0.8); /* Отключение инверсии, чтобы цвета подходили */
+  filter: invert(5%) sepia(8%) saturate(1458%) hue-rotate(323deg)
+    brightness(91%) contrast(101%);
 }
 .cerb {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #ffffff;
 }
 
 .footer {
@@ -94,6 +95,8 @@ nav a:hover {
 .burger-menu {
   background-color: #b264e2; /* Цвет верхней панели */
   padding: 10px;
+  position: fixed;
+  width: 100%;
 }
 
 .menu-icon {
@@ -104,6 +107,7 @@ nav a:hover {
   height: 20px;
   justify-content: space-around;
   margin: 0 auto;
+  padding-left: 80%;
 }
 
 .bar {
@@ -116,10 +120,52 @@ nav a:hover {
   display: none; /* Скрыто по умолчанию */
   background-color: white;
   position: absolute;
-  top: 60px; /* Расположено под менюшкой */
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 40px;
+  top: 40px; /* Расположено под менюшкой */
   width: 100%;
+  height: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: fixed;
+}
+
+.negr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: #000000;
+}
+.line {
+  margin-bottom: 7px;
+  width: 80%;
+}
+.strela {
+  position: absolute;
+  left: 75%;
+}
+.strela.o {
+  top: 50px;
+}
+.strela.t {
+  top: 105px;
+}
+.strela.th {
+  top: 162px;
+}
+.strela.f {
+  top: 218px;
+}
+.negr:hover {
+  color: #e8d5ad;
+}
+
+.negr img {
+  filter: invert(100%);
+}
+.negr:hover img {
+  filter: invert(5%) sepia(8%) saturate(1458%) hue-rotate(323deg)
+    brightness(91%) contrast(101%);
 }
 
 .nav-menu.active {
