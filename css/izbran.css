@@ -1,0 +1,16 @@
+main {
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+}
+
+.nazv {
+  width: 20%;
+  border-bottom: 2px #dedede solid;
+  margin: 0 0 2%;
+}
+
+h1 {
+  margin: 0%;
+  padding: 2% 0;
+}
