@@ -372,6 +372,24 @@ main {
   font-weight: bolder;
 }
 
+.product-wrapper {
+  position: relative;
+}
+
+.love {
+  border: none;
+  position: absolute;
+  right: 0%;
+  top: 1%;
+  background-color: #00000000;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.product-wrapper:hover .love {
+  opacity: 1;
+}
+
 @-webkit-keyframes animatetop {
   from {
     top: -300px;
