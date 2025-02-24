@@ -1,16 +1,16 @@
 /* header и бургер меню */
-
 header {
   display: flex;
+  font-family: "Crimson Text", serif;
   align-items: center;
   justify-content: space-between;
-  background-color: #b264e2;
+  background-color: #b264e2; /* Фиолетовый цвет */
   padding: 10px 20px 10px 20px;
   margin-bottom: 2%;
 }
 
 .logo {
-  height: 90px;
+  height: 90px; /* Высота логотипа */
 }
 
 nav {
@@ -48,8 +48,8 @@ nav a:hover {
 
 .footer {
   margin-top: 10%;
-  background-color: #62208a;
-  color: white;
+  background-color: #62208a; /* Фиолетовый фон */
+  color: white; /* Цвет текста */
   display: flex;
   text-align: start;
   justify-content: space-around;
@@ -81,7 +81,7 @@ nav a:hover {
 }
 
 .footer-section a {
-  color: white;
+  color: white; /* Цвет ссылок */
   text-decoration: none;
 }
 
@@ -90,16 +90,16 @@ nav a:hover {
 }
 
 .social-icons a {
-  margin-right: 2%;
+  margin-right: 2%; /* Отступы между иконками */
 }
 
 .social-icons img {
-  width: 50px;
+  width: 50px; /* Размер иконок соцсетей */
   height: 50px;
 }
 
 .burger-menu {
-  background-color: #b264e2;
+  background-color: #b264e2; /* Цвет верхней панели */
   padding: 10px;
   position: fixed;
   width: 100%;
@@ -123,13 +123,13 @@ nav a:hover {
 }
 
 .nav-menu {
-  display: none;
+  display: none; /* Скрыто по умолчанию */
   background-color: white;
   position: absolute;
   padding-left: 3%;
   padding-right: 3%;
   padding-top: 40px;
-  top: 40px;
+  top: 40px; /* Расположено под менюшкой */
   width: 100%;
   height: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -137,6 +137,7 @@ nav a:hover {
 }
 
 .negr {
+  font-family: "Crimson Text", serif;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -170,7 +171,7 @@ nav a:hover {
 }
 
 .negr:hover {
-  color: #e8d5ad;
+  color: #ee8b2e;
 }
 
 .negr img {
@@ -178,8 +179,8 @@ nav a:hover {
 }
 
 .negr:hover img {
-  filter: invert(5%) sepia(8%) saturate(1458%) hue-rotate(323deg)
-    brightness(91%) contrast(101%);
+  filter: invert(30%) sepia(9%) saturate(6147%) hue-rotate(339deg)
+    brightness(97%) contrast(92%);
 }
 
 .nav-menu.active {
