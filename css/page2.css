@@ -4,27 +4,12 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-
-article {
-  min-height: 100%;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 100%;
-}
-
-/* header и бургер меню */
 header {
   display: flex;
-  font-family: "Crimson Text", serif;
   align-items: center;
   justify-content: space-between;
-  background-color: #b264e2; /* Фиолетовый цвет */
-  padding: 10px 20px 10px 20px;
+  background-color: #b264e2;
+  padding: 10px 20px;
   margin-bottom: 2%;
 }
 
@@ -65,16 +50,15 @@ nav a:hover {
   gap: 10px;
 }
 
-.footer {
-  margin-top: 10%;
-  background-color: #62208a; /* Фиолетовый фон */
-  color: white; /* Цвет текста */
+footer {
+  margin-top: 2%;
+  background-color: #62208a;
+  color: white;
   display: flex;
   text-align: start;
   justify-content: space-around;
   padding: 0 1%;
   font-size: 24px;
-  z-index: 9;
 }
 
 .footer-section {
@@ -101,7 +85,7 @@ nav a:hover {
 }
 
 .footer-section a {
-  color: white; /* Цвет ссылок */
+  color: white;
   text-decoration: none;
 }
 
@@ -110,16 +94,16 @@ nav a:hover {
 }
 
 .social-icons a {
-  margin-right: 2%; /* Отступы между иконками */
+  margin-right: 2%;
 }
 
 .social-icons img {
-  width: 50px; /* Размер иконок соцсетей */
+  width: 50px;
   height: 50px;
 }
 
 .burger-menu {
-  background-color: #b264e2; /* Цвет верхней панели */
+  background-color: #b264e2;
   padding: 10px;
   position: fixed;
   width: 100%;
@@ -157,7 +141,6 @@ nav a:hover {
 }
 
 .negr {
-  font-family: "Crimson Text", serif;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -197,7 +180,6 @@ nav a:hover {
 .negr img {
   filter: invert(100%);
 }
-
 .negr:hover img {
   filter: invert(30%) sepia(9%) saturate(6147%) hue-rotate(339deg)
     brightness(97%) contrast(92%);
@@ -212,6 +194,25 @@ nav a:hover {
 }
 
 /* основные стили */
+
+.body {
+  font-family: "Montserrat", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+article {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+}
 
 main {
   display: flex;
@@ -244,7 +245,7 @@ main {
 .products {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2%;
+  gap: 16px;
   grid-template-rows: auto;
   margin: 0 1%;
 }
@@ -387,9 +388,9 @@ main {
   font-weight: bolder;
 }
 
-.product-wrapper {
+/*.product-wrapper {
   position: relative;
-}
+}*/
 
 .love {
   border: none;
@@ -402,7 +403,7 @@ main {
 }
 
 .product-wrapper:hover .love {
-  opacity: 1;
+  opacity: 0;
 }
 
 @-webkit-keyframes animatetop {
@@ -490,6 +491,7 @@ main {
   header {
     display: none;
   }
+
   .cerb {
     color: #000000;
   }
