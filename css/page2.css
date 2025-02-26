@@ -180,6 +180,7 @@ footer {
 .negr img {
   filter: invert(100%);
 }
+
 .negr:hover img {
   filter: invert(30%) sepia(9%) saturate(6147%) hue-rotate(339deg)
     brightness(97%) contrast(92%);
@@ -244,10 +245,8 @@ main {
 
 .products {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
-  grid-template-rows: auto;
-  margin: 0 1%;
 }
 
 /*Модалки*/
