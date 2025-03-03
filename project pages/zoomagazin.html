@@ -229,7 +229,7 @@
                 <button class="modal-order-button" data-product-id="" onclick="addToCart(this.dataset.productId)">В корзину</button>
                 <button class="love" data-product-id="" onclick="addIzb(this.dataset.productId)"><img src="../img/favorite.svg"></button>
               </div>
-            </div>
+            </div>          
           </div>
         </div>
       </div>
@@ -395,7 +395,8 @@ document.addEventListener('click', function(e) {
       });
 
       //избранное
-      function addIzb(productId) {
+      
+function addIzb(productId) {
   let izb = JSON.parse(localStorage.getItem("izb")) || []; 
   const productToAdd = products.find((product) => product.id === productId); 
   if (productToAdd) {
@@ -411,6 +412,8 @@ document.addEventListener('click', function(e) {
     console.error("Product not found with id:", productId);
   }
 }
+
+      window.location.href = "zooizbrannoe.html";
       //корзина
       function addToCart(productId) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -424,6 +427,8 @@ document.addEventListener('click', function(e) {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     alert(`${productToAdd.name} добавлен в корзину!`);
+    // Перенаправление на страницу корзины
+    window.location.href = "zookorzina.html";
   } else {
     console.error("Product not found with id:", productId);
   }
