@@ -25,7 +25,7 @@
         <a href="zoomagazin.html"
           ><div class="cerb">Каталог <img src="../img/Vector.svg" /></div
         ></a>
-        <a href="zooizbrannoe"
+        <a href="zooizbrannoe.html"
           ><div class="cerb">
             Избранное
             <img
@@ -222,10 +222,15 @@
       </div>
     </div>
     <main>
-        <div class="nazv"><h1>Избранное</h1></div>
+        <div class="nazv"><h1>Корзина</h1></div>
         <div id="cart-items"></div>
-        <div id="cart-total">Итого: 0 ₽</div>
-        <button>Оформить заказ</button>
+        <div class="total">
+          <h3>Заказ</h3>
+          <div id="tov-total">Товаров: 0 шт</div>
+          Скидка: 0 ₽
+          <div id="cart-total">Итого: 0 ₽</div>
+          <button>Оформить заказ</button>
+        </div>
     </main>
     <footer class="footer">
       <div class="footer-section">
@@ -317,12 +322,13 @@
     function updateCartTotal() {
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
         let total = 0;
-
+        let totaltov = 0;
         cart.forEach(item => {
             total += item.price * item.quantity;
+            totaltov += item.quantity;
         });
-
         document.getElementById("cart-total").textContent = `Итого: ${formatPrice(total)}`;
+        document.getElementById("tov-total").textContent = `Товаров: ${totaltov} шт`;
     }
 
     displayCart();
