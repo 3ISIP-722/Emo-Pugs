@@ -10,6 +10,10 @@
             font-family: 'Crimson Text', serif;
         }
 
+        body.no-scroll {
+            overflow: hidden;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -31,23 +35,6 @@
             max-width: 400px; /* Максимальная ширина */
             position: relative;
             text-align: center; /* Центрирование текста */
-        }
-
-        .close {
-            color: #aaa;
-            position: absolute;
-            top: 10px;
-            right: 20px; /* Смещение крестика левее */
-            font-size: 28px;
-            font-weight: bold;
-            padding: 5px;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
         }
 
         .input-group {
@@ -98,7 +85,6 @@
 
 <div class="modal" id="registrationModal">
     <div class="modal-content">
-        <span class="close">&times;</span>
         <h2>Регистрация</h2>
         <form id="registrationForm">
             <div class="input-group">
@@ -144,7 +130,6 @@
 
 <div class="modal" id="loginModal">
     <div class="modal-content">
-        <span class="close">&times;</span>
         <h2>Авторизация</h2>
         <form id="loginForm">
             <div class="input-group">
@@ -169,98 +154,50 @@
 <button id="openLogin">Открыть авторизацию</button>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const registrationModal = document.getElementById('registrationModal');
-        const loginModal = document.getElementById('loginModal');
-        const openRegistrationButton = document.getElementById('openRegistration');
-        const openLoginButton = document.getElementById('openLogin');
-        const closeButtons = document.querySelectorAll('.close');
-        const registrationForm = document.getElementById('registrationForm');
-        const loginForm = document.getElementById('loginForm');
+     document.addEventListener("DOMContentLoaded", function () {
+    const registrationModal = document.getElementById("registrationModal");
+    const loginModal = document.getElementById("loginModal");
+    const openRegistrationButton = document.getElementById("openRegistration");
+    const openLoginButton = document.getElementById("openLogin");
+    const body = document.body;
 
-        // Открытие модальных окон
-        openRegistrationButton.addEventListener('click', function () {
-            registrationModal.style.display = 'block';
-        });
+    // Открытие модальных окон
+    openRegistrationButton.addEventListener("click", function () {
+        registrationModal.style.display = "block";
+        body.classList.add("no-scroll");
+    });
 
-        openLoginButton.addEventListener('click', function () {
-            loginModal.style.display = 'block';
-        });
+    openLoginButton.addEventListener("click", function () {
+        loginModal.style.display = "block";
+        body.classList.add("no-scroll");
+    });
 
-        // Закрытие модальных окон
-        closeButtons.forEach(function (button) {
-            button.addEventListener('click', function () {
-                registrationModal.style.display = 'none';
-                loginModal.style.display = 'none';
-            });
-        });
-
-        // Закрытие модальных окон при клике вне окна
-        window.addEventListener('click', function (event) {
-            if (event.target === registrationModal) {
-                registrationModal.style.display = 'none';
-            }
-            if (event.target === loginModal) {
-                loginModal.style.display = 'none';
-            }
-        });
-
-        // Валидация формы регистрации
-        registrationForm.addEventListener('submit', function (event) {
-            let isValid = true;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const regLogin = document.getElementById('regLogin').value;
-            const regPassword = document.getElementById('regPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            // Проверка email
-            if (!validateEmail(email)) {
-                alert('Пожалуйста, введите корректный email.');
-                isValid = false;
-            }
-
-            // Проверка телефона (простая)
-            if (phone.length < 10) {
-                alert('Пожалуйста, введите корректный номер телефона.');
-                isValid = false;
-            }
-
-            // Проверка пароля (минимум 8 символов)
-            if (regPassword.length < 8) {
-                alert('Пароль должен содержать не менее 8 символов.');
-                isValid = false;
-            }
-
-            // Проверка совпадения паролей
-            if (regPassword !== confirmPassword) {
-                alert('Пароли не совпадают.');
-                isValid = false;
-            }
-
-            if (!isValid) {
-                event.preventDefault(); // Предотвращаем отправку формы, если есть ошибки
-            }
-        });
-
-        // Валидация формы авторизации (базовая)
-        loginForm.addEventListener('submit', function (event) {
-            const login = document.getElementById('login').value;
-            const password = document.getElementById('password').value;
-
-            // Здесь можно добавить проверку логина и пароля
-            if (!login || !password) {
-                alert('Пожалуйста, введите логин и пароль.');
-                event.preventDefault();
-            }
-        });
-
-        // Функция для валидации email
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(String(email).toLowerCase());
+    // Закрытие модальных окон по клику вне области модального окна
+    window.addEventListener("click", function (event) {
+        if (event.target === registrationModal) {
+            registrationModal.style.display = "none";
+            body.classList.remove("no-scroll");
+        }
+        if (event.target === loginModal) {
+            loginModal.style.display = "none";
+            body.classList.remove("no-scroll");
         }
     });
+
+    // Закрытие модальных окон по нажатию клавиши ESC
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            if (registrationModal.style.display === "block") {
+                registrationModal.style.display = "none";
+                body.classList.remove("no-scroll");
+            }
+            if (loginModal.style.display === "block") {
+                loginModal.style.display = "none";
+                body.classList.remove("no-scroll");
+            }
+        }
+    });
+});
 </script>
 </body>
 </html>
