@@ -218,6 +218,7 @@ article {
 main {
   display: flex;
   gap: 0.5%;
+  margin: 0 1.2%;
 }
 
 .scrollbar {
@@ -245,7 +246,7 @@ main {
 
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 16px;
 }
 
