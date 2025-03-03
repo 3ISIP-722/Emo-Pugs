@@ -239,7 +239,7 @@ main {
 
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 16px;
 }
 
@@ -342,7 +342,7 @@ main {
   color: white;
   padding: 12px 20px;
   border: none;
-  border-radius: 15px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
@@ -362,7 +362,7 @@ main {
 }
 
 .modal-order-button {
-  width: 60%;
+  max-width: 200px;
 }
 
 .love {
@@ -457,6 +457,7 @@ main {
 @media (width<=755px) {
   .products {
     grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
 
   main {
