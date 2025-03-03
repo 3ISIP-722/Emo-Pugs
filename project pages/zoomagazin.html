@@ -226,8 +226,8 @@
               <p class="modal-description"></p>
               <div class="modal-price"></div>
               <div class="knop">
-                <button class="modal-order-button" data-product-id="" onclick="addToCart(this.dataset.productId)">В корзину</button>
-                <button class="love" data-product-id="" onclick="addIzb(this.dataset.productId)"><img src="../img/favorite.svg"></button>
+                <button class="modal-order-button" data-product-id="">В корзину</button>
+                <button class="love" data-product-id=""><img src="../img/favorite.svg"></button>
               </div>
             </div>          
           </div>
@@ -355,8 +355,11 @@
       //модалки карточек товара
       const modal = document.getElementById("productModal");
       function openModal(productId) {
-        const product = products.find((p) => p.id === productId);
-
+        if (products.length === 0) {
+    console.error("Продукты не загружены");
+    return;
+  }
+  const product = products.find(p => p.id === productId);
   if (product) {
     // Обновляем контент модалки
     document.querySelector(".modal-image").src = product.image;
@@ -366,9 +369,12 @@
     document.querySelector(".modal-price").textContent = formatPrice(product.price);
     
     const modal = document.getElementById("productModal");
-    modal.querySelector(".modal-order-button").dataset.productId = productId;
-    modal.querySelector(".love").dataset.productId = productId;
+    const addToCartBtn = modal.querySelector(".modal-order-button");
+    const addToFavBtn = modal.querySelector(".love");
     
+    addToCartBtn.dataset.productId = productId;
+    addToFavBtn.dataset.productId = productId;
+
     modal.style.display = "block";
   } else {
     console.error("Product not found with id:", productId);
@@ -393,10 +399,24 @@ document.addEventListener('click', function(e) {
           modal.style.display = "none";
         }
       });
+      document.getElementById('productModal').addEventListener('click', function(e) {
+  const target = e.target.closest('.modal-order-button, .love');
+  
+  if (!target) return;
+  
+  const productId = target.dataset.productId;
+  
+  if (target.classList.contains('modal-order-button')) {
+    addToCart(productId);
+  } else if (target.classList.contains('love')) {
+    addIzb(productId);
+  }
+});
 
       //избранное
       
 function addIzb(productId) {
+  productId = parseInt(productId);
   let izb = JSON.parse(localStorage.getItem("izb")) || []; 
   const productToAdd = products.find((product) => product.id === productId); 
   if (productToAdd) {
@@ -413,9 +433,9 @@ function addIzb(productId) {
   }
 }
 
-      window.location.href = "zooizbrannoe.html";
       //корзина
       function addToCart(productId) {
+        productId = parseInt(productId);
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const productToAdd = products.find((product) => product.id === productId);
   if (productToAdd) {
@@ -427,8 +447,6 @@ function addIzb(productId) {
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     alert(`${productToAdd.name} добавлен в корзину!`);
-    // Перенаправление на страницу корзины
-    window.location.href = "zookorzina.html";
   } else {
     console.error("Product not found with id:", productId);
   }
@@ -463,7 +481,6 @@ function addIzb(productId) {
         }
     });
 
-    // Закрытие модальных окон по нажатию клавиши ESC
     document.addEventListener("keydown", function (event) {
         if (event.key === "Escape") {
             if (registrationModal.style.display === "block") {
@@ -478,7 +495,6 @@ function addIzb(productId) {
     });
 });
 
-    // Валидация формы регистрации
     registrationForm.addEventListener("submit", function (event) {
         let isValid = true;
         const email = document.getElementById("email").value;
@@ -487,41 +503,33 @@ function addIzb(productId) {
         const regPassword = document.getElementById("regPassword").value;
         const confirmPassword = document.getElementById("confirmPassword").value;
 
-        // Проверка email
         if (!validateEmail(email)) {
             alert("Пожалуйста, введите корректный email.");
             isValid = false;
         }
 
-        // Проверка телефона (простая)
         if (phone.length < 10) {
             alert("Пожалуйста, введите корректный номер телефона.");
             isValid = false;
         }
 
-        // Проверка пароля (минимум 8 символов)
         if (regPassword.length < 8) {
             alert("Пароль должен содержать не менее 8 символов.");
             isValid = false;
         }
-
-        // Проверка совпадения паролей
         if (regPassword !== confirmPassword) {
             alert("Пароли не совпадают.");
             isValid = false;
         }
 
         if (!isValid) {
-            event.preventDefault(); // Предотвращаем отправку формы, если есть ошибки
+            event.preventDefault(); 
         }
     });
 
-    // Валидация формы авторизации (базовая)
     loginForm.addEventListener("submit", function (event) {
         const login = document.getElementById("login").value;
         const password = document.getElementById("password").value;
-
-        // Здесь можно добавить проверку логина и пароля
         if (!login || !password) {
             alert("Пожалуйста, введите логин и пароль.");
             event.preventDefault();
@@ -530,13 +538,11 @@ function addIzb(productId) {
         }
     });
 
-    // Функция для валидации email
     function validateEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
     };
 
-// Переключение между модальными окнами
 function switchToLogin() {
     document.getElementById("registrationModal").style.display = "none";
     document.getElementById("loginModal").style.display = "block";
