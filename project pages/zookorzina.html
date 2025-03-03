@@ -6,6 +6,8 @@
     <title>ZooMagazin</title>
     <link rel="stylesheet" href="../css/page2.css" />
     <link rel="stylesheet" href="../css/zooakaunt.css" />
+    <link rel="stylesheet" href="../css/zoopages.css" />
+    <link rel="stylesheet" href="../css/zookorzina.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
   <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=mXASaQqaoMiA9Pzaun8I8RCY9NqRrqNGfzTArTQrsOHM13fBUpm7qGR5djC1iWIIY5Y56F1LThvu4rY0IJJ2Jj3C1lsQjPslY2zHKLlk3MBqF6lJ7dW5rw_dFUwnPWj5" charset="UTF-8"></script></head>
@@ -16,17 +18,17 @@
     <header>
       <img src="../img/Mask group.png" alt="Логотип PetJet" class="logo" />
       <nav>
-        <a href="#"
+        <a href="zoomagazin.html"
           ><div class="cerb">Каталог <img src="../img/Vector.svg" /></div
         ></a>
-        <a href="zooizbrannoe.html"
+        <a href="zooizbrannoe"
           ><div class="cerb">
             Избранное
             <img
               src="../img/favorite_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg"
             /></div
         ></a>
-        <a href="zookorzina.html"
+        <a href="#"
           ><div class="cerb">Корзина <img src="../img/Vector (1).svg" /></div
         ></a>
         <a href="#" id="openRegistration"
@@ -50,7 +52,7 @@
       </div>
       <nav class="nav-menu" id="nav-menu">
         <ul>
-          <a href="#"
+          <a href="zoomagazin.html"
             ><div class="negr">Каталог <img src="../img/Vector.svg" /></div
           ></a>
           <img src="../img/-_.svg" class="strela o" />
@@ -64,7 +66,7 @@
           ></a>
           <img src="../img/-_.svg" class="strela t" />
           <img src="../img/Line 5.svg" class="line" />
-          <a href="zookorzina.html"
+          <a href="#"
             ><div class="negr">Корзина <img src="../img/Vector (1).svg" /></div
           ></a>
           <img src="../img/-_.svg" class="strela th" />
@@ -216,22 +218,10 @@
       </div>
     </div>
     <main>
-      <div class="scrollbar" id="scrollbar"></div>
-      <div class="products" id="productContainer"></div>
-      <div id="productModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <div class="modal-body">
-            <img src="" alt="" class="modal-image" />
-            <div class="modal-details">
-              <h2 class="modal-title"></h2>
-              <p class="modal-description"></p>
-              <div class="modal-price"></div>
-              <button class="modal-order-button">Заказать</button>
-            </div>
-          </div>
-        </div>
-      </div>
+        <div class="nazv"><h1>Избранное</h1></div>
+        <div id="cart-items"></div>
+        <div id="cart-total">Итого: 0 ₽</div>
+        <button>Оформить заказ</button>
     </main>
     <footer class="footer">
       <div class="footer-section">
@@ -268,141 +258,73 @@
           const navMenu = document.getElementById("nav-menu");
           navMenu.classList.toggle("active");
         });
-      let products = [];
-      function formatPrice(price) {
-        return price.toLocaleString("ru-RU") + " ₽";
+      //Само добавление 
+      function displayCart() {
+      const cartItemsContainer = document.getElementById("cart-items");
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = "<p>Корзина пуста.</p>";
+        updateCartTotal(); // Обновляем итоговую сумму
+        return;
       }
 
-      async function loadProducts() {
-        try {
-          const response = await fetch("products.json");
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          products = await response.json();
-          renderProducts(); 
-          renderRazdel();
-        } catch (error) {
-          console.error("Ошибка при загрузке данных:", error);
-          document.getElementById(
-            "productContainer"
-          ).innerHTML = "<p>Ошибка при загрузке данных. Пожалуйста, обновите страницу.</p>";
-        }
-      }
-
-      function createProductCard(product) {
-        return `
-          <div class="product-wrapper" data-product-id="${product.id}">
-            <div class="card">
-              <button class="love"><img src=""></button>
-              <img src="${product.image}" alt="${product.name}" loading="lazy">
-              <div class="text-block">
-                <h3>${product.name}</h3>
-                <p class="descr">${product.description}</p>
-                <div class="price">${formatPrice(product.price)}</div>
-              </div>
-              <button class="btn" onclick="addToCart(${product.id})">Заказать</button>
-            </div>
+      let cartHTML = "";
+      cart.forEach((item) => {
+        cartHTML += `
+          <div>
+            <img src="${item.image}" alt="${item.name}" width="50">
+            <span>${item.name}</span>
+            <span>${formatPrice(item.price)}</span>
+            <span>
+              <button onclick="changeQuantity(${item.id}, -1)">-</button>
+              ${item.quantity} шт.
+              <button onclick="changeQuantity(${item.id}, 1)">+</button>
+            </span>
           </div>
         `;
-      }
-
-      function createScrollbar(category) {
-        return `
-                <button class="razdel" onclick="filterProducts('${category}')">${category}</button>
-              `;
-      }
-
-      function renderProducts(filteredProducts = products) {
-        let productHTML = filteredProducts
-          .map(function (product) {
-            return createProductCard(product);
-          })
-          .join("");
-        document.getElementById("productContainer").innerHTML = productHTML;
-
-        const textBlocks = document.querySelectorAll(".text-block");
-        textBlocks.forEach((block) => {
-          block.addEventListener("click", () => {
-            const productId = parseInt(
-              block.closest(".product-wrapper").dataset.productId
-            );
-            openModal(productId);
-          });
-        });
-      }
-
-      function renderRazdel() {
-        const categories = [
-          ...new Set(products.map((product) => product.category)),
-        ];
-        let razdelHTML = categories
-          .map(function (category) {
-            return createScrollbar(category);
-          })
-          .join("");
-        document.getElementById("scrollbar").innerHTML = razdelHTML;
-      }
-
-      function filterProducts(category) {
-        const filteredProducts = products.filter(
-          (product) => product.category === category
-        );
-        renderProducts(filteredProducts);
-      }
-      loadProducts();
-
-      //модалки карточек товара
-      const modal = document.getElementById("productModal");
-      function openModal(productId) {
-        const product = products.find((p) => p.id === productId);
-
-        if (product) {
-          document.querySelector(".modal-image").src = product.image;
-          document.querySelector(".modal-image").alt = product.name;
-          document.querySelector(".modal-title").textContent = product.name;
-          document.querySelector(".modal-description").textContent =
-            product.description;
-          document.querySelector(".modal-price").textContent = formatPrice(
-            product.price
-          );
-          modal.style.display = "block";
-        } else {
-          console.error("Product not found with id:", productId);
-        }
-      }
-
-      const closeBtn = document.querySelector(".modal .close");
-      closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-      });
-      window.addEventListener("click", (event) => {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
       });
 
-      //избранное
-      //корзина
-      function addToCart(productId) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const productToAdd = products.find((product) => product.id === productId);
-  if (productToAdd) {
-    const existingCartItem = cart.find((item) => item.id === productId);
-    if (existingCartItem) {
-      existingCartItem.quantity = (existingCartItem.quantity || 1) + 1;
-    } else {
-      cart.push({ ...productToAdd, quantity: 1 });
+      cartItemsContainer.innerHTML = cartHTML;
+      updateCartTotal(); // Обновляем итоговую сумму
     }
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert(`${productToAdd.name} добавлен в корзину!`);
-  } else {
-    console.error("Product not found with id:", productId);
-  }
-}
 
+    function formatPrice(price) {
+        return price.toLocaleString("ru-RU") + " ₽";
+    }
+
+    function changeQuantity(productId, change) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const itemToUpdate = cart.find((item) => item.id === productId);
+
+      if (itemToUpdate) {
+        itemToUpdate.quantity += change;
+
+        if (itemToUpdate.quantity <= 0) {
+          // Если количество стало меньше или равно 0, удаляем товар из корзины
+          cart = cart.filter((item) => item.id !== productId);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        displayCart(); // Перерисовываем корзину после изменения
+      }
+    }
+
+    function updateCartTotal() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let total = 0;
+
+        cart.forEach(item => {
+            total += item.price * item.quantity;
+        });
+
+        document.getElementById("cart-total").textContent = `Итого: ${formatPrice(total)}`;
+    }
+
+    displayCart();
       //авторизация регистрация
-      document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
     const registrationModal = document.getElementById("registrationModal");
     const loginModal = document.getElementById("loginModal");
     const openRegistrationButton = document.getElementById("openRegistration");
@@ -498,8 +420,6 @@
         return re.test(String(email).toLowerCase());
     }
 });
-
-// Переключение между модальными окнами
 function switchToLogin() {
     document.getElementById("registrationModal").style.display = "none";
     document.getElementById("loginModal").style.display = "block";
@@ -512,3 +432,4 @@ function switchToRegistration() {
     </script>
   </body>
 </html>
+
