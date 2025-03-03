@@ -266,306 +266,42 @@
           const navMenu = document.getElementById("nav-menu");
           navMenu.classList.toggle("active");
         });
-      let products = [
-        {
-          id: 1,
-          name: "Корм PetJet сухой для собак",
-          price: 2879,
-          category: "Корм",
-          image: "../img/korm4.jpg",
-          description: "Сухой корм для собак с говядиной",
-        },
-        {
-          id: 3,
-          name: "Ошейник",
-          price: 499,
-          category: "Аксессуары",
-          image: "../img/akses4.jpg",
-          description: "Ошейник для собак нейлоновый",
-        },
-        {
-          id: 5,
-          name: "Корм PetJet сухой для собак",
-          price: 679,
-          category: "Корм",
-          image: "../img/korm1.jpg",
-          description: "Сухой корм для кошек с рыбой",
-        },
-        {
-          id: 7,
-          name: "Ошейник",
-          price: 549,
-          category: "Аксессуары",
-          image: "../img/akses2.jpg",
-          description: "Поводок для собак нейлоновый",
-        },
-        {
-          id: 4,
-          name: "Клетка для грызунов",
-          price: 2499,
-          category: "Клетки",
-          image: "../img/kletk1.jpg",
-          description:
-            "Клетка для мелких грызунов четырёхэтажная. 100 Х 80 Х 60",
-        },
-        {
-          id: 6,
-          name: "Витамины личинки мучного червя для грызунов",
-          price: 869,
-          category: "Витамины",
-          image: "../img/vitanim1.jpg",
-          description:
-            "Витамины личинки для грызунов (ежей, крыс, мышей). Лакомство для всеядных грызунов мучной червь от LITTLE ONE",
-        },
-        {
-          id: 2,
-          name: "Сироп с витаминами для попугаев",
-          price: 779,
-          category: "Витамины",
-          image: "../img/vitanim2.jpg",
-          description:
-            "Сироп с витаминами для попугаев. Кормовая добавка Beaphar Mausertropfen",
-        },
-        {
-          id: 8,
-          name: "Клетка для шиншил",
-          price: 1299,
-          category: "Клетки",
-          image: "../img/kletk2.jpg",
-          description:
-            "Клетка для шиншилл PetTails разборная, 58 Х 40 Х 65, серая",
-        },
-        {
-          id: 9,
-          name: "Ошейник",
-          price: 769,
-          category: "Аксессуары",
-          image: "../img/akses3.jpg",
-          description: "Ошейник для кошек серый",
-        },
-        {
-          id: 10,
-          name: "Ошейник",
-          price: 619,
-          category: "Аксессуары",
-          image: "../img/akses1.jpg",
-          description: "Свитер для кошек красный",
-        },
-        {
-          id: 11,
-          name: "Корм PetJet сухой для собак",
-          price: 1679,
-          category: "Корм",
-          image: "../img/korm2.jpg",
-          description: "Сухой корм для кошек с бараниной",
-        },
-        {
-          id: 12,
-          name: "Корм PetJet сухой для собак",
-          price: 379,
-          category: "Корм",
-          image: "../img/korm3.jpg",
-          description: "Сухой корм для крыс и мелких грызунов",
-        },
-        {
-          id: 13,
-          name: "Витамины для беременных кошек",
-          price: 399,
-          category: "Витамины",
-          image: "../img/vitanim3.jpg",
-          description: "Витамины в таблетках для кошек",
-        },
-        {
-          id: 14,
-          name: "Масло лососевое для кошек",
-          price: 569,
-          category: "Витамины",
-          image: "../img/vitanim4.jpg",
-          description: "Витаминный прикорм для попугаев",
-        },
-        {
-          id: 15,
-          name: "Сумка переносная",
-          price: 599,
-          category: "Клетки",
-          image: "../img/kletk3.jpg",
-          description:
-            "Сумка переноска для кошек и домашних животных 40 Х 25 Х 25 см",
-        },
-        {
-          id: 16,
-          name: "Переноска для собак и кошек",
-          price: 869,
-          category: "Клетки",
-          image: "../img/kletk4.jpg",
-          description:
-            "Переноска-клиппер Mps SKUDO 2 с металлической дверцей 55 Х 36 Х 35 см",
-        },
-        {
-          id: 17,
-          name: "Кофта для собак, одежда для собак, толстовка",
-          price: 1069,
-          category: "Аксессуары",
-          image: "../img/akses5.jpg",
-          description:
-            "Свитшот не сковывает движения питомца, за счет анатомического кроя, разработанного специально для мелких и средних пород собак.",
-        },
-        {
-          id: 18,
-          name: "Шлейка для кроликов; для кошек; шлейка для собак маленьких пород.",
-          price: 569,
-          category: "Аксессуары",
-          image: "../img/akses6.jpg",
-          description:
-            "Шлейка с поводком для грызунов,щенков,котят и прочих некрупных животных.Изделие выполнено из мягкого материала, который не истирает шерсть и не вредит коже.",
-        },
-        {
-          id: 19,
-          name: "Tixie Шлейка с поводком для крыс и хорьков (61511)",
-          price: 269,
-          category: "Аксессуары",
-          image: "../img/akses7.jpg",
-          description: "Шлейка-жилетка для крыс и других грызунов",
-        },
-        {
-          id: 20,
-          name: "Костюм морковки для собак и кошек",
-          price: 769,
-          category: "Аксессуары",
-          image: "../img/akses8.jpg",
-          description:
-            "Костюм морковки для собак выполнен в ярком оранжевом цвете. Изготовлен из мягкого материала, который приятен на ощупь и не вызывает раздражения у животного.",
-        },
-        {
-          id: 21,
-          name: "Сухой корм для кошек Royal Canin Urinary S/O диетический при мочекаменной болезни, 1,5 кг ",
-          price: 2069,
-          category: "Корм",
-          image: "../img/korm7.jpg",
-          description:
-            "Сухой корм для кошек ROYAL CANIN ® URINARY S/O (полнорационный лечебный)",
-        },
-        {
-          id: 22,
-          name: "Корм для мелких и средних попугаев Triol Экстра, 500г",
-          price: 269,
-          category: "Корм",
-          image: "../img/korm8.jpg",
-          description:
-            "Смесь из отборных зерновых культур для ежедневного кормления мелких и средних попугаев. Корм содержит любимые пернатыми зерна и семена, сбалансирован по микро- и макроэлементам и обогащен витаминами, необходимыми для правильного развития пернатых питомцев.",
-        },
-        {
-          id: 23,
-          name: "Сухой корм для стерилизованных кошек Royal Canin Sterilised 37, 1,2 кг",
-          price: 1769,
-          category: "Корм",
-          image: "../img/korm6.jpg",
-          description:
-            "Корм сухой Royal Canin Sterilised 37 сбалансированный для взрослых стерилизованных кошек.",
-        },
-        {
-          id: 24,
-          name: "Сухой корм для собак средних и крупных пород Мираторг Meat с говядиной, 10 кг",
-          price: 7069,
-          category: "Корм",
-          image: "../img/korm5.jpg",
-          description:
-            "Корма для домашних животных Мираторг – это качественное питание для ваших четвероногих друзей исключительно из свежего мясного сырья собственного производства и сбалансированного витаминно-минерального комплекса.",
-        },
-        {
-          id: 25,
-          name: "Аквариум для рыбок 15 литров",
-          price: 2069,
-          category: "Клетки",
-          image: "../img/kletk8.jpg",
-          description:
-            "Аквариум для рыбок с крышкой, внешний объем 15 литров. Производитель ООО Голд Фиш, Россия. Аквариум для рыбок панорамный с черной крышкой, лючком для кормления.",
-        },
-        {
-          id: 26,
-          name: "Аквариум круглый Неман 3 л, ваза-шар",
-          price: 1069,
-          category: "Клетки",
-          image: "../img/kletk7.jpg",
-          description:
-            "Круглый аквариум в виде шара – это маленький настольный аквариум, который будет отлично смотреться на полке или на столе не только у Вас дома, но и на рабочем месте.",
-        },
-        {
-          id: 27,
-          name: "Аквариум 30л с зеркальной стенкой",
-          price: 2069,
-          category: "Клетки",
-          image: "../img/kletk6.jpg",
-          description:
-            "Аквариум с зеркальной стенкой для рыбок, креветок, улиток, растений. Размер аквариума длина 43см ширина 22,5см высота 31,5см.  Стекло 4 мм.",
-        },
-        {
-          id: 28,
-          name: "Аквариум для черепах",
-          price: 3069,
-          category: "Клетки",
-          image: "../img/kletk5.jpg",
-          description:
-            "Аквариум для черепах с подсветкой и фильтром, душевой СПА, много места для занятий, подходит для земноводных и рептилий, таких как сухопутные и морские черепахи, раки-отшельники, 34,5*18*18 см",
-        },
-        {
-          id: 29,
-          name: "ВИТТРИ-1 АВЗ витамины для профилактики и лечения гиповитаминозов для животных, 20 мл",
-          price: 1069,
-          category: "Витамины",
-          image: "../img/vitamin5.jpg",
-          description:
-            "Препарат относится к витаминным лекарственным средствам и содержит комбинированный физиологически обоснованный состав из витаминов А, D3, Е. Компоненты оказывают синергидное действие на организм собак и кошек, выражающееся в нормализации обмена веществ.",
-        },
-        {
-          id: 30,
-          name: "Цианокобаламин Витамин В12 10 мл",
-          price: 3069,
-          category: "Витамины",
-          image: "../img/vitamin8.jpg",
-          description:
-            "Цианокобаламин (Cyanocobalamin) - раствор для инъекций для профилактики дефицита витамина В12 и лечения анемии у сельскохозяйственных и домашних животных.",
-        },
-        {
-          id: 31,
-          name: "Цитодерм капли дерматологические для собак (30-60 кг.), 1 пипетка",
-          price: 3069,
-          category: "Витамины",
-          image: "../img/vitamin7.jpg",
-          description:
-            "Состав: масло виноградных косточек, масло жожоба, эфирное масло ромашки, эфирное масло чайного дерева, эфирное масло лаванды, эфирное масло гвоздики.",
-        },
-        {
-          id: 32,
-          name: "Бутастим флакон, 100 мл",
-          price: 3069,
-          category: "Витамины",
-          image: "../img/vitamin6.jpg",
-          description:
-            "Бутастим (Butastim) - раствор для инъекций относится к комплексным общеукрепляющим и тонизирующим лекарственным препаратам, нормализует метаболические и регенеративные процессы, оказывает стимулирующее действие на белковый, углеводный и жировой обмен веществ, повышает резистентность организма к неблагоприятным факторам внешней среды, способствует росту и развитию молодняка животных.",
-        },
-      ];
-
+      let products = [];
       function formatPrice(price) {
         return price.toLocaleString("ru-RU") + " ₽";
       }
 
+      async function loadProducts() {
+        try {
+          const response = await fetch("products.json");
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          products = await response.json();
+          renderProducts(); 
+          renderRazdel();
+        } catch (error) {
+          console.error("Ошибка при загрузке данных:", error);
+          document.getElementById(
+            "productContainer"
+          ).innerHTML = "<p>Ошибка при загрузке данных. Пожалуйста, обновите страницу.</p>";
+        }
+      }
+
       function createProductCard(product) {
         return `
-            <div class="product-wrapper" data-product-id="${product.id}">
+          <div class="product-wrapper" data-product-id="${product.id}">
             <div class="card">
-                <button class="love"><img src="../img/favorite.svg"></button>
-                <img src="${product.image}" alt="${
-          product.name
-        }" loading="lazy">
-                <div class="text-block">
+              <button class="love"><img src=""></button>
+              <img src="${product.image}" alt="${product.name}" loading="lazy">
+              <div class="text-block">
                 <h3>${product.name}</h3>
                 <p class="descr">${product.description}</p>
                 <div class="price">${formatPrice(product.price)}</div>
-                </div>
-                <button class="btn">Заказать</button>
+              </div>
+              <button class="btn">Заказать</button>
             </div>
-            </div>
+          </div>
         `;
       }
 
@@ -612,7 +348,9 @@
         );
         renderProducts(filteredProducts);
       }
+      loadProducts();
 
+      //модалки карточек товара
       const modal = document.getElementById("productModal");
       function openModal(productId) {
         const product = products.find((p) => p.id === productId);
@@ -641,9 +379,6 @@
           modal.style.display = "none";
         }
       });
-
-      renderProducts();
-      renderRazdel();
 
       //избранное
       //корзина
