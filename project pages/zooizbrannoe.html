@@ -186,6 +186,103 @@
       }
 
       loadProducts();
+      //авторизация регистрация
+      document.addEventListener("DOMContentLoaded", function () {
+        const registrationModal = document.getElementById("registrationModal");
+        const loginModal = document.getElementById("loginModal");
+        const openRegistrationButton =
+          document.getElementById("openRegistration");
+        const openLoginButton = document.getElementById("openLogin");
+        const closeButtons = document.querySelectorAll(".close");
+        const registrationForm = document.getElementById("registrationForm");
+        const loginForm = document.getElementById("loginForm");
+
+        openRegistrationButton.addEventListener("click", function () {
+          registrationModal.style.display = "block";
+        });
+
+        openLoginButton.addEventListener("click", function () {
+          loginModal.style.display = "block";
+        });
+
+        closeButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            const modal = button.closest(".modal");
+            if (modal) {
+              modal.style.display = "none";
+            }
+          });
+        });
+
+        window.addEventListener("click", function (event) {
+          if (event.target === registrationModal) {
+            registrationModal.style.display = "none";
+          }
+          if (event.target === loginModal) {
+            loginModal.style.display = "none";
+          }
+        });
+
+        registrationForm.addEventListener("submit", function (event) {
+          let isValid = true;
+          const email = document.getElementById("email").value;
+          const phone = document.getElementById("phone").value;
+          const regLogin = document.getElementById("regLogin").value;
+          const regPassword = document.getElementById("regPassword").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
+
+          if (!validateEmail(email)) {
+            alert("Пожалуйста, введите корректный email.");
+            isValid = false;
+          }
+
+          if (phone.length < 10) {
+            alert("Пожалуйста, введите корректный номер телефона.");
+            isValid = false;
+          }
+
+          if (regPassword.length < 8) {
+            alert("Пароль должен содержать не менее 8 символов.");
+            isValid = false;
+          }
+
+          if (regPassword !== confirmPassword) {
+            alert("Пароли не совпадают.");
+            isValid = false;
+          }
+
+          if (!isValid) {
+            event.preventDefault();
+          }
+        });
+
+        loginForm.addEventListener("submit", function (event) {
+          const login = document.getElementById("login").value;
+          const password = document.getElementById("password").value;
+
+          if (!login || !password) {
+            alert("Пожалуйста, введите логин и пароль.");
+            event.preventDefault();
+          } else {
+            alert("Вы вошли в аккаунт!");
+          }
+        });
+
+        function validateEmail(email) {
+          const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return re.test(String(email).toLowerCase());
+        }
+      });
+      function switchToLogin() {
+        document.getElementById("registrationModal").style.display = "none";
+        document.getElementById("loginModal").style.display = "block";
+      }
+
+      function switchToRegistration() {
+        document.getElementById("loginModal").style.display = "none";
+        document.getElementById("registrationModal").style.display = "block";
+      }
     </script>
   </body>
 </html>
