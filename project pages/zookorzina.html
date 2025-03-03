@@ -269,7 +269,7 @@
 
       if (cart.length === 0) {
         cartItemsContainer.innerHTML = "<p>Корзина пуста.</p>";
-        updateCartTotal(); // Обновляем итоговую сумму
+        updateCartTotal(); 
         return;
       }
 
@@ -290,7 +290,7 @@
       });
 
       cartItemsContainer.innerHTML = cartHTML;
-      updateCartTotal(); // Обновляем итоговую сумму
+      updateCartTotal(); 
     }
 
     function formatPrice(price) {
@@ -306,12 +306,11 @@
         itemToUpdate.quantity += change;
 
         if (itemToUpdate.quantity <= 0) {
-          // Если количество стало меньше или равно 0, удаляем товар из корзины
           cart = cart.filter((item) => item.id !== productId);
         }
 
         localStorage.setItem("cart", JSON.stringify(cart));
-        displayCart(); // Перерисовываем корзину после изменения
+        displayCart(); 
       }
     }
 
@@ -337,7 +336,6 @@
     const registrationForm = document.getElementById("registrationForm");
     const loginForm = document.getElementById("loginForm");
 
-    // Открытие модальных окон
     openRegistrationButton.addEventListener("click", function () {
         registrationModal.style.display = "block";
     });
@@ -346,17 +344,15 @@
         loginModal.style.display = "block";
     });
 
-    // Закрытие модальных окон
     closeButtons.forEach(function (button) {
         button.addEventListener("click", function () {
             const modal = button.closest(".modal");
             if (modal) {
-                modal.style.display = "none"; // Закрываем только родительскую модалку
+                modal.style.display = "none";
             }
         });
     });
 
-    // Закрытие модальных окон при клике вне окна
     window.addEventListener("click", function (event) {
         if (event.target === registrationModal) {
             registrationModal.style.display = "none";
@@ -366,7 +362,6 @@
         }
     });
 
-    // Валидация формы регистрации
     registrationForm.addEventListener("submit", function (event) {
         let isValid = true;
         const email = document.getElementById("email").value;
@@ -375,41 +370,35 @@
         const regPassword = document.getElementById("regPassword").value;
         const confirmPassword = document.getElementById("confirmPassword").value;
 
-        // Проверка email
         if (!validateEmail(email)) {
             alert("Пожалуйста, введите корректный email.");
             isValid = false;
         }
 
-        // Проверка телефона (простая)
         if (phone.length < 10) {
             alert("Пожалуйста, введите корректный номер телефона.");
             isValid = false;
         }
 
-        // Проверка пароля (минимум 8 символов)
         if (regPassword.length < 8) {
             alert("Пароль должен содержать не менее 8 символов.");
             isValid = false;
         }
 
-        // Проверка совпадения паролей
         if (regPassword !== confirmPassword) {
             alert("Пароли не совпадают.");
             isValid = false;
         }
 
         if (!isValid) {
-            event.preventDefault(); // Предотвращаем отправку формы, если есть ошибки
+            event.preventDefault(); 
         }
     });
 
-    // Валидация формы авторизации (базовая)
     loginForm.addEventListener("submit", function (event) {
         const login = document.getElementById("login").value;
         const password = document.getElementById("password").value;
 
-        // Здесь можно добавить проверку логина и пароля
         if (!login || !password) {
             alert("Пожалуйста, введите логин и пароль.");
             event.preventDefault();
@@ -418,7 +407,6 @@
         }
     });
 
-    // Функция для валидации email
     function validateEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
