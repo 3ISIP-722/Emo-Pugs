@@ -5,7 +5,7 @@ body {
 }
 
 body.no-scroll {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 header {
@@ -368,6 +368,20 @@ main {
   background-color: #c86100;
 }
 
+.knop {
+  display: flex;
+}
+
+.modal-order-button {
+  width: 60%;
+}
+
+.love {
+  border: none;
+  background-color: #00000000;
+  cursor: pointer;
+}
+
 /*карточки товаров*/
 
 .card img {
@@ -390,24 +404,6 @@ main {
 
 .price {
   font-weight: bolder;
-}
-
-/*.product-wrapper {
-  position: relative;
-}*/
-
-.love {
-  border: none;
-  position: absolute;
-  right: 0%;
-  top: 1%;
-  background-color: #00000000;
-  opacity: 0;
-  transition: 0.5s;
-}
-
-.product-wrapper:hover .love {
-  opacity: 0;
 }
 
 @-webkit-keyframes animatetop {

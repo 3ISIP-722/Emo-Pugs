@@ -84,20 +84,6 @@
     <main>
       <div class="nazv"><h1>Избранное</h1></div>
       <div class="products" id="productContainer"></div>
-      <div id="productModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <div class="modal-body">
-            <img src="" alt="" class="modal-image" />
-            <div class="modal-details">
-              <h2 class="modal-title"></h2>
-              <p class="modal-description"></p>
-              <div class="modal-price"></div>
-              <button class="modal-order-button">Заказать</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </main>
     <footer class="footer">
       <div class="footer-section">
@@ -133,84 +119,73 @@
           const navMenu = document.getElementById("nav-menu");
           navMenu.classList.toggle("active");
         });
-      let products = [
-        {
-          id: 1,
-          name: "Корм PetJet сухой для собак",
-          price: 2879,
-          category: "Корм",
-          image: "../img/korm4.jpg",
-          description: "Сухой корм для собак с говядиной",
-        },
-      ];
+      let products = [];
 
       function formatPrice(price) {
         return price.toLocaleString("ru-RU") + " ₽";
       }
 
-      function createProductCard(product) {
-        return `
-              <div class="product-wrapper" data-product-id="${product.id}">
-                <div class="card">
-                  <button class="love"><img src="../img/favorite.svg"></button>
-                  <img src="${product.image}" alt="${
-          product.name
-        }" loading="lazy">
-                  <h3>${product.name}</h3>
-                  <p class="descr">${product.description}</p>
-                  <div class="price">${formatPrice(product.price)}</div>
-                  <button class="btn">Заказать</button>
-                </div>
-              </div>
-              `;
+      function loadProducts() {
+        const izb = JSON.parse(localStorage.getItem("izb")) || [];
+        products = izb;
+        renderProducts();
       }
 
-      function renderProducts(filteredProducts = products) {
-        let productHTML = filteredProducts
+      function createProductCard(product) {
+        return `
+    <div class="product-wrapper" data-product-id="${product.id}">
+      <div class="card">
+        <img src="${product.image}" alt="${product.name}" loading="lazy">
+        <div class="text-block">
+          <h3>${product.name}</h3>
+          <p class="descr">${product.description}</p>
+          <div class="price">${formatPrice(product.price)}</div>
+        </div>
+        <button class="btn" onclick="addToCart(${product.id})">Заказать</button>
+        <button class="love" onclick="removeFromIzb(${
+          product.id
+        })"><img src="../img/х.svg"></button>
+      </div>
+    </div>
+  `;
+      }
+
+      function renderProducts() {
+        let productHTML = products
           .map(function (product) {
             return createProductCard(product);
           })
           .join("");
         document.getElementById("productContainer").innerHTML = productHTML;
-        const productWrappers = document.querySelectorAll(".product-wrapper");
-        productWrappers.forEach((wrapper) => {
-          wrapper.addEventListener("click", () => {
-            const productId = parseInt(wrapper.dataset.productId);
-            openModal(productId);
-          });
-        });
       }
 
-      const modal = document.getElementById("productModal");
-      function openModal(productId) {
-        const product = products.find((p) => p.id === productId);
-
-        if (product) {
-          document.querySelector(".modal-image").src = product.image;
-          document.querySelector(".modal-image").alt = product.name;
-          document.querySelector(".modal-title").textContent = product.name;
-          document.querySelector(".modal-description").textContent =
-            product.description;
-          document.querySelector(".modal-price").textContent = formatPrice(
-            product.price
-          );
-          modal.style.display = "block";
+      function addToCart(productId) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const productToAdd = products.find(
+          (product) => product.id === productId
+        );
+        if (productToAdd) {
+          const existingCartItem = cart.find((item) => item.id === productId);
+          if (existingCartItem) {
+            existingCartItem.quantity = (existingCartItem.quantity || 1) + 1;
+          } else {
+            cart.push({ ...productToAdd, quantity: 1 });
+          }
+          localStorage.setItem("cart", JSON.stringify(cart));
+          alert(`${productToAdd.name} добавлен в корзину!`);
         } else {
           console.error("Product not found with id:", productId);
         }
       }
 
-      const closeBtn = document.querySelector(".modal .close");
-      closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-      });
-      window.addEventListener("click", (event) => {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      });
+      function removeFromIzb(productId) {
+        let izb = JSON.parse(localStorage.getItem("izb")) || [];
+        izb = izb.filter((product) => product.id !== productId);
+        localStorage.setItem("izb", JSON.stringify(izb));
+        loadProducts();
+      }
 
-      renderProducts();
+      loadProducts();
     </script>
   </body>
 </html>
