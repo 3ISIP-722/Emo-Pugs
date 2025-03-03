@@ -161,27 +161,16 @@ footer {
   left: 75%;
 }
 
-.strela.o {
-  top: 50px;
-}
-
-.strela.t {
-  top: 105px;
-}
-
-.strela.th {
-  top: 162px;
-}
-
-.strela.f {
-  top: 218px;
+.strela {
+  position: absolute;
+  margin-left: 0%;
 }
 
 .negr:hover {
   color: #ee8b2e;
 }
 
-.negr img {
+.negrit {
   filter: invert(100%);
 }
 
@@ -386,7 +375,6 @@ main {
 
 .card img {
   width: 100%;
-  cursor: pointer;
 }
 
 .card h3,
@@ -404,6 +392,10 @@ main {
 
 .price {
   font-weight: bolder;
+}
+
+.descr {
+  cursor: pointer;
 }
 
 @-webkit-keyframes animatetop {
