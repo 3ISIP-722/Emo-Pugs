@@ -652,113 +652,112 @@
 
       //авторизация регистрация
       document.addEventListener("DOMContentLoaded", function () {
-        const registrationModal = document.getElementById("registrationModal");
-        const loginModal = document.getElementById("loginModal");
-        const openRegistrationButton =
-          document.getElementById("openRegistration");
-        const openLoginButton = document.getElementById("openLogin"); // Добавляем эту строку
-        const closeButtons = document.querySelectorAll(".clos");
-        const registrationForm = document.getElementById("registrationForm");
-        const loginForm = document.getElementById("loginForm");
+    const registrationModal = document.getElementById("registrationModal");
+    const loginModal = document.getElementById("loginModal");
+    const openRegistrationButton = document.getElementById("openRegistration");
+    const openLoginButton = document.getElementById("openLogin");
+    const closeButtons = document.querySelectorAll(".close");
+    const registrationForm = document.getElementById("registrationForm");
+    const loginForm = document.getElementById("loginForm");
 
-        // Открытие модальных окон
-        openRegistrationButton.addEventListener("click", function () {
-          registrationModal.style.display = "block";
+    // Открытие модальных окон
+    openRegistrationButton.addEventListener("click", function () {
+        registrationModal.style.display = "block";
+    });
+
+    openLoginButton.addEventListener("click", function () {
+        loginModal.style.display = "block";
+    });
+
+    // Закрытие модальных окон
+    closeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const modal = button.closest(".modal");
+            if (modal) {
+                modal.style.display = "none"; // Закрываем только родительскую модалку
+            }
         });
+    });
 
-        openLoginButton.addEventListener("click", function () {
-          loginModal.style.display = "block";
-        });
-
-        // Закрытие модальных окон
-        closeButtons.forEach(function (button) {
-          button.addEventListener("click", function () {
+    // Закрытие модальных окон при клике вне окна
+    window.addEventListener("click", function (event) {
+        if (event.target === registrationModal) {
             registrationModal.style.display = "none";
+        }
+        if (event.target === loginModal) {
             loginModal.style.display = "none";
-          });
-        });
+        }
+    });
 
-        window.addEventListener("click", function (event) {
-            if (event.target == registrationModal) {
-                registrationModal.style.display = "none";
-            }
-            if (event.target == loginModal) {
-                loginModal.style.display = "none";
-            }
-        });
+    // Валидация формы регистрации
+    registrationForm.addEventListener("submit", function (event) {
+        let isValid = true;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const regLogin = document.getElementById("regLogin").value;
+        const regPassword = document.getElementById("regPassword").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
 
-        // Валидация формы регистрации
-        registrationForm.addEventListener("submit", function (event) {
-          let isValid = true;
-          const email = document.getElementById("email").value;
-          const phone = document.getElementById("phone").value;
-          const regLogin = document.getElementById("regLogin").value;
-          const regPassword = document.getElementById("regPassword").value;
-          const confirmPassword =
-            document.getElementById("confirmPassword").value;
-
-          // Проверка email
-          if (!validateEmail(email)) {
+        // Проверка email
+        if (!validateEmail(email)) {
             alert("Пожалуйста, введите корректный email.");
             isValid = false;
-          }
+        }
 
-          // Проверка телефона (простая)
-          if (phone.length < 10) {
+        // Проверка телефона (простая)
+        if (phone.length < 10) {
             alert("Пожалуйста, введите корректный номер телефона.");
             isValid = false;
-          }
+        }
 
-          // Проверка пароля (минимум 8 символов)
-          if (regPassword.length < 8) {
+        // Проверка пароля (минимум 8 символов)
+        if (regPassword.length < 8) {
             alert("Пароль должен содержать не менее 8 символов.");
             isValid = false;
-          }
+        }
 
-          // Проверка совпадения паролей
-          if (regPassword !== confirmPassword) {
+        // Проверка совпадения паролей
+        if (regPassword !== confirmPassword) {
             alert("Пароли не совпадают.");
             isValid = false;
-          }
+        }
 
-          if (!isValid) {
+        if (!isValid) {
             event.preventDefault(); // Предотвращаем отправку формы, если есть ошибки
-          } else {
-            isValid = true;
-            alert("Вы зарегистрированы!");
-          }
-        });
+        }
+    });
 
-        // Валидация формы авторизации (базовая)
-        loginForm.addEventListener("submit", function (event) {
-          const login = document.getElementById("login").value;
-          const password = document.getElementById("password").value;
+    // Валидация формы авторизации (базовая)
+    loginForm.addEventListener("submit", function (event) {
+        const login = document.getElementById("login").value;
+        const password = document.getElementById("password").value;
 
-          // Здесь можно добавить проверку логина и пароля
-          if (!login || !password) {
+        // Здесь можно добавить проверку логина и пароля
+        if (!login || !password) {
             alert("Пожалуйста, введите логин и пароль.");
             event.preventDefault();
-          } else {
+        } else {
             alert("Вы вошли в аккаунт!");
-          }
-        });
-
-        // Функция для валидации email
-        function validateEmail(email) {
-          const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          return re.test(String(email).toLowerCase());
         }
-      });
+    });
 
-      function switchToLogin() {
-        document.getElementById("registrationModal").style.display = "none";
-        document.getElementById("loginModal").style.display = "block";
-      }
+    // Функция для валидации email
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    }
+});
 
-      function switchToRegistration() {
-        document.getElementById("loginModal").style.display = "none";
-        document.getElementById("registrationModal").style.display = "block";
-      }
+// Переключение между модальными окнами
+function switchToLogin() {
+    document.getElementById("registrationModal").style.display = "none";
+    document.getElementById("loginModal").style.display = "block";
+}
+
+function switchToRegistration() {
+    document.getElementById("loginModal").style.display = "none";
+    document.getElementById("registrationModal").style.display = "block";
+}
     </script>
   </body>
 </html>
