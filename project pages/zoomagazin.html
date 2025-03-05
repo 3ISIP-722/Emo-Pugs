@@ -29,6 +29,8 @@
   display: block;
   cursor: pointer;
 }
+
+
   </style>
   </head>
   <body>
@@ -233,6 +235,18 @@
     <main>
       <div class="filters-container">
         <div class="scrollbar" id="scrollbar"></div>
+        <div class="price-filter">
+          <h3>Фильтры</h3>
+          <div class="price-range">
+            <input type="number" id="minPrice" placeholder="От" min="0">
+            <span>-</span>
+            <input type="number" id="maxPrice" placeholder="До" min="0">
+          </div>
+          <div class="sorting">
+            <button onclick="sortProducts('asc')">По возрастанию ↑</button>
+            <button onclick="sortProducts('desc')">По убыванию ↓</button>
+          </div>
+        </div>
       </div>
       <div class="products" id="productContainer"></div>
       <div id="productModal" class="modal">
@@ -294,16 +308,15 @@
       }
 
       async function loadProducts() {
-        try {
-          const response = await fetch("products.json");
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          products = await response.json();
-          renderProducts(); 
-          renderRazdel();
-        } catch (error) {
-          console.error("Ошибка при загрузке данных:", error);
+  try {
+    const response = await fetch("products.json");
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    products = await response.json();
+    currentProducts = [...products];
+    renderProducts(); 
+    renderRazdel();
+  } catch (error) {
+    console.error("Ошибка при загрузке данных:", error);
           document.getElementById(
             "productContainer"
           ).innerHTML = "<p>Ошибка при загрузке данных. Пожалуйста, обновите страницу.</p>";
@@ -333,6 +346,7 @@
       }
 
       function renderProducts(filteredProducts = products) {
+        currentProducts = filteredProducts;
         let productHTML = filteredProducts
           .map(function (product) {
             return createProductCard(product);
@@ -401,18 +415,33 @@ function handleFilterChange() {
 }
 
 function applyFilters() {
-  if (activeFilters.size === 0) {
-    renderProducts(products);
-    return;
+  let filtered = products;
+
+  if (activeFilters.size > 0) {
+    filtered = filtered.filter(product => {
+      const categoryKey = `${product.category}|${product.razdel}`;
+      return activeFilters.has(categoryKey);
+    });
   }
 
-  const filtered = products.filter(product => {
-    const categoryKey = `${product.category}|${product.razdel}`;
-    return activeFilters.has(categoryKey);
-  });
+  const minPrice = parseInt(document.getElementById('minPrice').value) || 0;
+  const maxPrice = parseInt(document.getElementById('maxPrice').value) || Infinity;
+  
+  filtered = filtered.filter(product => 
+    product.price >= minPrice && product.price <= maxPrice
+  );
 
   renderProducts(filtered);
 }
+
+function sortProducts(order) {
+  const sorted = [...currentProducts].sort((a, b) => 
+    order === 'asc' ? a.price - b.price : b.price - a.price
+  );
+  renderProducts(sorted);
+}
+document.getElementById('minPrice').addEventListener('input', applyFilters);
+document.getElementById('maxPrice').addEventListener('input', applyFilters);
       loadProducts();
 
       //модалки карточек товара
