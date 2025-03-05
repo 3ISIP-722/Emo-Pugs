@@ -5,8 +5,8 @@ Figma: https://www.figma.com/design/zMEdU0DL7ySQUCu0CdeS1d/Untitled?node-id=349-
 GithubPages: https://3isip-722.github.io/Emo-Pugs/index
 
 Состав группы:
-- Архипова Полина @plkmjnhbgvfcdes
-- Болотная Виктория @edi-hobi
+- Архипова Полина @plkmjnhbgvfcdes 
+- Болотная Виктория @edi-hobi 
 - Гарас Кристина @KristinaGaras
 - Конова Елизавета @metal-telo
 
