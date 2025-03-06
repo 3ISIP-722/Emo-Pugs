@@ -220,13 +220,18 @@
     </div>
     <main>
         <div class="nazv"><h1>Корзина</h1></div>
+        <div class="block">
         <div id="cart-items"></div>
         <div class="total">
           <h3>Заказ</h3>
-          <div id="tov-total">Товаров: 0 шт</div>
-          Скидка: 0 ₽
-          <div id="cart-total">Итого: 0 ₽</div>
+          <span >Товаров: </span><span id="tov-total" style="margin-left: 60%;">0 шт</span></br>
+          <div class="ots"></div>
+          <span>Скидка:</span><span style="margin-left: 67%;"> 0 ₽</span>
+          <img src="../img/Line 5.svg" class="lin" />
+          <span class="itogo">Итого:</span><span id="cart-total" class="itog"> 0 ₽</span>
+          <div class="ots"></div>
           <button>Оформить заказ</button>
+        </div>
         </div>
     </main>
     <footer class="footer">
@@ -278,15 +283,17 @@
       let cartHTML = "";
       cart.forEach((item) => {
         cartHTML += `
-          <div>
-            <img src="${item.image}" alt="${item.name}" width="50">
-            <span>${item.name}</span>
-            <span>${formatPrice(item.price)}</span>
-            <span>
-              <button onclick="changeQuantity(${item.id}, -1)">-</button>
-              ${item.quantity} шт.
-              <button onclick="changeQuantity(${item.id}, 1)">+</button>
-            </span>
+          <div style="display: flex; align-items: flex-start; margin-bottom: 15px;">
+            <img src="${item.image}" alt="${item.name}" width="50" style="margin-right: 15px;">
+            <div>
+              <span style="display: block;">${item.name}</span></br>
+              <span style="display: block;">${formatPrice(item.price)}</span></br></br>
+              <span>
+                <button onclick="changeQuantity(${item.id}, -1)">-</button>
+                ${item.quantity} шт.
+                <button onclick="changeQuantity(${item.id}, 1)">+</button>
+              </span>
+            </div>
           </div>
         `;
       });
@@ -324,8 +331,8 @@
             total += item.price * item.quantity;
             totaltov += item.quantity;
         });
-        document.getElementById("cart-total").textContent = `Итого: ${formatPrice(total)}`;
-        document.getElementById("tov-total").textContent = `Товаров: ${totaltov} шт`;
+        document.getElementById("cart-total").textContent = ` ${formatPrice(total)}`;
+        document.getElementById("tov-total").textContent = ` ${totaltov} шт.`;
     }
 
     displayCart();
