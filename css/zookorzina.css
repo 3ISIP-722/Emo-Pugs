@@ -11,14 +11,14 @@
 }
 
 #cart-items {
-    width: 70%;
+    width: 100%;
     padding: 15px;
     background: #fff;
     border-radius: 5px;
 }
 
 #cart-items img{
-    width: 200px;
+    width: 30%;
 }
 
 #cart-items button{
@@ -73,7 +73,7 @@ span{
 }
 
 .lin{
-    width: 100%;
+    width: 110%;
     margin-bottom: 8px;
 }
 
@@ -87,19 +87,49 @@ span{
     width: 100%;
 }
 
+.cart-item {
+    display: flex;  
+    align-items: flex-start;                    
+    justify-content: space-between;     
+    margin-bottom: 15px;                
+}
+
+.krest {
+    cursor: pointer;                    
+    margin-left: auto;  
+    width: 100px;                
+}
+
 .block{
     display: flex;
-    gap: 10%;
 }
 
 .itog{
     margin-left: 46%;
 }
 
+.total {
+    display: flex;                       /* Используем flexbox для контейнера */
+    flex-direction: column;              /* Элементы будут располагаться по вертикали */                /* Отступ сверху для контейнера */
+}
+
+.row {
+    display: flex;                       /* Используем flexbox для каждой строки */
+    justify-content: space-between;      /* Элементы располагаются по краям */
+    align-items: center;                 /* Выравнивание по вертикали по центру */
+    margin-bottom: 5px;                /* Отступ между строками */
+}
+
+.row span:first-child {
+    margin-right: auto;                  /* Отталкивает текст к левой стороне */
+}
+
+.row span:last-child {
+    text-align: right;  
+    white-space: nowrap;                 /* Выравнивание справа для суммы */
+}
+
 @media (width<580px) {
-    .block {
-        flex-direction: column;
-      }
     span{
         font-size: 16px;
     }
@@ -108,12 +138,13 @@ span{
     }
     #cart-items span{
         font-size: 16px;
+        width: 90%;
     }
     #cart-items{
         width: 95%;
     }
     #cart-items img{
-        width: 150px;
+        width: 60%;
     }
     .total{
         width: 90%;
@@ -126,5 +157,44 @@ span{
     }
     .itog{
         margin-left: 58%;
+    }
+}
+
+@media (width<1000px) {
+    #cart-items img{
+        width: 30%;
+    }
+    span{
+        font-size: 18px;
+    }
+    #cart-total{
+        font-size: 18px;
+    }
+    #cart-items span{
+        font-size: 18px;
+    }
+    h3{
+        font-size: 18px;
+    }
+    .itogo{
+        font-size: 20px;
+    }
+    .krest{
+        width: 90px;
+    }
+}
+
+@media (width<900px){
+    .block {
+        flex-direction: column;
+      }
+      #cart-items{
+        width: 100%;
+      }
+}
+
+@media (width<1200px) {
+    .text{
+        width: 80%;
     }
 }

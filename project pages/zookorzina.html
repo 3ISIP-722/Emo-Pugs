@@ -219,21 +219,30 @@
       </div>
     </div>
     <main>
-        <div class="nazv"><h1>Корзина</h1></div>
-        <div class="block">
-        <div id="cart-items"></div>
-        <div class="total">
-          <h3>Заказ</h3>
-          <span >Товаров: </span><span id="tov-total" style="margin-left: 60%;">0 шт</span></br>
-          <div class="ots"></div>
-          <span>Скидка:</span><span style="margin-left: 67%;"> 0 ₽</span>
-          <img src="../img/Line 5.svg" class="lin" />
-          <span class="itogo">Итого:</span><span id="cart-total" class="itog"> 0 ₽</span>
-          <div class="ots"></div>
-          <button>Оформить заказ</button>
-        </div>
-        </div>
-    </main>
+      <div class="nazv"><h1>Корзина</h1></div>
+      <div class="block">
+          <div id="cart-items"></div>
+          <div class="total">
+              <h3>Заказ</h3>
+              <div class="row">
+                  <span>Товаров:</span>
+                  <span id="tov-total">0 шт</span>
+              </div>
+              <div class="ots"></div>
+              <div class="row">
+                  <span>Скидка:</span>
+                  <span>0 ₽</span>
+              </div>
+              <img src="../img/Line 5.svg" class="lin" />
+              <div class="row">
+                  <span class="itogo">Итого:</span>
+                  <span id="cart-total" class="itog">0 ₽</span>
+              </div>
+              <div class="ots"></div>
+              <button>Оформить заказ</button>
+          </div>
+      </div>
+  </main>
     <footer class="footer">
       <div class="footer-section">
         <p>Как связаться с нами</p>
@@ -271,36 +280,45 @@
         });
       //Само добавление 
       function displayCart() {
-      const cartItemsContainer = document.getElementById("cart-items");
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartItemsContainer = document.getElementById("cart-items");
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-      if (cart.length === 0) {
+    if (cart.length === 0) {
         cartItemsContainer.innerHTML = "<p>Корзина пуста.</p>";
         updateCartTotal(); 
         return;
-      }
-
-      let cartHTML = "";
-      cart.forEach((item) => {
-        cartHTML += `
-          <div style="display: flex; align-items: flex-start; margin-bottom: 15px;">
-            <img src="${item.image}" alt="${item.name}" width="50" style="margin-right: 15px;">
-            <div>
-              <span style="display: block;">${item.name}</span></br>
-              <span style="display: block;">${formatPrice(item.price)}</span></br></br>
-              <span>
-                <button onclick="changeQuantity(${item.id}, -1)">-</button>
-                ${item.quantity} шт.
-                <button onclick="changeQuantity(${item.id}, 1)">+</button>
-              </span>
-            </div>
-          </div>
-        `;
-      });
-
-      cartItemsContainer.innerHTML = cartHTML;
-      updateCartTotal(); 
     }
+    let cartHTML = "";
+    cart.forEach((item) => {
+        cartHTML += `
+            <div class="cart-item">
+                <img src="${item.image}" alt="${item.name}" width="50" style="margin-right: 15px;">
+                <div class="text">
+                    <span style="display: block;" >${item.name}</span><br>
+                    <span style="display: block;">${formatPrice(item.price)}</span><br><br>
+                    <span>
+                        <button onclick="changeQuantity(${item.id}, -1)">-</button>
+                        ${item.quantity} шт.
+                        <button onclick="changeQuantity(${item.id}, 1)">+</button>
+                    </span>
+                </div>
+                <div onclick="removeItem(${item.id})" class="krest">
+                    <img src="../img/x.svg" alt="Удалить"/>
+                </div>
+            </div>
+        `;
+    });
+
+    cartItemsContainer.innerHTML = cartHTML;
+    updateCartTotal(); 
+}
+
+function removeItem(productId) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart = cart.filter(item => item.id !== productId);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    displayCart(); 
+}
 
     function formatPrice(price) {
         return price.toLocaleString("ru-RU") + " ₽";
