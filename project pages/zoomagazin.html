@@ -299,6 +299,14 @@
     </footer>
   </article>
     <script>
+      function handleSearch() {
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  const filteredProducts = products.filter(product => 
+    product.name.toLowerCase().includes(searchTerm) || 
+    product.description.toLowerCase().includes(searchTerm)
+  );
+  renderProducts(filteredProducts);
+}
       document
         .getElementById("burger-icon")
         .addEventListener("click", function () {
