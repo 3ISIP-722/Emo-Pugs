@@ -298,10 +298,14 @@
     </footer>
   </article>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+     document.addEventListener("DOMContentLoaded", function () {
   const registrationForm = document.getElementById("registrationForm");
   const loginForm = document.getElementById("loginForm");
+  const loginModal = document.getElementById("loginModal");
+  const registrationModal = document.getElementById("registrationModal");
+  const body = document.body;
 
+  // Обработчик регистрации
   registrationForm.addEventListener("submit", function (event) {
     event.preventDefault();
     const email = document.getElementById("email").value;
@@ -319,11 +323,11 @@
       email,
       phone,
       login: regLogin,
-      password: regPassword
+      password: regPassword,
     };
 
     let users = JSON.parse(localStorage.getItem("users")) || [];
-    const existingUser = users.find(u => u.login === regLogin);
+    const existingUser = users.find((u) => u.login === regLogin);
     if (existingUser) {
       alert("Пользователь с таким логином уже существует.");
       return;
@@ -335,33 +339,52 @@
     switchToLogin();
   });
 
+  // Обработчик авторизации
   loginForm.addEventListener("submit", function (event) {
     event.preventDefault();
     const login = document.getElementById("login").value;
     const password = document.getElementById("password").value;
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    const user = users.find(u => u.login === login && u.password === password);
+    const user = users.find((u) => u.login === login && u.password === password);
 
     if (user) {
       alert("Вы успешно вошли в систему!");
       localStorage.setItem("currentUser", JSON.stringify(user));
-      window.location.href = "profile.html"; // Перенаправление на страницу профиля
+
+      // Закрываем модальное окно
+      loginModal.style.display = "none";
+      body.classList.remove("no-scroll");
+
+      // Обновляем навигацию
+      updateNavigation(user);
     } else {
       alert("Неверный логин или пароль.");
     }
   });
+
+  // Функция для обновления навигации
+  function updateNavigation(user) {
+    const navLoginButton = document.querySelector('a[id="openLogin"]');
+    if (navLoginButton) {
+      // Убираем текст "Войти" и оставляем только иконку
+      navLoginButton.innerHTML = `
+        <img src="../img/account_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg" alt="Иконка пользователя">
+      `;
+    }
+  }
+
+  // Переключение между модальными окнами
+  function switchToLogin() {
+    registrationModal.style.display = "none";
+    loginModal.style.display = "block";
+  }
+
+  function switchToRegistration() {
+    loginModal.style.display = "none";
+    registrationModal.style.display = "block";
+  }
 });
-
-function switchToLogin() {
-  document.getElementById("registrationModal").style.display = "none";
-  document.getElementById("loginModal").style.display = "block";
-}
-
-function switchToRegistration() {
-  document.getElementById("loginModal").style.display = "none";
-  document.getElementById("registrationModal").style.display = "block";
-}
       function handleSearch() {
   const searchTerm = document.getElementById('searchInput').value.toLowerCase();
   const filteredProducts = products.filter(product => 
