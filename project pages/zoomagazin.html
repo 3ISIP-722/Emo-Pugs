@@ -115,7 +115,7 @@
                 fill="#949494"
               />
             </svg>
-            <input type="email" id="email" placeholder="Почта" required />
+            <input type="email" id="email" placeholder="Почта" required >
           </div>
           <div class="input-group">
             <svg
@@ -128,7 +128,7 @@
                 fill="#949494"
               />
             </svg>
-            <input type="tel" id="phone" placeholder="Телефон" required />
+            <input type="tel" id="phone" placeholder="Телефон" required >
           </div>
           <div class="input-group">
             <svg
@@ -141,7 +141,7 @@
                 fill="#949494"
               />
             </svg>
-            <input type="text" id="regLogin" placeholder="Логин" required />
+            <input type="text" id="regLogin" placeholder="Логин" required >
           </div>
           <div class="input-group">
             <svg
@@ -158,8 +158,7 @@
               type="password"
               id="regPassword"
               placeholder="Пароль"
-              required
-            />
+              required>
           </div>
           <div class="input-group">
             <svg
@@ -205,7 +204,7 @@
                 fill="#949494"
               />
             </svg>
-            <input type="text" id="login" placeholder="Логин" required />
+            <input type="text" id="login" placeholder="Логин" required >
           </div>
           <div class="input-group">
             <svg
@@ -223,7 +222,7 @@
               id="password"
               placeholder="Пароль"
               required
-            />
+            >
           </div>
           <button type="submit" class="submit-button" id="btn">Войти</button>
           <p style="display: inline">
@@ -299,6 +298,70 @@
     </footer>
   </article>
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const registrationForm = document.getElementById("registrationForm");
+  const loginForm = document.getElementById("loginForm");
+
+  registrationForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const regLogin = document.getElementById("regLogin").value;
+    const regPassword = document.getElementById("regPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (regPassword !== confirmPassword) {
+      alert("Пароли не совпадают.");
+      return;
+    }
+
+    const user = {
+      email,
+      phone,
+      login: regLogin,
+      password: regPassword
+    };
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    const existingUser = users.find(u => u.login === regLogin);
+    if (existingUser) {
+      alert("Пользователь с таким логином уже существует.");
+      return;
+    }
+
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Регистрация прошла успешно!");
+    switchToLogin();
+  });
+
+  loginForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const login = document.getElementById("login").value;
+    const password = document.getElementById("password").value;
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(u => u.login === login && u.password === password);
+
+    if (user) {
+      alert("Вы успешно вошли в систему!");
+      localStorage.setItem("currentUser", JSON.stringify(user));
+      window.location.href = "profile.html"; // Перенаправление на страницу профиля
+    } else {
+      alert("Неверный логин или пароль.");
+    }
+  });
+});
+
+function switchToLogin() {
+  document.getElementById("registrationModal").style.display = "none";
+  document.getElementById("loginModal").style.display = "block";
+}
+
+function switchToRegistration() {
+  document.getElementById("loginModal").style.display = "none";
+  document.getElementById("registrationModal").style.display = "block";
+}
       function handleSearch() {
   const searchTerm = document.getElementById('searchInput').value.toLowerCase();
   const filteredProducts = products.filter(product => 
