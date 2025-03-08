@@ -37,9 +37,12 @@
     <article>
     <header>
       <img src="../img/Mask group.png" alt="Логотип PetJet" class="logo" />
+      
       <nav>
-        <a href="#"
-          ><div class="cerb">Каталог <img src="../img/Vector.svg" /></div
+         <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Поиск по каталогу..." oninput="handleSearch()">
+        </div>
+        <a href="#"><div class="cerb">Каталог <img src="../img/Vector.svg" /></div
         ></a>
         <a href="zooizbrannoe.html"
           ><div class="cerb">
@@ -62,9 +65,6 @@
         ></a>
       </nav>
     </header>
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Поиск по каталогу..." oninput="handleSearch()">
-    </div>
     <div class="men">
       <div class="burger-menu">
         <div class="menu-icon" id="burger-icon">
