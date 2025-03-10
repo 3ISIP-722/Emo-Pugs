@@ -14,9 +14,9 @@
     <article>
     <header>
       <img src="../img/Mask group.png" alt="Логотип PetJet" class="logo" />
+      
       <nav>
-        <a href="#"
-          ><div class="cerb">Каталог <img src="../img/Vector.svg" /></div
+        <a href="#"><div class="cerb">Каталог <img src="../img/Vector.svg" /></div
         ></a>
         <a href="zooizbrannoe.html"
           ><div class="cerb">
@@ -89,7 +89,7 @@
                 fill="#949494"
               />
             </svg>
-            <input type="email" id="email" placeholder="Почта" required />
+            <input type="email" id="email" placeholder="Почта" required >
           </div>
           <div class="input-group">
             <svg
@@ -102,7 +102,7 @@
                 fill="#949494"
               />
             </svg>
-            <input type="tel" id="phone" placeholder="Телефон" required />
+            <input type="tel" id="phone" placeholder="Телефон" required >
           </div>
           <div class="input-group">
             <svg
@@ -115,7 +115,7 @@
                 fill="#949494"
               />
             </svg>
-            <input type="text" id="regLogin" placeholder="Логин" required />
+            <input type="text" id="regLogin" placeholder="Логин" required >
           </div>
           <div class="input-group">
             <svg
@@ -132,8 +132,7 @@
               type="password"
               id="regPassword"
               placeholder="Пароль"
-              required
-            />
+              required>
           </div>
           <div class="input-group">
             <svg
@@ -179,7 +178,7 @@
                 fill="#949494"
               />
             </svg>
-            <input type="text" id="login" placeholder="Логин" required />
+            <input type="text" id="login" placeholder="Логин" required >
           </div>
           <div class="input-group">
             <svg
@@ -197,7 +196,7 @@
               id="password"
               placeholder="Пароль"
               required
-            />
+            >
           </div>
           <button type="submit" class="submit-button" id="btn">Войти</button>
           <p style="display: inline">
@@ -212,8 +211,11 @@
     <main>
       <div class="filters-container">
         <div class="slide">
-        <div class="scrollbar" id="scrollbar"></div>
-        <div class="price-filter">
+          <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Поиск товаров..." oninput="handleSearch()">
+          </div>
+          <div class="scrollbar" id="scrollbar"></div>
+          <div class="price-filter">
           <h3>Фильтры</h3>
           <div class="price-range">
             <input type="number" id="minPrice" placeholder="От" min="0">
@@ -224,7 +226,7 @@
             <button onclick="sortProducts('asc')">По возрастанию ↑</button>
             <button onclick="sortProducts('desc')">По убыванию ↓</button>
           </div>
-        </div>
+          </div>
         </div>
       </div>
       <div class="products" id="productContainer"></div>
@@ -275,6 +277,101 @@
     </footer>
   </article>
     <script>
+     document.addEventListener("DOMContentLoaded", function () {
+  const registrationForm = document.getElementById("registrationForm");
+  const loginForm = document.getElementById("loginForm");
+  const loginModal = document.getElementById("loginModal");
+  const registrationModal = document.getElementById("registrationModal");
+  const body = document.body;
+
+  // Обработчик регистрации
+  registrationForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const regLogin = document.getElementById("regLogin").value;
+    const regPassword = document.getElementById("regPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (regPassword !== confirmPassword) {
+      alert("Пароли не совпадают.");
+      return;
+    }
+
+    const user = {
+      email,
+      phone,
+      login: regLogin,
+      password: regPassword,
+    };
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    const existingUser = users.find((u) => u.login === regLogin);
+    if (existingUser) {
+      alert("Пользователь с таким логином уже существует.");
+      return;
+    }
+
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Регистрация прошла успешно!");
+    switchToLogin();
+  });
+
+  // Обработчик авторизации
+  loginForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const login = document.getElementById("login").value;
+    const password = document.getElementById("password").value;
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find((u) => u.login === login && u.password === password);
+
+    if (user) {
+      alert("Вы успешно вошли в систему!");
+      localStorage.setItem("currentUser", JSON.stringify(user));
+
+      // Закрываем модальное окно
+      loginModal.style.display = "none";
+      body.classList.remove("no-scroll");
+
+      // Обновляем навигацию
+      updateNavigation(user);
+    } else {
+      alert("Неверный логин или пароль.");
+    }
+  });
+
+  // Функция для обновления навигации
+  function updateNavigation(user) {
+    const navLoginButton = document.querySelector('a[id="openLogin"]');
+    if (navLoginButton) {
+      // Убираем текст "Войти" и оставляем только иконку
+      navLoginButton.innerHTML = `
+        <img src="../img/account_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg" alt="Иконка пользователя">
+      `;
+    }
+  }
+
+  // Переключение между модальными окнами
+  function switchToLogin() {
+    registrationModal.style.display = "none";
+    loginModal.style.display = "block";
+  }
+
+  function switchToRegistration() {
+    loginModal.style.display = "none";
+    registrationModal.style.display = "block";
+  }
+});
+      function handleSearch() {
+  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+  const filteredProducts = products.filter(product => 
+    product.name.toLowerCase().includes(searchTerm) || 
+    product.description.toLowerCase().includes(searchTerm)
+  );
+  renderProducts(filteredProducts);
+}
       document
         .getElementById("burger-icon")
         .addEventListener("click", function () {
