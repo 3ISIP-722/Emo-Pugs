@@ -10,6 +10,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <link rel="icon" href="../img/Mask group.png" type="image/x-icon" />
   <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=mXASaQqaoMiA9Pzaun8I8RCY9NqRrqNGfzTArTQrsOHM13fBUpm7qGR5djC1iWIIY5Y56F1LThvu4rY0IJJ2Jj3C1lsQjPslY2zHKLlk3MBqF6lJ7dW5rw_dFUwnPWj5" charset="UTF-8"></script></head>
+  <style>
+    .mobile-filter-btn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: #44007b;
+  border: none;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.mobile-filter-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .mobile-filter-btn {
+    display: block;
+  }
+
+  .filters-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 999;
+    padding: 20px;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .filters-container.active {
+    display: block;
+  }
+
+  /* Скрываем фильтры в основном интерфейсе на мобилах */
+  main .filters-container {
+    display: none;
+  }
+}
+  </style>
   </head>
   <body>
     <article>
@@ -41,6 +90,9 @@
       </nav>
     </header>
     <div class="men">
+      <button class="mobile-filter-btn" id="mobileFilterBtn">
+        <img src="../img/filter-icon.svg" alt="Фильтры">
+      </button>
       <div class="burger-menu">
         <div class="menu-icon" id="burger-icon">
           <div class="bar"></div>
@@ -212,6 +264,7 @@
     <main>
       <div class="filters-container">
         <div class="slide">
+          <button class="close-filters-btn" onclick="closeFilters()">×</button>
           <h3>Поиск</h3>
           <div class="search-container">
             <input type="text" id="searchInput" placeholder="Поиск товаров..." oninput="handleSearch()">
@@ -529,7 +582,34 @@ function sortProducts(order) {
 document.getElementById('minPrice').addEventListener('input', applyFilters);
 document.getElementById('maxPrice').addEventListener('input', applyFilters);
       loadProducts();
+      //Фильтры
+      document.addEventListener("DOMContentLoaded", function () {
+  const mobileFilterBtn = document.getElementById("mobileFilterBtn");
+  const filtersContainer = document.querySelector(".filters-container");
 
+  if (mobileFilterBtn && filtersContainer) {
+    mobileFilterBtn.addEventListener("click", function () {
+      filtersContainer.classList.toggle("active");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (
+        !filtersContainer.contains(e.target) &&
+        e.target !== mobileFilterBtn
+      ) {
+        filtersContainer.classList.remove("active");
+      }
+    });
+  } else {
+    console.error("Элементы mobileFilterBtn или filtersContainer не найдены!");
+  }
+});
+
+
+      
+      function closeFilters() {
+  document.querySelector(".filters-container").classList.remove("active");
+}
       //модалки карточек товара
       const modal = document.getElementById("productModal");
       function openModal(productId) {
