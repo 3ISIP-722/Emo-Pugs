@@ -9,29 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
   <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=mXASaQqaoMiA9Pzaun8I8RCY9NqRrqNGfzTArTQrsOHM13fBUpm7qGR5djC1iWIIY5Y56F1LThvu4rY0IJJ2Jj3C1lsQjPslY2zHKLlk3MBqF6lJ7dW5rw_dFUwnPWj5" charset="UTF-8"></script></head>
-  <style>
-
-.category-filter {
-  margin-bottom: 10px;
-}
-
-.category-header {
-  cursor: pointer;
-  padding: 10px;
-  background: #fff;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.subcategory-item {
-  display: block;
-  cursor: pointer;
-}
-
-
-  </style>
   </head>
   <body>
     <article>
@@ -234,6 +211,7 @@
     </div>
     <main>
       <div class="filters-container">
+        <div class="slide">
         <div class="scrollbar" id="scrollbar"></div>
         <div class="price-filter">
           <h3>Фильтры</h3>
@@ -246,6 +224,7 @@
             <button onclick="sortProducts('asc')">По возрастанию ↑</button>
             <button onclick="sortProducts('desc')">По убыванию ↓</button>
           </div>
+        </div>
         </div>
       </div>
       <div class="products" id="productContainer"></div>
@@ -378,16 +357,19 @@
     razdelHTML += `
       <div class="category-filter">
         <div class="category-header" onclick="toggleCategory(this)">
-          ${category}
+          <div onclick="toggleCateg(this)">
+            ${category}
+          </div>
         </div>
         <div class="subcategories" style="display:none;">
           ${categoryRazdels.map(razdel => `
             <label class="subcategory-item">
               <input type="checkbox" 
-                     class="razdel-checkbox" 
-                     value="${category}|${razdel}"
-                     onchange="handleFilterChange()">
-              ${razdel}
+                    class="razdel-checkbox" 
+                    value="${category}|${razdel}" 
+                    onchange="handleFilterChange()">
+              <span class="custom-checkbox"></span> <!-- Кастомный чекбокс -->
+              <span>${razdel}</span> <!-- Текст подкатегории -->
             </label>
           `).join('')}
         </div>
@@ -402,6 +384,10 @@ function toggleCategory(header) {
   const subcategories = header.nextElementSibling;
   const arrow = header.querySelector('.arrow');
   subcategories.style.display = subcategories.style.display === 'none' ? 'block' : 'none';
+}
+
+function toggleCateg(element) {
+  element.classList.toggle('selected'); // Добавляет или убирает класс 'selected'
 }
 
 let activeFilters = new Set();

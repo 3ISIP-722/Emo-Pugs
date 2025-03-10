@@ -217,8 +217,18 @@ main {
 .scrollbar {
   display: flex;
   flex-direction: column;
+  min-width: 15%;
+}
+
+.slide{
+  position: sticky; /* Фиксируем слайдбар */
+  top: 0; /* Отступ сверху */
+  align-self: flex-start; /* Выравниваем по верхнему краю */
+  height: 100vh; /* Высота на всю видимую область */
+  overflow-y: auto; /* Включаем вертикальный скролл */
   border-right: 2px solid #dedede;
   min-width: 15%;
+  padding-right: 10px; /* Добавляем отступ для красоты */
 }
 
 .razdel {
@@ -529,3 +539,124 @@ main {
     border-radius: 8px;
   }
 }
+
+.category-filter {
+  margin-bottom: 10px;
+}
+
+.category-header {
+  cursor: pointer;
+  padding: 10px;
+  background: #fff;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subcategory-item {
+  display: block;
+  cursor: pointer;
+}
+
+.category-header:hover{
+  text-decoration:underline ;
+}
+
+.selected {
+  text-decoration: underline; /* Подчеркивание текста */
+}
+
+.razdel-checkbox {
+  display: none; /* Скрываем стандартный чекбокс */
+}
+
+/* Стили для меток с подкатегориями */
+.subcategory-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 5px 0;
+}
+
+/* Создание кастомного чекбокса */
+.custom-checkbox {
+  width: 18px; /* Ширина чекбокса */
+  height: 18px; /* Высота чекбокса */
+  border: 1.5px solid #62208a; /* Фиолетовый контур */
+  background-color: white; /* Белый фон */
+  border-radius: 6px; /* Закруглённые углы */
+  margin-right: 10px; /* Отступ между чекбоксом и текстом */
+  display: inline-block;
+  vertical-align: middle;
+  transition: background-color 0.2s, border 0.2s; /* Плавный переход */
+  position: relative; /* Для позиционирования галочки */
+}
+
+/* Эффект при выборе чекбокса */
+.razdel-checkbox:checked + .custom-checkbox {
+  background-color: #fff; /* Фоновый цвет чекбокса при выборе */
+  border-color: #62208a; /* Цвет границы при выборе */
+}
+
+/* Галочка внутри кастомного чекбокса */
+.razdel-checkbox:checked + .custom-checkbox::after {
+  content: '✓'; /* Галочка */
+  color: #62208a; /* Цвет галочки */
+  font-size: 14px; /* Размер шрифта для галочки */
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Центрирование галочки */
+}
+
+/* Стили для блока с диапазоном цен */
+.price-range {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.price-range input {
+  width: 55px;
+  padding: 8px;
+  border: 1.5px solid #b264e2;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+}
+
+.price-range input:focus {
+  border-color: #62208a;
+}
+
+.price-range span {
+  font-size: 16px;
+  color: black;
+}
+
+/* Стили для блока сортировки */
+.sorting {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sorting button {
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1.5px solid #fff;
+  text-align: left;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.sorting button:hover {
+  text-decoration: underline;
+}
+
