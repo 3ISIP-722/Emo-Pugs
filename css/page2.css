@@ -660,3 +660,27 @@ main {
   text-decoration: underline;
 }
 
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 142px;
+  box-sizing: border-box;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1.5px solid #b264e2;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#searchInput:focus {
+  border-color: #62208a;
+}
+
+#searchInput::placeholder {
+  color: #999;
+}
