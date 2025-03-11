@@ -342,6 +342,20 @@
 
   // Обработчик регистрации
   registrationForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  // Логика регистрации
+  alert("Регистрация прошла успешно!");
+  window.location.href = "zoomagazin.html"; // Переход на страницу каталога
+});
+
+loginForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  // Логика авторизации
+  alert("Вы успешно вошли в систему!");
+  window.location.href = "zoomagazin.html"; // Переход на страницу каталога
+}); 
+       
+  registrationForm.addEventListener("submit", function (event) {
     event.preventDefault();
     const email = document.getElementById("email").value;
     const phone = document.getElementById("phone").value;
@@ -386,17 +400,13 @@
     if (user) {
       alert("Вы успешно вошли в систему!");
       localStorage.setItem("currentUser", JSON.stringify(user));
-
-      // Закрываем модальное окно
-      loginModal.style.display = "none";
-      body.classList.remove("no-scroll");
-
-      // Обновляем навигацию
-      updateNavigation(user);
-    } else {
-      alert("Неверный логин или пароль.");
-    }
-  });
+      window.location.href = "zoomagazin.html"; // Переход на страницу каталога
+  } else {
+    alert("Неверный логин или пароль.");
+    document.getElementById("login").value = "";
+    document.getElementById("password").value = "";
+  }
+});
 
   // Функция для обновления навигации
   function updateNavigation(user) {
