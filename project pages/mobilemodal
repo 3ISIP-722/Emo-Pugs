@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Авторизация</title>
+  <link rel="stylesheet" href="../css/zooakaunt.css">
+  <link rel="stylesheet" href="../css/zoopages.css">
+  <link rel="icon" href="../img/Mask group.png" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <img src="../img/Mask group.png" alt="Логотип PetJet" class="logo">
+  </header>
+  <main>
+    <div class="mod" id="loginModal">
+      <div class="mod-content">
+        <span class="close" onclick="closeModal('loginModal')">&times;</span>
+        <h2>Авторизация</h2>
+        <form id="loginForm">
+          <div class="input-group">
+            <input type="text" id="login" placeholder="Логин" required>
+          </div>
+          <div class="input-group">
+            <input type="password" id="password" placeholder="Пароль" required>
+          </div>
+          <button type="submit" class="submit-button">Войти</button>
+          <p style="display: inline">
+            или
+            <a href="#" class="switch-link" onclick="switchToRegistration()">Зарегистрироваться</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <div class="mod" id="registrationModal">
+      <div class="mod-content">
+        <span class="close" onclick="closeModal('registrationModal')">&times;</span>
+        <h2>Регистрация</h2>
+        <form id="registrationForm">
+          <div class="input-group">
+            <input type="email" id="email" placeholder="Почта" required>
+          </div>
+          <div class="input-group">
+            <input type="tel" id="phone" placeholder="Телефон" required>
+          </div>
+          <div class="input-group">
+            <input type="text" id="regLogin" placeholder="Логин" required>
+          </div>
+          <div class="input-group">
+            <input type="password" id="regPassword" placeholder="Пароль" required>
+          </div>
+          <div class="input-group">
+            <input type="password" id="confirmPassword" placeholder="Повторите пароль" required>
+          </div>
+          <button type="submit" class="submit-button">Зарегистрироваться</button>
+          <p style="display: inline">
+            или
+            <a href="#" class="switch-link" onclick="switchToLogin()">Войти</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-section">
+      <p>Как связаться с нами</p>
+      <ul>
+        <li><a href="#">+7(495)-777-77-77</a></li>
+      </ul>
+      <div class="social-icons">
+        <a href="#"><img src="../img/vk.svg" alt="VK"></a>
+        <a href="#"><img src="../img/tg.svg" alt="Telegram"></a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = "none";
+    }
+
+    function switchToLogin() {
+      document.getElementById("registrationModal").style.display = "none";
+      document.getElementById("loginModal").style.display = "block";
+    }
+
+    function switchToRegistration() {
+      document.getElementById("loginModal").style.display = "none";
+      document.getElementById("registrationModal").style.display = "block";
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const login = document.getElementById("login").value;
+      const password = document.getElementById("password").value;
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = users.find((u) => u.login === login && u.password === password);
+
+      if (user) {
+        alert("Вы успешно вошли в систему!");
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        window.location.href = "zoomagazin.html"; // Переход на страницу каталога
+      } else {
+        alert("Неверный логин или пароль.");
+        document.getElementById("login").value = "";
+        document.getElementById("password").value = "";
+      }
+    });
+
+    document.getElementById("registrationForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const regLogin = document.getElementById("regLogin").value;
+      const regPassword = document.getElementById("regPassword").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (regPassword !== confirmPassword) {
+        alert("Пароли не совпадают.");
+        return;
+      }
+
+      const user = {
+        email,
+        phone,
+        login: regLogin,
+        password: regPassword,
+      };
+
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      const existingUser = users.find((u) => u.login === regLogin);
+      if (existingUser) {
+        alert("Пользователь с таким логином уже существует.");
+        return;
+      }
+
+      users.push(user);
+      localStorage.setItem("users", JSON.stringify(users));
+      alert("Регистрация прошла успешно!");
+      window.location.href = "zoomagazin.html"; // Переход на страницу каталога
+    });
+  </script>
+</body>
+</html>
