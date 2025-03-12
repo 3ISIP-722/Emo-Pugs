@@ -4,76 +4,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Авторизация</title>
-  <link rel="stylesheet" href="../css/zooakaunt.css">
-  <link rel="stylesheet" href="../css/zoopages.css">
-  <link rel="icon" href="../img/Mask group.png" type="image/x-icon">
+  <link rel="stylesheet" href="../css/page2.css" />
+    <link rel="stylesheet" href="../css/zooakaunt.css" />
+    <link rel="stylesheet" href="../css/zoopages.css" />
+    <link rel="stylesheet" href="../css/zookorzina.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
+      rel="stylesheet"
+    />
+    
+    <link rel="icon" href="../img/Mask group.png" type="image/x-icon" />
 </head>
 <body>
-  <header>
-    <img src="../img/Mask group.png" alt="Логотип PetJet" class="logo">
-  </header>
+  <header>    
+        <img src="../img/Mask group.png" alt="Логотип PetJet" class="logo" />
+        <nav>
+          <a href="zoomagazin.html"
+            ><div class="cerb">Каталог <img src="../img/Vector.svg" /></div
+          ></a>
+          <a href="zooizbrannoe.html"
+            ><div class="cerb">
+              Избранное
+              <img
+                src="../img/favorite_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg"
+              /></div
+          ></a>
+          <a href="zookorzina.html"
+            ><div class="cerb">Корзина <img src="../img/Vector (1).svg" /></div
+          ></a>
+          <a href="#" id="openRegistration"
+            >
+            <a href="#" id="openLogin">
+            <div class="cerb">
+              Войти
+              <img
+                src="../img/account_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg"
+              /></div
+          ></a>
+        </nav>
+      </header>
   <main>
-    <div class="mod" id="loginModal">
-      <div class="mod-content">
-        <span class="close" onclick="closeModal('loginModal')">&times;</span>
-        <h2>Авторизация</h2>
-        <form id="loginForm">
-          <div class="input-group">
-            <input type="text" id="login" placeholder="Логин" required>
-          </div>
-          <div class="input-group">
-            <input type="password" id="password" placeholder="Пароль" required>
-          </div>
-          <button type="submit" class="submit-button">Войти</button>
-          <p style="display: inline">
-            или
-            <a href="#" class="switch-link" onclick="switchToRegistration()">Зарегистрироваться</a>
-          </p>
-        </form>
-      </div>
-    </div>
-
-    <div class="mod" id="registrationModal">
-      <div class="mod-content">
-        <span class="close" onclick="closeModal('registrationModal')">&times;</span>
-        <h2>Регистрация</h2>
-        <form id="registrationForm">
-          <div class="input-group">
-            <input type="email" id="email" placeholder="Почта" required>
-          </div>
-          <div class="input-group">
-            <input type="tel" id="phone" placeholder="Телефон" required>
-          </div>
-          <div class="input-group">
-            <input type="text" id="regLogin" placeholder="Логин" required>
-          </div>
-          <div class="input-group">
-            <input type="password" id="regPassword" placeholder="Пароль" required>
-          </div>
-          <div class="input-group">
-            <input type="password" id="confirmPassword" placeholder="Повторите пароль" required>
-          </div>
-          <button type="submit" class="submit-button">Зарегистрироваться</button>
-          <p style="display: inline">
-            или
-            <a href="#" class="switch-link" onclick="switchToLogin()">Войти</a>
-          </p>
-        </form>
-      </div>
-    </div>
+    <h2>hhthhhftr</h2>
   </main>
-  <footer class="footer">
-    <div class="footer-section">
-      <p>Как связаться с нами</p>
-      <ul>
-        <li><a href="#">+7(495)-777-77-77</a></li>
-      </ul>
-      <div class="social-icons">
-        <a href="#"><img src="../img/vk.svg" alt="VK"></a>
-        <a href="#"><img src="../img/tg.svg" alt="Telegram"></a>
+<footer class="footer">
+      <div class="footer-section">
+        <p>Как связаться с нами</p>
+        <ul>
+          <li><a href="#">+7(495)-777-77-77</a></li>
+        </ul>
+        <div class="social-icons">
+          <a href="#"><img src="../img/vk.svg" alt="VK" /></a>
+          <a href="#"><img src="../img/tg.svg" alt="Telegram" /></a>
+        </div>
       </div>
-    </div>
-  </footer>
+      <div class="footer-section">
+        <p>Пользователям</p>
+        <ul>
+          <li><a href="#">Каталог</a></li>
+          <li><a href="#">Доставка и оплата</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <p>О нас</p>
+        <ul>
+          <li><a href="#">Адреса</a></li>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Контакты</a></li>
+        </ul>
+      </div>
+    </footer>
   <script>
     function closeModal(modalId) {
       document.getElementById(modalId).style.display = "none";
