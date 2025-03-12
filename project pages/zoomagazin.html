@@ -341,29 +341,74 @@
 
   // Обработчик регистрации
   registrationForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-  // Логика регистрации
-  alert("Регистрация прошла успешно!");
-  window.location.href = "zoomagazin.html"; // Переход на страницу каталога
-});
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const regLogin = document.getElementById("regLogin").value;
+    const regPassword = document.getElementById("regPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
 
-loginForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-  const login = document.getElementById("login").value;
-  const password = document.getElementById("password").value;
+    if (regPassword !== confirmPassword) {
+      alert("Пароли не совпадают.");
+      return;
+    }
 
-  const users = JSON.parse(localStorage.getItem("users")) || [];
-  const user = users.find((u) => u.login === login && u.password === password);
+    const user = {
+      email,
+      phone,
+      login: regLogin,
+      password: regPassword,
+    };
 
-  if (user) {
-    alert("Вы успешно вошли в систему!");
-    localStorage.setItem("currentUser", JSON.stringify(user));
-    loginModal.style.display = "none"; // Закрываем модальное окно авторизации
-    body.classList.remove("no-scroll"); // Разрешаем прокрутку страницы
-  } else {
-    alert("Неверный логин или пароль.");
-    document.getElementById("login").value = "";
-    document.getElementById("password").value = "";
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Регистрация прошла успешно!");
+    registrationModal.style.display = "none";
+    body.classList.remove("no-scroll");
+  });
+
+  // Обработчик входа
+  loginForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const login = document.getElementById("login").value;
+    const password = document.getElementById("password").value;
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find((u) => u.login === login && u.password === password);
+
+    if (user) {
+      alert("Вы успешно вошли в систему!");
+      localStorage.setItem("currentUser", JSON.stringify(user));
+      loginModal.style.display = "none";
+      body.classList.remove("no-scroll");
+    } else {
+      alert("Неверный логин или пароль.");
+      document.getElementById("login").value = "";
+      document.getElementById("password").value = "";
+    }
+  });
+
+  // Функция для обновления навигации
+  function updateNavigation(user) {
+    const navLoginButton = document.querySelector('a[id="openLogin"]');
+    if (navLoginButton) {
+      navLoginButton.innerHTML = `
+        <img src="../img/account_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg" alt="Иконка пользователя">
+      `;
+    }
+  }
+
+  // Переключение между модальными окнами
+  function switchToLogin() {
+    registrationModal.style.display = "none";
+    loginModal.style.display = "block";
+  }
+
+  function switchToRegistration() {
+    loginModal.style.display = "none";
+    registrationModal.style.display = "block";
   }
 });
 
