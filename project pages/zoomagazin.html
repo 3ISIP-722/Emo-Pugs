@@ -264,7 +264,6 @@
     <main>
       <div class="filters-container">
         <div class="slide">
-          <button class="close-filters-btn" onclick="closeFilters()">×</button>
           <h3>Поиск</h3>
           <div class="search-container">
             <input type="text" id="searchInput" placeholder="Поиск товаров..." oninput="handleSearch()">
@@ -617,9 +616,7 @@ document.getElementById('maxPrice').addEventListener('input', applyFilters);
 
 
       
-      function closeFilters() {
-  document.querySelector(".filters-container").classList.remove("active");
-}
+
       //модалки карточек товара
       const modal = document.getElementById("productModal");
       function openModal(productId) {

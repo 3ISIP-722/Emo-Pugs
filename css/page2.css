@@ -476,7 +476,7 @@ main {
 
   .scrollbar {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr ;
     margin-bottom: 2%;
     border: none;
   }
@@ -497,6 +497,26 @@ main {
 
   .cerb {
     color: #000000;
+  }
+
+  .category-header{
+    font-size: 18px;
+  }
+
+  .subcategory-item{
+    font-size: 16px;
+  }
+
+  .sorting button{
+    font-size: 20px;
+  }
+
+  .slide{
+    margin-left: 5%;
+    border: 2px solid #62208a;
+    border-radius: 20px;
+    padding-left: 8%;
+    padding-top: 5%;
   }
 }
 
