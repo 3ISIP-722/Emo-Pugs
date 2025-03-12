@@ -390,30 +390,7 @@
     }
   });
 
-  // Функция для обновления навигации
-  function updateNavigation(user) {
-    const navLoginButton = document.querySelector('a[id="openLogin"]');
-    if (navLoginButton) {
-      navLoginButton.innerHTML = `
-        <img src="../img/account_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg" alt="Иконка пользователя">
-      `;
-    }
-  }
-
-  // Переключение между модальными окнами
-  function switchToLogin() {
-    registrationModal.style.display = "none";
-    loginModal.style.display = "block";
-  }
-
-  function switchToRegistration() {
-    loginModal.style.display = "none";
-    registrationModal.style.display = "block";
-  }
-});
-
-
-
+ 
   // Функция для обновления навигации
   function updateNavigation(user) {
     const navLoginButton = document.querySelector('a[id="openLogin"]');
