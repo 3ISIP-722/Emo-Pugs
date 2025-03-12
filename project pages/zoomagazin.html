@@ -349,63 +349,25 @@
 
 loginForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  // Логика авторизации
-  alert("Вы успешно вошли в систему!");
-  window.location.href = "zoomagazin.html"; // Переход на страницу каталога
-}); 
-       
-  registrationForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const email = document.getElementById("email").value;
-    const phone = document.getElementById("phone").value;
-    const regLogin = document.getElementById("regLogin").value;
-    const regPassword = document.getElementById("regPassword").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+  const login = document.getElementById("login").value;
+  const password = document.getElementById("password").value;
 
-    if (regPassword !== confirmPassword) {
-      alert("Пароли не совпадают.");
-      return;
-    }
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const user = users.find((u) => u.login === login && u.password === password);
 
-    const user = {
-      email,
-      phone,
-      login: regLogin,
-      password: regPassword,
-    };
-
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-    const existingUser = users.find((u) => u.login === regLogin);
-    if (existingUser) {
-      alert("Пользователь с таким логином уже существует.");
-      return;
-    }
-
-    users.push(user);
-    localStorage.setItem("users", JSON.stringify(users));
-    alert("Регистрация прошла успешно!");
-    switchToLogin();
-  });
-
-  // Обработчик авторизации
-  loginForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const login = document.getElementById("login").value;
-    const password = document.getElementById("password").value;
-
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const user = users.find((u) => u.login === login && u.password === password);
-
-    if (user) {
-      alert("Вы успешно вошли в систему!");
-      localStorage.setItem("currentUser", JSON.stringify(user));
-      window.location.href = "zoomagazin.html"; // Переход на страницу каталога
+  if (user) {
+    alert("Вы успешно вошли в систему!");
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    loginModal.style.display = "none"; // Закрываем модальное окно авторизации
+    body.classList.remove("no-scroll"); // Разрешаем прокрутку страницы
   } else {
     alert("Неверный логин или пароль.");
     document.getElementById("login").value = "";
     document.getElementById("password").value = "";
   }
 });
+
+
 
   // Функция для обновления навигации
   function updateNavigation(user) {
