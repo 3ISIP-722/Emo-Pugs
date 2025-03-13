@@ -370,8 +370,9 @@
   });
 
   // Обработчик входа
-  loginForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+ loginForm.addEventListener("submit", function (event) {
+    event.preventDefault(); // Предотвращаем стандартное поведение формы
+
     const login = document.getElementById("login").value;
     const password = document.getElementById("password").value;
 
@@ -379,16 +380,16 @@
     const user = users.find((u) => u.login === login && u.password === password);
 
     if (user) {
-      alert("Вы успешно вошли в систему!");
-      localStorage.setItem("currentUser", JSON.stringify(user));
-      loginModal.style.display = "none";
-      body.classList.remove("no-scroll");
+        alert("Вы успешно вошли в систему!");
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        loginModal.style.display = "none";
+        body.classList.remove("no-scroll");
     } else {
-      alert("Неверный логин или пароль.");
-      document.getElementById("login").value = "";
-      document.getElementById("password").value = "";
+        alert("Неверный логин или пароль.");
+        document.getElementById("login").value = "";
+        document.getElementById("password").value = "";
     }
-  });
+});
 
  
   // Функция для обновления навигации
