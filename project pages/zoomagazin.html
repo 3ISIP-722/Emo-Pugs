@@ -383,7 +383,6 @@
         localStorage.setItem("currentUser", JSON.stringify(user));
         loginModal.style.display = "none";
         body.classList.remove("no-scroll");
-        alert("Вы успешно вошли в систему!");
     } else {
         alert("Неверный логин или пароль.");
         document.getElementById("login").value = "";
