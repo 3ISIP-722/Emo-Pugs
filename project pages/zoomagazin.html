@@ -380,6 +380,7 @@
     const user = users.find((u) => u.login === login && u.password === password);
 
     if (user) {
+        
         localStorage.setItem("currentUser", JSON.stringify(user));
         loginModal.style.display = "none";
         body.classList.remove("no-scroll");
@@ -782,9 +783,7 @@ function addIzb(productId) {
         if (!login || !password) {
             alert("Пожалуйста, введите логин и пароль.");
             event.preventDefault();
-        } else {
-            alert("Вы вошли в аккаунт!");
-        }
+        } 
     });
 
     function validateEmail(email) {
