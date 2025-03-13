@@ -274,6 +274,69 @@
     </footer>
   </article>
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const registrationForm = document.getElementById("registrationForm");
+  const loginForm = document.getElementById("loginForm");
+  const loginModal = document.getElementById("loginModal");
+  const registrationModal = document.getElementById("registrationModal");
+  const body = document.body;
+
+  // Обработчик регистрации
+  registrationForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const regLogin = document.getElementById("regLogin").value;
+    const regPassword = document.getElementById("regPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (regPassword !== confirmPassword) {
+      alert("Пароли не совпадают.");
+      return;
+    }
+
+    const user = {
+      email,
+      phone,
+      login: regLogin,
+      password: regPassword,
+    };
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Регистрация прошла успешно!");
+    registrationModal.style.display = "none";
+    body.classList.remove("no-scroll");
+  });
+
+  // Обработчик входа
+ loginForm.addEventListener("submit", function (event) {
+    event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+    const login = document.getElementById("login").value;
+    const password = document.getElementById("password").value;
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find((u) => u.login === login && u.password === password);
+
+    if (user) {
+        
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        loginModal.style.display = "none";
+        body.classList.remove("no-scroll");
+    } else {
+        alert("Неверный логин или пароль.");
+        document.getElementById("login").value = "";
+        document.getElementById("password").value = "";
+    }
+});
+
+
+
+
+      
       document
         .getElementById("burger-icon")
         .addEventListener("click", function () {
