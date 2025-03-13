@@ -19,9 +19,37 @@
   
 </head>
   <style>
-    main {
-  min-height: calc(100vh - 320px);
-}
+  main {
+      min-height: calc(100vh - 320px);
+    }
+    #btn {
+      background-color: #ee8b2e;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 13px;
+      cursor: pointer;
+      width: auto !important;
+      font-weight: bold; /* Жирный текст на кнопках */
+      margin-bottom: 10px;
+    }
+
+    #btn:hover {
+      background-color: #c86100;
+    }
+    .switch-link {
+      color: #ee8b2e;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline;
+      padding-top: 10px;
+    }
+
+    .switch-link:hover {
+      color: #c86100;
+      text-decoration: underline;
+    }
   </style>
 <body>
   <!-- Мобильный header -->
@@ -85,7 +113,8 @@
           <div class="input-group">
             <input type="password" id="password" placeholder="Пароль" required>
           </div>
-          <button type="submit" class="submit-button">Войти</button>
+          <button type="submit" class="submit-button" id
+            ="btn">Войти</button>
           <p style="display: inline">или <a href="#" class="switch-link" onclick="switchToRegistration()">Зарегистрироваться</a></p>
         </form>
       </div>
@@ -109,7 +138,7 @@
           <div class="input-group">
             <input type="password" id="confirmPassword" placeholder="Повторите пароль" required>
           </div>
-          <button type="submit" class="submit-button">Зарегистрироваться</button>
+          <button type="submit" class="submit-button" id="btn">Зарегистрироваться</button>
           <p style="display: inline">или <a href="#" class="switch-link" onclick="switchToLogin()">Войти</a></p>
         </form>
       </div>
