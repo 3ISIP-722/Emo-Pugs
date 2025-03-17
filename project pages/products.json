@@ -6,7 +6,7 @@
     "category": "Корм",
     "razdel": "Для собак",
     "image": "../img/korm4.jpg",
-    "description": "Сухой корм для собак с говядиной"  
+    "description": "Сухой корм для собак с говядиной" ,
     "reviews": [
       {
         "id": 1,

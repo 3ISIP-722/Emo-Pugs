@@ -517,10 +517,10 @@ function openModal(productId) {
 
     // Отображаем отзывы
     if (product.reviews) {
-      renderReviews(product.reviews);
-    } else {
-      document.getElementById('reviews-list').innerHTML = '<p>Отзывов пока нет.</p>';
-    }
+    renderReviews(product.reviews);
+} else {
+    document.getElementById('reviews-list').innerHTML = '<p>Отзывов пока нет.</p>';
+}
 
     modal.style.display = "block";
   } else {
@@ -630,20 +630,24 @@ function openModal(productId) {
       }
 
       async function loadProducts() {
-  try {
-    const response = await fetch("products.json");
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    products = await response.json();
-    currentProducts = [...products];
-    renderProducts(); 
-    renderRazdel();
-  } catch (error) {
-    console.error("Ошибка при загрузке данных:", error);
-          document.getElementById(
-            "productContainer"
-          ).innerHTML = "<p>Ошибка при загрузке данных. Пожалуйста, обновите страницу.</p>";
+    try {
+        const response = await fetch("products.json");
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        products = await response.json();
+
+        // Загружаем отзывов из localStorage
+        const savedProducts = JSON.parse(localStorage.getItem('products'));
+        if (savedProducts) {
+            products = savedProducts; // Перезаписываем данные из localStorage
         }
-      }
+
+        renderProducts(); 
+        renderRazdel();
+    } catch (error) {
+        console.error("Ошибка при загрузке данных:", error);
+        document.getElementById("productContainer").innerHTML = "<p>Ошибка при загрузке данных. Пожалуйста, обновите страницу.</p>";
+    }
+}
 
       function createProductCard(product) {
         return `
