@@ -1,0 +1,11 @@
+.contact-div {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+@media (width <= 720px) {
+    .contact-div {
+        flex-direction: column;
+    }
+}
