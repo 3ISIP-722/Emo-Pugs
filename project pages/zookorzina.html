@@ -75,7 +75,7 @@
               ><div class="negr">Корзина <img src="../img/Vector (1).svg" class="negrit"/> <img src="../img/-_.svg" class="strela" /></div
             ></a>
             <img src="../img/Line 5.svg" class="line" />
-            <a href="#"
+            <a href="mobilemodal.html"
               ><div class="negr">
                 Войти
                 <img
@@ -89,7 +89,6 @@
       </div>
     <div class="mod" id="registrationModal">
       <div class="mod-content">
-        <span class="clos">&times;</span>
         <h2>Регистрация</h2>
         <form id="registrationForm">
           <div class="input-group">
@@ -176,7 +175,6 @@
 
     <div class="mod" id="loginModal">
       <div class="mod-content">
-        <span class="clos">&times;</span>
         <h2>Авторизация</h2>
         <form id="loginForm">
           <div class="input-group">
@@ -274,12 +272,34 @@
     </footer>
   </article>
     <script>
+
       document.addEventListener("DOMContentLoaded", function () {
-  const registrationForm = document.getElementById("registrationForm");
-  const loginForm = document.getElementById("loginForm");
-  const loginModal = document.getElementById("loginModal");
-  const registrationModal = document.getElementById("registrationModal");
-  const body = document.body;
+    const registrationModal = document.getElementById("registrationModal");
+    const loginModal = document.getElementById("loginModal");
+    const openRegistrationButton = document.getElementById("openRegistration");
+    const openLoginButton = document.getElementById("openLogin");
+
+    openRegistrationButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Предотвращаем переход по ссылке
+        registrationModal.style.display = "block";
+    });
+
+    openLoginButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Предотвращаем переход по ссылке
+        loginModal.style.display = "block";
+    });
+
+    // Закрытие модальных окон при клике вне их области
+    window.addEventListener("click", function (event) {
+        if (event.target === registrationModal) {
+            registrationModal.style.display = "none";
+        }
+        if (event.target === loginModal) {
+            loginModal.style.display = "none";
+        }
+    });
+});
+    
 
   // Обработчик регистрации
   registrationForm.addEventListener("submit", function (event) {
