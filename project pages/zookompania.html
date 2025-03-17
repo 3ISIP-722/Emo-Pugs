@@ -6,131 +6,122 @@
     <title>ZooMagazin</title>
     <link rel="stylesheet" href="../css/page2.css" />
     <link rel="stylesheet" href="../css/zooakaunt.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/zoopages.css" />
+    <link rel="stylesheet" href="../css/zooizbrannoe.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
+      rel="stylesheet"
+    />
+    
     <link rel="icon" href="../img/Mask group.png" type="image/x-icon" />
   <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=mXASaQqaoMiA9Pzaun8I8RCY9NqRrqNGfzTArTQrsOHM13fBUpm7qGR5djC1iWIIY5Y56F1LThvu4rY0IJJ2Jj3C1lsQjPslY2zHKLlk3MBqF6lJ7dW5rw_dFUwnPWj5" charset="UTF-8"></script></head>
   <style>
-    .mobile-filter-btn {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: #62208A;
-  border: none;
-  border-radius: 50%;
+    .about-content {
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.about-content h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-content h2 {
+  margin-top: 20px;
+}
+
+.about-content p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #333;
+}
+
+.about-content ul {
   padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.mobile-filter-btn img {
-  width: 70px;
-  height: 70px;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .mobile-filter-btn {
-    display: block;
-  }
-
-  .filters-container {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: white;
-    z-index: 999;
-    padding: 20px;
-    overflow-y: auto;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .filters-container.active {
-    display: block;
-  }
-
-  /* Скрываем фильтры в основном интерфейсе на мобилах */
-  main .filters-container {
-    display: none;
-  }
+.about-content ul li {
+  background: url('bullet.png') no-repeat left center;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #333;
 }
   </style>
-  </head>
+</head>
   <body>
     <article>
-    <header>
-      <img src="../img/Mask group.png" alt="Логотип PetJet" class="logo" />
-      
-      <nav>
-        <a href="#"><div class="cerb">Каталог <img src="../img/Vector.svg" /></div
-        ></a>
-        <a href="zooizbrannoe.html"
-          ><div class="cerb">
-            Избранное
-            <img
-              src="../img/favorite_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg"
-            /></div
-        ></a>
-        <a href="zookorzina.html"
-          ><div class="cerb">Корзина <img src="../img/Vector (1).svg" /></div
-        ></a>
-        <a href="#" id="openRegistration"
-          >
-          <a href="#" id="openLogin">
-          <div class="cerb">
-            Войти
-            <img
-              src="../img/account_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg"
-            /></div
-        ></a>
-      </nav>
-    </header>
-    <div class="men">
-      <button class="mobile-filter-btn">
-        <img src="../img/filter-icon.svg" alt="Фильтры" id="mobileFilterBtn">
-      </button>
-      <div class="burger-menu">
-        <div class="menu-icon" id="burger-icon">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </div>
-      </div>
-      <nav class="nav-menu" id="nav-menu">
-        <ul>
+      <header>
+        <img src="../img/Mask group.png" alt="Логотип PetJet" class="logo" />
+        <nav>
           <a href="zoomagazin.html"
-            ><div class="negr">Каталог <img src="../img/Vector.svg" class="negrit"/> <img src="../img/-_.svg" class="strela" /></div
-          >
-          </a>
-          <img src="../img/Line 5.svg" class="line" />
+            ><div class="cerb">Каталог <img src="../img/Vector.svg" /></div
+          ></a>
           <a href="zooizbrannoe.html"
-            ><div class="negr">
+            ><div class="cerb">
               Избранное
               <img
-                src="../img/favorite_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg" class="negrit"
-              /> <img src="../img/-_.svg" class="strela" /></div
+                src="../img/favorite_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg"
+              /></div
           ></a>
-          <img src="../img/Line 5.svg" class="line" />
           <a href="zookorzina.html"
-            ><div class="negr">Корзина <img src="../img/Vector (1).svg" class="negrit"/> <img src="../img/-_.svg" class="strela" /></div
+            ><div class="cerb">Корзина <img src="../img/Vector (1).svg" /></div
           ></a>
-          <img src="../img/Line 5.svg" class="line" />
-          <a href="mobilemodal.html"
-            ><div class="negr">
+          <a href="#" id="openRegistration"
+            >
+            <a href="#" id="openLogin">
+            <div class="cerb">
               Войти
               <img
-                src="../img/account_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg" class="negrit"
-              /> <img src="../img/-_.svg" class="strela" /></div
+                src="../img/account_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg"
+              /></div
           ></a>
-          <img src="../img/Line 5.svg" class="line" />
-        </ul>
-      </nav>
-      <div style="height: 40px"></div>
-    </div>
+        </nav>
+      </header>
+      <div class="men">
+        <div class="burger-menu">
+          <div class="menu-icon" id="burger-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+        <nav class="nav-menu" id="nav-menu">
+          <ul>
+            <a href="zoomagazin.html"
+              ><div class="negr">Каталог <img src="../img/Vector.svg" class="negrit"/> <img src="../img/-_.svg" class="strela" /></div
+            >
+            </a>
+            <img src="../img/Line 5.svg" class="line" />
+            <a href="zooizbrannoe.html"
+              ><div class="negr">
+                Избранное
+                <img
+                  src="../img/favorite_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg" class="negrit"
+                /> <img src="../img/-_.svg" class="strela" /></div
+            ></a>
+            <img src="../img/Line 5.svg" class="line" />
+            <a href="zookorzina.html"
+              ><div class="negr">Корзина <img src="../img/Vector (1).svg" class="negrit"/> <img src="../img/-_.svg" class="strela" /></div
+            ></a>
+            <img src="../img/Line 5.svg" class="line" />
+            <a href="mobilemodal.html"
+              ><div class="negr">
+                Войти
+                <img
+                  src="../img/account_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg" class="negrit"
+                /> <img src="../img/-_.svg" class="strela" /></div
+            ></a>
+            <img src="../img/Line 5.svg" class="line" />
+          </ul>
+        </nav>
+        <div style="height: 40px"></div>
+      </div>
     <div class="mod" id="registrationModal">
       <div class="mod-content">
         <h2>Регистрация</h2>
@@ -142,7 +133,7 @@
                 fill="#949494"
               />
             </svg>
-            <input type="email" id="email" placeholder="Почта" required >
+            <input type="email" id="email" placeholder="Почта" required />
           </div>
           <div class="input-group">
             <svg
@@ -155,7 +146,7 @@
                 fill="#949494"
               />
             </svg>
-            <input type="tel" id="phone" placeholder="Телефон" required >
+            <input type="tel" id="phone" placeholder="Телефон" required />
           </div>
           <div class="input-group">
             <svg
@@ -168,7 +159,7 @@
                 fill="#949494"
               />
             </svg>
-            <input type="text" id="regLogin" placeholder="Логин" required >
+            <input type="text" id="regLogin" placeholder="Логин" required />
           </div>
           <div class="input-group">
             <svg
@@ -185,7 +176,8 @@
               type="password"
               id="regPassword"
               placeholder="Пароль"
-              required>
+              required
+            />
           </div>
           <div class="input-group">
             <svg
@@ -231,7 +223,7 @@
                 fill="#949494"
               />
             </svg>
-            <input type="text" id="login" placeholder="Логин" required >
+            <input type="text" id="login" placeholder="Логин" required />
           </div>
           <div class="input-group">
             <svg
@@ -249,7 +241,7 @@
               id="password"
               placeholder="Пароль"
               required
-            >
+            />
           </div>
           <button type="submit" class="submit-button" id="btn">Войти</button>
           <p style="display: inline">
@@ -261,47 +253,25 @@
         </form>
       </div>
     </div>
+    
     <main>
-      <div class="filters-container">
-        <div class="slide">
-          <h3>Поиск</h3>
-          <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Поиск товаров..." oninput="handleSearch()">
-          </div>
-          <h3>Категории</h3>
-          <div class="scrollbar" id="scrollbar"></div>
-          <div class="price-filter">
-          <h3>Фильтры</h3>
-          <div class="price-range">
-            <input type="number" id="minPrice" placeholder="От" min="0">
-            <span>-</span>
-            <input type="number" id="maxPrice" placeholder="До" min="0">
-          </div>
-          <div class="sorting">
-            <button onclick="sortProducts('asc')">По возрастанию ↑</button>
-            <button onclick="sortProducts('desc')">По убыванию ↓</button>
-          </div>
-          </div>
+        <div class="nazv"><h1>О компании</h1></div>
+        <div class="about-content">
+          <p>Добро пожаловать в PetJet – ваш надежный интернет-магазин для любимых питомцев!</p>
+          <p>Мы – команда опытных зоологов, ветеринарных врачей и просто страстных любителей животных, которые объединились, чтобы создать для вас удобный и безопасный онлайн-магазин, где вы можете найти все необходимое для вашего питомца.</p>
+          <h2>Почему PetJet?</h2>
+          <ul>
+            <li><strong>Широкий выбор:</strong> У нас представлен огромный ассортимент товаров для животных разных пород, возрастов и потребностей. От кормов и игрушек до аксессуаров и товаров для ухода – вы найдете всё, что нужно для комфорта и здоровья вашего питомца.</li>
+            <li><strong>Высокое качество:</strong> Мы сотрудничаем только с проверенными поставщиками, гарантируя высокое качество всех предлагаемых товаров. Мы уделяем особое внимание безопасности и соответствию стандартам.</li>
+            <li><strong>Прозрачность и честность:</strong> Мы стремимся к полной прозрачности в ценообразовании и предоставляем подробную информацию о каждом товаре. Вы всегда знаете, что покупаете.</li>
+            <li><strong>Удобство и скорость:</strong> Наш сайт разработан с учетом удобства пользователей. Быстрая навигация, понятная структура и безопасные способы оплаты позволят вам быстро и легко найти нужные товары и оформить заказ.</li>
+            <li><strong>Забота о животных:</strong> Мы глубоко убеждены, что забота о животных – это не просто хобби, а ответственность. Часть наших доходов направляется на поддержку приютов для животных и благотворительных организаций.</li>
+            <li><strong>Поддержка клиентов:</strong> Наша команда поддержки клиентов всегда готова помочь вам с выбором, ответить на ваши вопросы и решить любые возникшие проблемы. Мы ценим ваше мнение и стремимся к максимальному удовлетворению ваших потребностей.</li>
+          </ul>
+          <h2>Наша цель:</h2>
+          <p>Предоставить качественные товары для животных по доступным ценам, обеспечивая удобство и безопасность покупок, а также способствовать ответственному отношению к животным.</p>
+          <div 
         </div>
-      </div>
-      <div class="products" id="productContainer"></div>
-      <div id="productModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <div class="modal-body">
-            <img src="" alt="" class="modal-image" />
-            <div class="modal-details">
-              <h2 class="modal-title"></h2>
-              <p class="modal-description"></p>
-              <div class="modal-price"></div>
-              <div class="knop">
-                <button class="modal-order-button" data-product-id="">В корзину</button>
-                <button class="love" data-product-id=""><img src="../img/favorite.svg"></button>
-              </div>
-            </div>          
-          </div>
-        </div>
-      </div>
     </main>
     <footer class="footer">
       <div class="footer-section">
@@ -325,19 +295,39 @@
         <p>О нас</p>
         <ul>
           <li><a href="#">Адреса</a></li>
-          <li><a href="zookompania.html">О компании</a></li>
+          <li><a href="#">О компании</a></li>
           <li><a href="#">Контакты</a></li>
         </ul>
       </div>
     </footer>
-  </article>
     <script>
-     document.addEventListener("DOMContentLoaded", function () {
-  const registrationForm = document.getElementById("registrationForm");
-  const loginForm = document.getElementById("loginForm");
-  const loginModal = document.getElementById("loginModal");
-  const registrationModal = document.getElementById("registrationModal");
-  const body = document.body;
+      document.addEventListener("DOMContentLoaded", function () {
+    const registrationModal = document.getElementById("registrationModal");
+    const loginModal = document.getElementById("loginModal");
+    const openRegistrationButton = document.getElementById("openRegistration");
+    const openLoginButton = document.getElementById("openLogin");
+
+    openRegistrationButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Предотвращаем переход по ссылке
+        registrationModal.style.display = "block";
+    });
+
+    openLoginButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Предотвращаем переход по ссылке
+        loginModal.style.display = "block";
+    });
+
+    // Закрытие модальных окон при клике вне их области
+    window.addEventListener("click", function (event) {
+        if (event.target === registrationModal) {
+            registrationModal.style.display = "none";
+        }
+        if (event.target === loginModal) {
+            loginModal.style.display = "none";
+        }
+    });
+});
+    
 
   // Обработчик регистрации
   registrationForm.addEventListener("submit", function (event) {
@@ -390,38 +380,6 @@
         document.getElementById("password").value = "";
     }
 });
-
- 
-  // Функция для обновления навигации
-  function updateNavigation(user) {
-    const navLoginButton = document.querySelector('a[id="openLogin"]');
-    if (navLoginButton) {
-      // Убираем текст "Войти" и оставляем только иконку
-      navLoginButton.innerHTML = `
-        <img src="../img/account_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24 1.svg" alt="Иконка пользователя">
-      `;
-    }
-  }
-
-  // Переключение между модальными окнами
-  function switchToLogin() {
-    registrationModal.style.display = "none";
-    loginModal.style.display = "block";
-  }
-
-  function switchToRegistration() {
-    loginModal.style.display = "none";
-    registrationModal.style.display = "block";
-  }
-});
-      function handleSearch() {
-  const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-  const filteredProducts = products.filter(product => 
-    product.name.toLowerCase().includes(searchTerm) || 
-    product.description.toLowerCase().includes(searchTerm)
-  );
-  renderProducts(filteredProducts);
-}
       document
         .getElementById("burger-icon")
         .addEventListener("click", function () {
@@ -429,321 +387,42 @@
           navMenu.classList.toggle("active");
         });
       let products = [];
-      function formatPrice(price) {
-        return price.toLocaleString("ru-RU") + " ₽";
-      }
-
-      async function loadProducts() {
-  try {
-    const response = await fetch("products.json");
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    products = await response.json();
-    currentProducts = [...products];
-    renderProducts(); 
-    renderRazdel();
-  } catch (error) {
-    console.error("Ошибка при загрузке данных:", error);
-          document.getElementById(
-            "productContainer"
-          ).innerHTML = "<p>Ошибка при загрузке данных. Пожалуйста, обновите страницу.</p>";
-        }
-      }
-
-      function createProductCard(product) {
-        return `
-          <div class="product-wrapper" data-product-id="${product.id}">
-            <div class="card">
-              <img src="${product.image}" alt="${product.name}">
-              <div class="text-block">
-                <h3>${product.name}</h3>
-                <p class="descr">${product.description}</p>
-                <div class="price">${formatPrice(product.price)}</div>
-              </div>
-              <button class="btn" onclick="addToCart(${product.id})">Заказать</button>
-            </div>
-          </div>
-        `;
-      }
-
-      function createScrollbar(category) {
-        return `
-                <button class="razdel" onclick="filterProducts('${category}')">${category}</button>
-              `;
-      }
-
-      function renderProducts(filteredProducts = products) {
-        currentProducts = filteredProducts;
-        let productHTML = filteredProducts
-          .map(function (product) {
-            return createProductCard(product);
-          })
-          .join("");
-        document.getElementById("productContainer").innerHTML = productHTML;
-
-        const textBlocks = document.querySelectorAll(".text-block");
-        textBlocks.forEach((block) => {
-          block.addEventListener("click", () => {
-            const productId = parseInt(
-              block.closest(".product-wrapper").dataset.productId
-            );
-            openModal(productId);
-          });
-        });
-      }
-
-      function renderRazdel() {
-  const categories = [...new Set(products.map(p => p.category))];
-  let razdelHTML = '';
-
-  categories.forEach(category => {
-    const categoryRazdels = [...new Set(products
-      .filter(p => p.category === category)
-      .map(p => p.razdel)
-    )];
-
-    razdelHTML += `
-      <div class="category-filter">
-        <div class="category-header" onclick="toggleCategory(this)">
-          <div onclick="toggleCateg(this)">
-            ${category}
-          </div>
-        </div>
-        <div class="subcategories" style="display:none;">
-          ${categoryRazdels.map(razdel => `
-            <label class="subcategory-item">
-              <input type="checkbox" 
-                    class="razdel-checkbox" 
-                    value="${category}|${razdel}" 
-                    onchange="handleFilterChange()">
-              <span class="custom-checkbox"></span> <!-- Кастомный чекбокс -->
-              <span>${razdel}</span> <!-- Текст подкатегории -->
-            </label>
-          `).join('')}
-        </div>
-      </div>
-    `;
-  });
-
-  document.getElementById("scrollbar").innerHTML = razdelHTML;
-}
-
-function toggleCategory(header) {
-  const subcategories = header.nextElementSibling;
-  const arrow = header.querySelector('.arrow');
-  subcategories.style.display = subcategories.style.display === 'none' ? 'block' : 'none';
-}
-
-function toggleCateg(element) {
-  element.classList.toggle('selected'); // Добавляет или убирает класс 'selected'
-}
-
-let activeFilters = new Set();
-
-function handleFilterChange() {
-  activeFilters.clear();
-  document.querySelectorAll('.razdel-checkbox:checked').forEach(checkbox => {
-    activeFilters.add(checkbox.value);
-  });
-  applyFilters();
-}
-
-function applyFilters() {
-  let filtered = products;
-
-  if (activeFilters.size > 0) {
-    filtered = filtered.filter(product => {
-      const categoryKey = `${product.category}|${product.razdel}`;
-      return activeFilters.has(categoryKey);
-    });
-  }
-
-  const minPrice = parseInt(document.getElementById('minPrice').value) || 0;
-  const maxPrice = parseInt(document.getElementById('maxPrice').value) || Infinity;
-  
-  filtered = filtered.filter(product => 
-    product.price >= minPrice && product.price <= maxPrice
-  );
-
-  renderProducts(filtered);
-}
-
-function sortProducts(order) {
-  const sorted = [...currentProducts].sort((a, b) => 
-    order === 'asc' ? a.price - b.price : b.price - a.price
-  );
-  renderProducts(sorted);
-}
-document.getElementById('minPrice').addEventListener('input', applyFilters);
-document.getElementById('maxPrice').addEventListener('input', applyFilters);
-      loadProducts();
-      //Фильтры
-      document.addEventListener("DOMContentLoaded", function () {
-  const mobileFilterBtn = document.getElementById("mobileFilterBtn");
-  const filtersContainer = document.querySelector(".filters-container");
-
-  if (mobileFilterBtn && filtersContainer) {
-    mobileFilterBtn.addEventListener("click", function () {
-      filtersContainer.classList.toggle("active");
-    });
-
-    document.addEventListener("click", function (e) {
-      if (
-        !filtersContainer.contains(e.target) &&
-        e.target !== mobileFilterBtn
-      ) {
-        filtersContainer.classList.remove("active");
-      }
-    });
-  } else {
-    console.error("Элементы mobileFilterBtn или filtersContainer не найдены!");
-  }
-});
 
 
-      
-
-      //модалки карточек товара
-      const modal = document.getElementById("productModal");
-      function openModal(productId) {
-        if (products.length === 0) {
-    console.error("Продукты не загружены");
-    return;
-  }
-  const product = products.find(p => p.id === productId);
-  if (product) {
-    // Обновляем контент модалки
-    document.querySelector(".modal-image").src = product.image;
-    document.querySelector(".modal-image").alt = product.name;
-    document.querySelector(".modal-title").textContent = product.name;
-    document.querySelector(".modal-description").textContent = product.description;
-    document.querySelector(".modal-price").textContent = formatPrice(product.price);
-    
-    const modal = document.getElementById("productModal");
-    const addToCartBtn = modal.querySelector(".modal-order-button");
-    const addToFavBtn = modal.querySelector(".love");
-    
-    addToCartBtn.dataset.productId = productId;
-    addToFavBtn.dataset.productId = productId;
-
-    modal.style.display = "block";
-  } else {
-    console.error("Product not found with id:", productId);
-  }
-}
-
-document.addEventListener('click', function(e) {
-  const productCard = e.target.closest('.product-wrapper');
-  if (productCard) {
-    const productId = productCard.dataset.productId;
-    openModal(productId);
-  }
-});
-
-      const closeBtn = document.querySelector(".modal .close");
-      closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-      });
-
-      window.addEventListener("click", (event) => {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      });
-      document.getElementById('productModal').addEventListener('click', function(e) {
-  const target = e.target.closest('.modal-order-button, .love');
-  
-  if (!target) return;
-  
-  const productId = target.dataset.productId;
-  
-  if (target.classList.contains('modal-order-button')) {
-    addToCart(productId);
-  } else if (target.classList.contains('love')) {
-    addIzb(productId);
-  }
-});
-
-      //избранное
-      
-function addIzb(productId) {
-  productId = parseInt(productId);
-  let izb = JSON.parse(localStorage.getItem("izb")) || []; 
-  const productToAdd = products.find((product) => product.id === productId); 
-  if (productToAdd) {
-    const existingIzbItem = izb.find((item) => item.id === productId);
-    if (!existingIzbItem) {
-      izb.push(productToAdd);
-      localStorage.setItem("izb", JSON.stringify(izb)); 
-      alert(`${productToAdd.name} добавлен в избранное!`); 
-    } else {
-      alert(`${productToAdd.name} уже в избранном!`);
-    }
-  } else {
-    console.error("Product not found with id:", productId);
-  }
-}
-
-      //корзина
-      function addToCart(productId) {
-        productId = parseInt(productId);
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const productToAdd = products.find((product) => product.id === productId);
-  if (productToAdd) {
-    const existingCartItem = cart.find((item) => item.id === productId);
-    if (existingCartItem) {
-      existingCartItem.quantity = (existingCartItem.quantity || 1) + 1;
-    } else {
-      cart.push({ ...productToAdd, quantity: 1 });
-    }
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert(`${productToAdd.name} добавлен в корзину!`);
-  } else {
-    console.error("Product not found with id:", productId);
-  }
-}
-
-      //авторизация регистрация
-    document.addEventListener("DOMContentLoaded", function () {
+          document.addEventListener("DOMContentLoaded", function () {
     const registrationModal = document.getElementById("registrationModal");
     const loginModal = document.getElementById("loginModal");
     const openRegistrationButton = document.getElementById("openRegistration");
     const openLoginButton = document.getElementById("openLogin");
-    const body = document.body;
+    const closeButtons = document.querySelectorAll(".close");
+    const registrationForm = document.getElementById("registrationForm");
+    const loginForm = document.getElementById("loginForm");
 
     openRegistrationButton.addEventListener("click", function () {
         registrationModal.style.display = "block";
-        body.classList.add("no-scroll");
     });
 
     openLoginButton.addEventListener("click", function () {
         loginModal.style.display = "block";
-        body.classList.add("no-scroll");
+    });
+
+    closeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const modal = button.closest(".modal");
+            if (modal) {
+                modal.style.display = "none";
+            }
+        });
     });
 
     window.addEventListener("click", function (event) {
         if (event.target === registrationModal) {
             registrationModal.style.display = "none";
-            body.classList.remove("no-scroll");
         }
         if (event.target === loginModal) {
             loginModal.style.display = "none";
-            body.classList.remove("no-scroll");
         }
     });
-
-    document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-            if (registrationModal.style.display === "block") {
-                registrationModal.style.display = "none";
-                body.classList.remove("no-scroll");
-            }
-            if (loginModal.style.display === "block") {
-                loginModal.style.display = "none";
-                body.classList.remove("no-scroll");
-            }
-        }
-    });
-});
 
     registrationForm.addEventListener("submit", function (event) {
         let isValid = true;
@@ -767,6 +446,7 @@ function addIzb(productId) {
             alert("Пароль должен содержать не менее 8 символов.");
             isValid = false;
         }
+
         if (regPassword !== confirmPassword) {
             alert("Пароли не совпадают.");
             isValid = false;
@@ -780,17 +460,20 @@ function addIzb(productId) {
     loginForm.addEventListener("submit", function (event) {
         const login = document.getElementById("login").value;
         const password = document.getElementById("password").value;
+
         if (!login || !password) {
             alert("Пожалуйста, введите логин и пароль.");
             event.preventDefault();
-        } 
+        } else {
+            alert("Вы вошли в аккаунт!");
+        }
     });
 
     function validateEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
-    };
-
+    }
+});
 function switchToLogin() {
     document.getElementById("registrationModal").style.display = "none";
     document.getElementById("loginModal").style.display = "block";
@@ -800,6 +483,7 @@ function switchToRegistration() {
     document.getElementById("loginModal").style.display = "none";
     document.getElementById("registrationModal").style.display = "block";
 }
+    
     </script>
   </body>
 </html>
