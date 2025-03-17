@@ -35,26 +35,12 @@
 }
 
 #reviewModal textarea {
-  width: 100%;
+  width: 95%;
   height: 100px;
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-#reviewModal .btn {
-  background-color: #62208A;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* Стили для отзывов */
-.reviews-container {
-  margin-top: 20px;
 }
 
 .review-item {
@@ -359,21 +345,23 @@
               <p class="modal-description"></p>
               <div class="modal-price"></div>
               <div class="knop">
-                <button class="modal-order-button" data-product-id="">В корзину</button>
-                <button class="love" data-product-id=""><img src="../img/favorite.svg"></button>
-                   <!-- Кнопка для открытия формы отзыва -->
-        <button id="openReviewForm">Оставить отзыв</button>
-        <!-- Контейнер для отзывов -->
-        <div class="reviews-container">
-          <h2>Отзывы о товаре</h2>
-          <div class="reviews-list" id="reviews-list">
-            <!-- Отзывы будут добавляться сюда -->
+                <div style="display: flex;">
+                  <button class="modal-order-button" data-product-id="">В корзину</button>
+                  <button class="love" data-product-id=""><img src="../img/favorite.svg"></button>
+                </div>
+                <!-- Кнопка для открытия формы отзыва -->
+                <button id="openReviewForm" style="margin-top: 20px;">Оставить отзыв</button>
+                <!-- Контейнер для отзывов -->
+                <div class="reviews-container">
+                  <h2>Отзывы о товаре</h2>
+                  <div class="reviews-list" id="reviews-list">
+                    <!-- Отзывы будут добавляться сюда -->
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Форма для написания отзыва -->
 <div id="reviewModal" class="modal">
@@ -529,10 +517,10 @@ function openModal(productId) {
 
     // Отображаем отзывы
     if (product.reviews) {
-      renderReviews(product.reviews);
-    } else {
-      document.getElementById('reviews-list').innerHTML = '<p>Отзывов пока нет.</p>';
-    }
+    renderReviews(product.reviews);
+} else {
+    document.getElementById('reviews-list').innerHTML = '<p>Отзывов пока нет.</p>';
+}
 
     modal.style.display = "block";
   } else {
@@ -642,20 +630,24 @@ function openModal(productId) {
       }
 
       async function loadProducts() {
-  try {
-    const response = await fetch("products.json");
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    products = await response.json();
-    currentProducts = [...products];
-    renderProducts(); 
-    renderRazdel();
-  } catch (error) {
-    console.error("Ошибка при загрузке данных:", error);
-          document.getElementById(
-            "productContainer"
-          ).innerHTML = "<p>Ошибка при загрузке данных. Пожалуйста, обновите страницу.</p>";
+    try {
+        const response = await fetch("products.json");
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        products = await response.json();
+
+        // Загружаем отзывов из localStorage
+        const savedProducts = JSON.parse(localStorage.getItem('products'));
+        if (savedProducts) {
+            products = savedProducts; // Перезаписываем данные из localStorage
         }
-      }
+
+        renderProducts(); 
+        renderRazdel();
+    } catch (error) {
+        console.error("Ошибка при загрузке данных:", error);
+        document.getElementById("productContainer").innerHTML = "<p>Ошибка при загрузке данных. Пожалуйста, обновите страницу.</p>";
+    }
+}
 
       function createProductCard(product) {
         return `
