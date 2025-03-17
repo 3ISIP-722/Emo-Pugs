@@ -540,6 +540,10 @@ main {
     flex-direction: column;
   }
 
+  .stolbi{
+    flex-direction: column;
+}
+
   .footer p,
   ul {
     margin: 1.5% 0;
@@ -703,4 +707,38 @@ main {
 
 #searchInput::placeholder {
   color: #999;
+}
+
+.about-content {
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.about-content h2 {
+  margin-top: 20px;
+}
+
+.about-content p {
+  font-size: 1.3em;
+  line-height: 1.6;
+  color: #333;
+}
+
+.about-content ul {
+  padding: 10px;
+}
+
+.about-content ul li {
+  padding-left: 20px;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  line-height: 1.6;
+  color: #333;
+}
+
+.stolbi{
+    display: flex;
+    gap: 50px;
 }
