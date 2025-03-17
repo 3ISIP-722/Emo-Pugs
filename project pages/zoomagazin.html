@@ -11,6 +11,70 @@
     <link rel="icon" href="../img/Mask group.png" type="image/x-icon" />
   <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=mXASaQqaoMiA9Pzaun8I8RCY9NqRrqNGfzTArTQrsOHM13fBUpm7qGR5djC1iWIIY5Y56F1LThvu4rY0IJJ2Jj3C1lsQjPslY2zHKLlk3MBqF6lJ7dW5rw_dFUwnPWj5" charset="UTF-8"></script></head>
   <style>
+    /* Стили для формы отзыва */
+#reviewModal .modal-content {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+}
+
+#reviewModal .rating {
+  margin-bottom: 10px;
+}
+
+#reviewModal .stars span {
+  cursor: pointer;
+  font-size: 24px;
+  color: #ccc;
+}
+
+#reviewModal .stars span.active {
+  color: #ffd700;
+}
+
+#reviewModal textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#reviewModal .btn {
+  background-color: #62208A;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Стили для отзывов */
+.reviews-container {
+  margin-top: 20px;
+}
+
+.review-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.review-item .user {
+  font-weight: bold;
+}
+
+.review-item .rating {
+  color: #ffd700;
+}
+
+.review-item .text {
+  margin-top: 10px;
+}
     .mobile-filter-btn {
   display: none;
   position: fixed;
@@ -297,11 +361,43 @@
               <div class="knop">
                 <button class="modal-order-button" data-product-id="">В корзину</button>
                 <button class="love" data-product-id=""><img src="../img/favorite.svg"></button>
-              </div>
-            </div>          
+                   <!-- Кнопка для открытия формы отзыва -->
+        <button id="openReviewForm">Оставить отзыв</button>
+        <!-- Контейнер для отзывов -->
+        <div class="reviews-container">
+          <h2>Отзывы о товаре</h2>
+          <div class="reviews-list" id="reviews-list">
+            <!-- Отзывы будут добавляться сюда -->
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Форма для написания отзыва -->
+<div id="reviewModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="reviews-container">
+      <h2>Оставьте ваш отзыв</h2>
+      <form id="review-form">
+        <div class="rating">
+          <span>Оценка:</span>
+          <div class="stars">
+            <span data-value="1">☆</span>
+            <span data-value="2">☆</span>
+            <span data-value="3">☆</span>
+            <span data-value="4">☆</span>
+            <span data-value="5">☆</span>
+          </div>
+        </div>
+        <textarea id="review-text" placeholder="Напишите ваш отзыв..." required></textarea>
+        <button type="submit" class="btn">Отправить отзыв</button>
+      </form>
+    </div>
+  </div>
+</div>
     </main>
     <footer class="footer">
       <div class="footer-section">
@@ -332,6 +428,117 @@
     </footer>
   </article>
     <script>
+
+      // Открытие формы отзыва
+document.getElementById('openReviewForm').addEventListener('click', function() {
+  document.getElementById('reviewModal').style.display = 'block';
+});
+
+// Закрытие формы отзыва
+document.querySelector('#reviewModal .close').addEventListener('click', function() {
+  document.getElementById('reviewModal').style.display = 'none';
+});
+
+// Обработка выбора рейтинга
+const stars = document.querySelectorAll('#reviewModal .stars span');
+stars.forEach(star => {
+  star.addEventListener('click', () => {
+    const value = star.getAttribute('data-value');
+    stars.forEach(s => s.classList.remove('active'));
+    for (let i = 0; i < value; i++) {
+      stars[i].classList.add('active');
+    }
+  });
+});
+
+// Обработка отправки отзыва
+document.getElementById('review-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const rating = document.querySelectorAll('#reviewModal .stars span.active').length;
+  const text = document.getElementById('review-text').value;
+
+  if (rating === 0 || !text.trim()) {
+    alert('Пожалуйста, выберите оценку и напишите отзыв.');
+    return;
+  }
+
+  const review = {
+    id: Date.now(),
+    rating: rating,
+    text: text,
+    user: 'Пользователь' // Имя по умолчанию
+  };
+
+  // Добавление отзыва в массив отзывов товара
+  const productId = document.querySelector('.modal-order-button').dataset.productId;
+  const product = products.find(p => p.id === parseInt(productId));
+  if (product) {
+    if (!product.reviews) {
+      product.reviews = [];
+    }
+    product.reviews.push(review);
+    localStorage.setItem('products', JSON.stringify(products));
+    renderReviews(product.reviews);
+  }
+
+  document.getElementById('review-form').reset();
+  stars.forEach(star => star.classList.remove('active'));
+  document.getElementById('reviewModal').style.display = 'none';
+});
+
+// Функция для отображения отзывов
+function renderReviews(reviews) {
+  const reviewsList = document.getElementById('reviews-list');
+  reviewsList.innerHTML = '';
+
+  reviews.forEach(review => {
+    const reviewItem = document.createElement('div');
+    reviewItem.className = 'review-item';
+
+    const starsHtml = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+
+    reviewItem.innerHTML = `
+      <div class="user">${review.user}</div>
+      <div class="rating">${starsHtml}</div>
+      <div class="text">${review.text}</div>
+    `;
+
+    reviewsList.appendChild(reviewItem);
+  });
+}
+
+// При открытии модального окна с товаром, загружаем отзывы
+function openModal(productId) {
+  const product = products.find(p => p.id === productId);
+  if (product) {
+    // Обновляем контент модалки
+    document.querySelector(".modal-image").src = product.image;
+    document.querySelector(".modal-image").alt = product.name;
+    document.querySelector(".modal-title").textContent = product.name;
+    document.querySelector(".modal-description").textContent = product.description;
+    document.querySelector(".modal-price").textContent = formatPrice(product.price);
+    
+    const modal = document.getElementById("productModal");
+    const addToCartBtn = modal.querySelector(".modal-order-button");
+    const addToFavBtn = modal.querySelector(".love");
+    
+    addToCartBtn.dataset.productId = productId;
+    addToFavBtn.dataset.productId = productId;
+
+    // Отображаем отзывы
+    if (product.reviews) {
+      renderReviews(product.reviews);
+    } else {
+      document.getElementById('reviews-list').innerHTML = '<p>Отзывов пока нет.</p>';
+    }
+
+    modal.style.display = "block";
+  } else {
+    console.error("Product not found with id:", productId);
+  }
+}
+      
      document.addEventListener("DOMContentLoaded", function () {
   const registrationForm = document.getElementById("registrationForm");
   const loginForm = document.getElementById("loginForm");
