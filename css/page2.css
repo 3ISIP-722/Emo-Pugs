@@ -346,8 +346,7 @@ main {
   margin-bottom: 20px;
 }
 
-.modal-order-button,
-.btn {
+.modal-order-button, .btn, #openReviewForm {
   background-color: #ee8b2e;
   color: white;
   padding: 12px 20px;
@@ -362,16 +361,16 @@ main {
   font-family: "Source Serif 4", serif;
 }
 
-.modal-order-button:hover,
-.btn:hover {
+.modal-order-button:hover, .btn:hover, #openReviewForm:hover {
   background-color: #c86100;
 }
 
 .knop {
   display: flex;
+  flex-direction: column;
 }
 
-.modal-order-button {
+.modal-order-button, #openReviewForm {
   max-width: 200px;
 }
 
@@ -446,6 +445,10 @@ main {
   .modal-content {
     width: 95%;
     margin: 5% auto;
+  }
+
+  .knop{
+    align-items: center;
   }
 
   .modal-body {
@@ -561,6 +564,8 @@ main {
   .btn {
     padding: 6px 10px;
     border-radius: 8px;
+    min-width: 160px;
+    min-height: 40px;
   }
 }
 
