@@ -309,7 +309,7 @@ main {
 .modal-body {
   padding: 20px;
   display: flex;
-  align-items: center;
+  align-items:start;
 }
 
 .modal-image {
@@ -346,8 +346,7 @@ main {
   margin-bottom: 20px;
 }
 
-.modal-order-button,
-.btn {
+.modal-order-button, .btn, #openReviewForm {
   background-color: #ee8b2e;
   color: white;
   padding: 12px 20px;
@@ -362,16 +361,16 @@ main {
   font-family: "Source Serif 4", serif;
 }
 
-.modal-order-button:hover,
-.btn:hover {
+.modal-order-button:hover, .btn:hover, #openReviewForm:hover {
   background-color: #c86100;
 }
 
 .knop {
   display: flex;
+  flex-direction: column;
 }
 
-.modal-order-button {
+.modal-order-button, #openReviewForm {
   max-width: 200px;
 }
 
@@ -446,6 +445,10 @@ main {
   .modal-content {
     width: 95%;
     margin: 5% auto;
+  }
+
+  .knop{
+    align-items: center;
   }
 
   .modal-body {
@@ -540,6 +543,10 @@ main {
     flex-direction: column;
   }
 
+  .stolbi{
+    flex-direction: column;
+}
+
   .footer p,
   ul {
     margin: 1.5% 0;
@@ -557,6 +564,8 @@ main {
   .btn {
     padding: 6px 10px;
     border-radius: 8px;
+    min-width: 160px;
+    min-height: 40px;
   }
 }
 
@@ -703,4 +712,38 @@ main {
 
 #searchInput::placeholder {
   color: #999;
+}
+
+.about-content {
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.about-content h2 {
+  margin-top: 20px;
+}
+
+.about-content p {
+  font-size: 1.3em;
+  line-height: 1.6;
+  color: #333;
+}
+
+.about-content ul {
+  padding: 10px;
+}
+
+.about-content ul li {
+  padding-left: 20px;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  line-height: 1.6;
+  color: #333;
+}
+
+.stolbi{
+    display: flex;
+    gap: 50px;
 }
