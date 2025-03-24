@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+  display: block;
+}
+
+h1 {
+  border-bottom: 2px #dedede solid;
+  padding-bottom: 1%;
+  width: 30%;
+}
+
+img {
+  width: 100%;
+}
