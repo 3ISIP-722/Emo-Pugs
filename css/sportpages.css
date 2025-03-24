@@ -1,7 +1,7 @@
 body {
   margin: 0;
   height: 100%;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Source Serif 4", serif;
 }
 
 main {
@@ -14,6 +14,7 @@ h1 {
   border-bottom: 2px #dedede solid;
   padding-bottom: 1%;
   width: 30%;
+  font-family: "Montserrat", sans-serif;
 }
 
 img {

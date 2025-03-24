@@ -1,11 +1,21 @@
 .contact-div {
-    display: flex;
-    gap: 12px;
-    margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  justify-content: space-between;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+img {
+  width: 60px;
 }
 
 @media (width <= 720px) {
-    .contact-div {
-        flex-direction: column;
-    }
+  .contact-div {
+    flex-direction: column;
+  }
 }
