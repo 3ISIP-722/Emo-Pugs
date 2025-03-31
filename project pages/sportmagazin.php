@@ -21,6 +21,7 @@ $allCategories = getAllCategoriesFlat();
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/sportpages.css" />
     <link rel="icon" href="../img/sportlogo.svg" type="image/x-icon" />
     <title>PowerUp</title>
     <style>
@@ -95,7 +96,7 @@ $allCategories = getAllCategoriesFlat();
 </head>
 
 <body>
-    <header></header>
+    <header><?php include 'php/header.php'; ?></header>
     <main>
         <div class="products-container">
             <div class="filters">
@@ -192,7 +193,7 @@ $allCategories = getAllCategoriesFlat();
             </div>
         </div>
     </main>
-    <footer></footer>
+    <footer><?php include 'php/footer.php'; ?></footer>
 </body>
 
 </html>
