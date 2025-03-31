@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Протеин Whey Gold Standard",
+    "categories": ["протеин", "сывороточный"],
+    "description": "Высококачественный сывороточный протеин для набора мышечной массы.",
+    "image": "../img/korm1.jpg",
+    "discount": 10,
+    "price": 2999
+  },
+  {
+    "id": 2,
+    "name": "BCAA 5000 Powder",
+    "categories": ["аминокислоты", "BCAA"],
+    "description": "Оптимальное соотношение лейцина, изолейцина и валина для восстановления.",
+    "image": "../img/korm1.jpg",
+    "discount": 5,
+    "price": 1599
+  },
+  {
+    "id": 3,
+    "name": "Креатин Monohydrate",
+    "categories": ["креатин", "энергия"],
+    "description": "Чистый креатин моногидрат для увеличения силы и выносливости.",
+    "image": "../img/korm1.jpg",
+    "discount": 0,
+    "price": 899
+  },
+  {
+    "id": 4,
+    "name": "L-карнитин 3000",
+    "categories": ["жиросжигатели", "L-карнитин"],
+    "description": "Ускоряет метаболизм и способствует сжиганию жира.",
+    "image": "../img/korm1.jpg",
+    "discount": 15,
+    "price": 1299
+  },
+  {
+    "id": 5,
+    "name": "Гейнер Serious Mass",
+    "categories": ["гейнер", "углеводы"],
+    "description": "Высококалорийная смесь для быстрого набора массы.",
+    "image": "../img/korm1.jpg",
+    "discount": 20,
+    "price": 3499
+  }
+]
