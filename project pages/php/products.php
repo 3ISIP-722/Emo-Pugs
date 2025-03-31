@@ -1,5 +1,5 @@
 <?php
-$jsonPath = 'C:/localhost/abz/Emo-Pugs-main/Emo-Pugs-main/project pages/sporttovar.json';
+$jsonPath = 'C:/localhost/abz/Emo-Pugs/project pages/sporttovar.json';
 
 $json = file_get_contents($jsonPath);
 
