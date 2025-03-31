@@ -6,19 +6,40 @@ function filterProducts($filters)
     $products = loadProductsData();
 
     foreach ($products as $key => $product) {
-        // Фильтр по поиску в названии и описании
+        // Улучшенный фильтр по поиску в названии, описании и категориях
         if (!empty($filters['search'])) {
-            $search = mb_strtolower($filters['search']);
+            $search = mb_strtolower(trim($filters['search']));
             $name = mb_strtolower($product['name']);
             $desc = mb_strtolower($product['description']);
+            $categories = array_map('mb_strtolower', $product['categories']);
 
-            if (strpos($name, $search) === false && strpos($desc, $search) === false) {
+            $found = false;
+            
+            // Поиск по отдельным словам
+            $searchWords = explode(' ', $search);
+            foreach ($searchWords as $word) {
+                if (strpos($name, $word) !== false || 
+                    strpos($desc, $word) !== false) {
+                    $found = true;
+                    break;
+                }
+                
+                // Поиск по категориям
+                foreach ($categories as $category) {
+                    if (strpos($category, $word) !== false) {
+                        $found = true;
+                        break 2;
+                    }
+                }
+            }
+            
+            if (!$found) {
                 unset($products[$key]);
                 continue;
             }
         }
 
-        // Фильтр по категориям
+        // Остальные фильтры остаются без изменений
         if (!empty($filters['categories'])) {
             $match = false;
             foreach ($filters['categories'] as $filterCat) {
@@ -33,7 +54,6 @@ function filterProducts($filters)
             }
         }
 
-        // Фильтр по цене
         if (!empty($filters['minPrice']) && $product['price'] < $filters['minPrice']) {
             unset($products[$key]);
             continue;
