@@ -100,8 +100,28 @@ $allCategories = getAllCategoriesFlat();
     <main>
         <div class="products-container">
             <div class="filters">
+                <div class="search-sidebar">
+                    <h3>Быстрый поиск</h3>
+                    <form method="get" action="">
+                        <input type="text" name="search" value="<?= htmlspecialchars($filters['search']) ?>" 
+                               placeholder="Введите название или описание" 
+                               style="width: 100%; padding: 8px; margin-bottom: 10px;">
+                        <button type="submit" style="width: 100%; padding: 8px; background: rgb(28, 0, 66); color: white; border: none;">
+                            Найти
+                        </button>
+                    </form>
+                    
+                    <div class="quick-search">
+                        <h4>Популярные запросы:</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li><a href="?search=кроссовки" style="color: #007bff;">Кроссовки</a></li>
+                            <li><a href="?search=футболка" style="color: #007bff;">Футболки</a></li>
+                            <li><a href="?search=гантели" style="color: #007bff;">Гантели</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <form method="get">
-                    <h3>Поиск</h3>
+                   <h3>Расширенный поиск</h3>
                     <input type="text" name="search" value="<?= htmlspecialchars($filters['search']) ?>"
                         placeholder="Название или описание" style="width: 100%; padding: 8px;">
 
