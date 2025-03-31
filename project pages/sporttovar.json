@@ -1,80 +1,79 @@
 [
   {
     "id": 1,
-    "name": "Whey Protein 100% Gold Standard",
+    "name": "Протеин Whey Gold Standard",
     "categories": ["протеин", "сывороточный"],
-    "description": "Сывороточный протеин премиум-класса",
+    "description": "Высококачественный сывороточный протеин для набора мышечной массы.",
     "image": "../img/korm1.jpg",
-    "price": 3499,
-    "discount": 10
+    "discount": 10,
+    "price": 2999
   },
   {
     "id": 2,
-    "name": "ISO-100 Hydrolyzed",
-    "categories": ["протеин", "изолят"],
-    "description": "Ультрафильтрованный изолят сывороточного протеина",
+    "name": "BCAA 5000 Powder",
+    "categories": ["аминокислоты", "BCAA"],
+    "description": "Оптимальное соотношение лейцина, изолейцина и валина для восстановления.",
     "image": "../img/korm1.jpg",
-    "price": 4599,
-    "discount": 5
+    "discount": 5,
+    "price": 1599
   },
   {
     "id": 3,
-    "name": "Casein Pro",
-    "categories": ["протеин", "казеин"],
-    "description": "Медленный протеин для ночного восстановления",
+    "name": "Креатин Monohydrate USN",
+    "categories": ["креатин", "энергия"],
+    "description": "Чистый креатин моногидрат для увеличения силы и выносливости.",
     "image": "../img/korm1.jpg",
-    "price": 3799,
-    "discount": 0
+    "discount": 0,
+    "price": 899
   },
   {
     "id": 4,
-    "name": "BCAA 5000 Powder",
-    "categories": ["аминокислоты", "BCAA"],
-    "description": "Соотношение 2:1:1 для оптимального восстановления",
+    "name": "L-карнитин 3000 Maxler",
+    "categories": ["жиросжигатели", "L-карнитин"],
+    "description": "Ускоряет метаболизм и способствует сжиганию жира.",
     "image": "../img/korm1.jpg",
-    "price": 1899,
-    "discount": 15
+    "discount": 15,
+    "price": 1299
   },
   {
     "id": 5,
-    "name": "L-Glutamine 500g",
-    "categories": ["аминокислоты", "глютамин"],
-    "description": "Чистый L-глютамин для восстановления",
+    "name": "Гейнер Serious Mass Optimum Nutrition",
+    "categories": ["гейнер", "углеводы"],
+    "description": "Высококалорийная смесь для быстрого набора массы.",
     "image": "../img/korm1.jpg",
-    "price": 1299,
-    "discount": 0
+    "discount": 20,
+    "price": 3499
   },
   {
     "id": 6,
-    "name": "Казеиновый протеин Casein Elite",
+    "name": "Казеиновый протеин Gold Standard Optimum Nutrition",
     "categories": ["протеин", "казеиновый"],
     "description": "Медленный протеин для питания мышц во время сна.",
     "image": "../img/korm1.jpg",
     "discount": 15,
     "price": 3499
   },
-
   {
-    "id": 8,
-    "name": "Гейнер Mass Gainer Xtreme",
+    "id": 7,
+    "name": "Гейнер Bombbar Mass Gainer",
     "categories": ["гейнер"],
     "description": "Высокоуглеводный гейнер для быстрого набора массы.",
     "image": "../img/korm1.jpg",
     "discount": 5,
     "price": 3999
   },
-  {
-    "id": 7,
-    "name": "Гейнер Mass Gainer Xtreme",
-    "categories": ["гейнер"],
-    "description": "Высокоуглеводный гейнер для быстрого набора массы.",
-    "image": "../img/korm1.jpg",
-    "discount": 5,
-    "price": 3999
+    {
+    "id": 8,
+    "name": "Электролиты Nutribiotic performance",
+    "categories": ["гидратация", "электролиты"],
+    "description": "Поддержание водно-солевого баланса во время тренировок.",
+    "image": "../img/korm23.jpg",
+    "discount": 10,
+    "price": 1799
   },
   {
     "id": 9,
-    "name": "Креатин Creatine Monohydrate plus",
+    "name": "Креатин Ironman",
     "categories": ["креатин"],
     "description": "Микронизированный креатин моногидрат для увеличения силы и выносливости.",
     "image": "../img/korm1.jpg",
@@ -83,7 +82,7 @@
   },
   {
     "id": 10,
-    "name": "L-карнитин Liquid L-Carnitine super",
+    "name": "L-карнитин Liquid L-Carnitine Now Sports",
     "categories": ["жиросжигатели", "L-карнитин"],
     "description": "Жиросжигающая добавка для повышения выносливости и энергии.",
     "image": "../img/korm1.jpg",
@@ -92,7 +91,7 @@
   },
   {
     "id": 11,
-    "name": "Предтреник Pre-Workout Boost",
+    "name": "Предтреник Pre-Workout Boost Primecraft",
     "categories": ["предтренировочные комплексы"],
     "description": "Мощный предтренировочный комплекс для максимальной концентрации и энергии.",
     "image": "../img/korm1.jpg",
@@ -101,16 +100,16 @@
   },
   {
     "id": 12,
-    "name": "Изолят протеина Isolate Max",
+    "name": "Изолят протеина Optimum Nutrition ",
     "categories": ["протеин", "изолят"],
     "description": "Чистый изолят сывороточного белка без сахара и жиров.",
     "image": "../img/korm1.jpg",
     "discount": 10,
     "price": 3799
   },
-  {
+ {
     "id": 13,
-    "name": "Восстановительный комплекс Post-Workout Recovery",
+    "name": "Восстановительный комплекс Post-Workout Recovery Advocare",
     "categories": ["восстановление", "пост-тренировочные комплексы"],
     "description": "Комплекс аминокислот, электролитов и углеводов для быстрого восстановления после тренировки.",
     "image": "../img/korm1.jpg",
@@ -119,7 +118,7 @@
   },
   {
     "id": 14,
-    "name": "Глютамин Glutamine Recovery",
+    "name": "Глютамин Glutamine Recovery Optimum Nutrition",
     "categories": ["аминокислоты", "глютамин"],
     "description": "Чистый глютамин для ускорения восстановления мышц.",
     "image": "../img/korm1.jpg",
@@ -128,7 +127,7 @@
   },
   {
     "id": 15,
-    "name": "Мультивитамины Sport Vitamins",
+    "name": "Мультивитамины Sport Vitamins Eurosup",
     "categories": ["витамины"],
     "description": "Комплекс витаминов и минералов для поддержки организма спортсменов.",
     "image": "../img/korm1.jpg",
@@ -137,7 +136,7 @@
   },
   {
     "id": 16,
-    "name": "Аргинин Arginine Power",
+    "name": "Аргинин Smartpower",
     "categories": ["аминокислоты", "аргинин"],
     "description": "Увеличивает кровоток и способствует росту мышечной массы.",
     "image": "../img/korm1.jpg",
@@ -146,7 +145,7 @@
   },
   {
     "id": 17,
-    "name": "Бета-аланин Beta-Alanine Strength",
+    "name": "Бета-аланин Primecraft",
     "categories": ["аминокислоты", "бета-аланин"],
     "description": "Уменьшает усталость и увеличивает выносливость.",
     "image": "../img/korm1.jpg",
@@ -155,7 +154,7 @@
   },
   {
     "id": 18,
-    "name": "Гейнер Lean Mass Gainer",
+    "name": " Lean Mass Gainer Proelite",
     "categories": ["гейнер"],
     "description": "Сбалансированный гейнер для набора мышечной массы без жира.",
     "image": "../img/korm1.jpg",
@@ -164,16 +163,16 @@
   },
   {
     "id": 19,
-    "name": "ZMA Recovery Complex",
+    "name": "ZMA Recovery Complex Now Sports",
     "categories": ["витамины", "ZMA"],
     "description": "Комплекс цинка, магния и витамина B6 для восстановления и сна.",
     "image": "../img/korm1.jpg",
     "discount": 10,
     "price": 1899
   },
-  {
+   {
     "id": 20,
-    "name": "Цитруллин Malate Pump",
+    "name": "Цитруллин Primecraft",
     "categories": ["аминокислоты", "цитруллин"],
     "description": "Улучшает кровоток и повышает выносливость.",
     "image": "../img/korm1.jpg",
@@ -182,7 +181,7 @@
   },
   {
     "id": 21,
-    "name": "Энергетический комплекс Energy Rush",
+    "name": "Энергетический комплекс Solab",
     "categories": ["энергетики"],
     "description": "Смесь кофеина и таурина для быстрого заряда энергии.",
     "image": "../img/korm1.jpg",
@@ -191,7 +190,7 @@
   },
   {
     "id": 22,
-    "name": "Коллаген Collagen Plus",
+    "name": "Коллаген Sports Research",
     "categories": ["витамины", "коллаген"],
     "description": "Поддержка здоровья суставов, кожи и связок.",
     "image": "../img/korm1.jpg",
@@ -200,7 +199,7 @@
   },
   {
     "id": 23,
-    "name": "Протеиновый батончик Protein Bar Deluxe",
+    "name": "Протеиновый батончик Premier Protein",
     "categories": ["батончики", "протеин"],
     "description": "Вкусный батончик с высоким содержанием белка для перекуса.",
     "image": "../img/korm1.jpg",
@@ -209,7 +208,7 @@
   },
   {
     "id": 24,
-    "name": "L-тирозин Tyrosine Focus",
+    "name": "L-тирозин Now sports",
     "categories": ["аминокислоты", "L-тирозин"],
     "description": "Помогает улучшить концентрацию и снизить стресс.",
     "image": "../img/korm1.jpg",
