@@ -2,6 +2,8 @@
 
 Figma: https://www.figma.com/design/zMEdU0DL7ySQUCu0CdeS1d/Untitled?node-id=349-2&t=xabLBObPpDimocBa-1
 
+Beget: http://w90677gj.beget.tech/
+
 GithubPages: https://3isip-722.github.io/Emo-Pugs/index
 
 Состав группы:
