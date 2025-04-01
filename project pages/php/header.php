@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../css/sportpages.css">
   <title>Document</title>
 </head>
 
@@ -19,37 +20,17 @@
     <div></div>
   </header>
   <div class="men">
-    <!-- <button class="mobile-filter-btn">
-          <img src="../img/filter-icon.svg" alt="Фильтры" id="mobileFilterBtn">
-        </button> -->
-    <div class="burger-menu">
-      <div class="menu-icon" id="burger-icon">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+    <div class="burger">
+      <label><img src="../img/sportlogo.svg" style="width: 10%; margin-left: 5%;"></label>
+      <label for="menu"><img src="../img/menu.svg" alt="Меню" style="width: 10%; padding-left: 70%;"></label>
+      <input type="checkbox" id="menu" />
+      <div class="content">
+        <a href="#">Каталог</a><br>
+        <a href="#">Избранное</a><br>
+        <a href="#">Корзина</a><br>
+        <a href="#">Войти</a>
       </div>
     </div>
-    <nav class="nav-menu" id="nav-menu">
-      <ul>
-        <a href="">
-          <div class="negr">Каталог <img src="../img/-_.svg" class="strela" /></div>
-        </a>
-        <img src="../img/Line 5.svg" class="line" />
-        <a href="">
-          <div class="negr">Избранное <img src="../img/-_.svg" class="strela" /></div>
-        </a>
-        <img src="../img/Line 5.svg" class="line" />
-        <a href="">
-          <div class="negr">Корзина <img src="../img/-_.svg" class="strela" /></div>
-        </a>
-        <img src="../img/Line 5.svg" class="line" />
-        <a href="">
-          <div class="negr">Войти <img src="../img/-_.svg" class="strela" /></div>
-        </a>
-        <img src="../img/Line 5.svg" class="line" />
-      </ul>
-    </nav>
-    <div style="height: 40px"></div>
   </div>
 </body>
 

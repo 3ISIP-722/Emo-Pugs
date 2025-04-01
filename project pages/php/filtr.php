@@ -6,46 +6,34 @@ function filterProducts($filters)
     $products = loadProductsData();
 
     foreach ($products as $key => $product) {
-        // Улучшенный фильтр по поиску в названии, описании и категориях
+        // Фильтр по поиску в названии и описании
         if (!empty($filters['search'])) {
-            $search = mb_strtolower(trim($filters['search']));
+            $search = mb_strtolower($filters['search']);
             $name = mb_strtolower($product['name']);
             $desc = mb_strtolower($product['description']);
-            $categories = array_map('mb_strtolower', $product['categories']);
 
-            $found = false;
-            
-            // Поиск по отдельным словам
-            $searchWords = explode(' ', $search);
-            foreach ($searchWords as $word) {
-                if (strpos($name, $word) !== false || 
-                    strpos($desc, $word) !== false) {
-                    $found = true;
-                    break;
-                }
-                
-                // Поиск по категориям
-                foreach ($categories as $category) {
-                    if (strpos($category, $word) !== false) {
-                        $found = true;
-                        break 2;
-                    }
-                }
-            }
-            
-            if (!$found) {
+            if (strpos($name, $search) === false && strpos($desc, $search) === false) {
                 unset($products[$key]);
                 continue;
             }
         }
 
-        // Остальные фильтры остаются без изменений
+        // Фильтр по категориям (обновленная часть)
         if (!empty($filters['categories'])) {
             $match = false;
             foreach ($filters['categories'] as $filterCat) {
-                if (in_array($filterCat, $product['categories'])) {
-                    $match = true;
-                    break;
+                // Извлекаем основную категорию из формата "основная (подкатегория)"
+                $mainCat = strtok($filterCat, ' (');
+
+                // Проверяем обе формы: полную и основную категорию
+                foreach ($product['categories'] as $productCat) {
+                    if (
+                        strpos($filterCat, $productCat) !== false ||
+                        strpos($productCat, $mainCat) !== false
+                    ) {
+                        $match = true;
+                        break 2;
+                    }
                 }
             }
             if (!$match) {
@@ -54,6 +42,7 @@ function filterProducts($filters)
             }
         }
 
+        // Фильтр по цене (без изменений)
         if (!empty($filters['minPrice']) && $product['price'] < $filters['minPrice']) {
             unset($products[$key]);
             continue;
@@ -65,7 +54,7 @@ function filterProducts($filters)
         }
     }
 
-    // Сортировка
+    // Сортировка (без изменений)
     if (!empty($filters['sort'])) {
         usort($products, function ($a, $b) use ($filters) {
             return $filters['sort'] === 'asc'

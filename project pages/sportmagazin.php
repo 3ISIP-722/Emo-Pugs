@@ -21,10 +21,334 @@ $allCategories = getAllCategoriesFlat();
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/sportpages.css" />
     <link rel="icon" href="../img/sportlogo.svg" type="image/x-icon" />
     <title>PowerUp</title>
     <style>
+        body {
+            margin: 0;
+            height: 100%;
+            font-family: "Source Serif 4", serif;
+            overflow-x: hidden;
+        }
+
+        .burger {
+            display: none;
+            position: relative;
+        }
+
+        .burger label {
+            cursor: pointer;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .burger .content {
+            border-bottom-left-radius: 40px;
+            padding: 30px 20px 30px;
+            text-align: right;
+            background-color: #3693d7;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            transition: 0.5s ease;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .burger input[type="checkbox"] {
+            position: absolute;
+            right: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .burger input[type="checkbox"]:checked~.content {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .burger a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .burger a:hover {
+            color: #08003b;
+            text-shadow: 3px 2px 7px rgba(255, 255, 255, 0.5);
+        }
+
+        main {
+            width: 80%;
+            margin: 0 auto;
+            display: block;
+        }
+
+        h1 {
+            border-bottom: 2px #dedede solid;
+            padding-bottom: 1%;
+            width: 30%;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #3693d7;
+            padding: 10px 20px;
+            margin-bottom: 2%;
+            width: 100%;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .logo {
+            height: 90px;
+            /* Высота логотипа */
+        }
+
+        nav {
+            display: flex;
+            gap: 60px;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav a:hover {
+            color: #08003b;
+        }
+
+        .cerb img {
+            margin-left: 5px;
+            transition: fill 0.3s;
+            fill: white;
+        }
+
+        footer {
+            margin-top: 2%;
+            background-color: #08003b;
+            color: white;
+            display: flex;
+            text-align: start;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 1%;
+            font-size: 24px;
+        }
+
+        .footer-section {
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        .footer-section p {
+            font-weight: bold;
+            font-size: 28px;
+            text-decoration: underline;
+            margin: 3% 0;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 3% 0;
+        }
+
+        .footer-section li {
+            margin: 3px 0;
+            opacity: 70%;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons a {
+            margin-right: 2%;
+        }
+
+        .social-icons img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .men {
+            display: none;
+        }
+
+        article {
+            min-height: 100%;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            grid-template-columns: 100%;
+        }
+
+        @media (width<1000px) {
+            .products {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        @media (width<880px) {
+            .scrollbar {
+                font-size: smaller;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+
+            .knop {
+                align-items: center;
+            }
+
+            .modal-body {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .modal-image {
+                max-width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .modal-details {
+                text-align: center;
+            }
+        }
+
+        @media (width <=755px) {
+            .burger {
+                display: block;
+                padding: 10px;
+            }
+
+            .men {
+                display: block;
+                font-family: "Montserrat", sans-serif;
+                background-color: #3693d7;
+                padding-top: 2%;
+                max-height: 70%;
+            }
+
+            header {
+                display: none;
+            }
+
+            .products {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            main {
+                display: block;
+            }
+
+            .scrollbar {
+                display: grid;
+                grid-template-columns: 1fr;
+                margin-bottom: 2%;
+                border: none;
+            }
+
+            .razdel {
+                padding: 2% 0;
+                text-align: center;
+                border-bottom: 2px solid #dedede;
+            }
+
+            .cerb {
+                color: #000000;
+            }
+
+            .category-header {
+                font-size: 18px;
+            }
+
+            .subcategory-item {
+                font-size: 16px;
+            }
+
+            .sorting button {
+                font-size: 20px;
+            }
+
+            .slide {
+                margin-left: 5%;
+                border: 2px solid #62208a;
+                border-radius: 20px;
+                padding-left: 8%;
+                padding-top: 5%;
+            }
+        }
+
+        @media (width<960px) {
+            .footer {
+                font-size: 22px;
+            }
+
+            .footer-section p {
+                font-size: 24px;
+            }
+
+            .social-icons img {
+                width: 35px;
+                /* Размер иконок соцсетей */
+                height: 35px;
+            }
+        }
+
+        @media (width<580px) {
+            .footer {
+                flex-direction: column;
+            }
+
+            .stolbi {
+                flex-direction: column;
+            }
+
+            .footer p,
+            ul {
+                margin: 1.5% 0;
+                font-size: smaller;
+            }
+
+            .footer-section {
+                width: 90%;
+                margin: auto;
+            }
+        }
+
+        @media (width<430px) {
+
+            .modal-order-button,
+            .btn {
+                padding: 6px 10px;
+                border-radius: 8px;
+                min-width: 160px;
+                min-height: 40px;
+            }
+        }
+
+        /*доработать стилизацию*/
         .products {
             display: flex;
             flex-wrap: wrap;
@@ -96,32 +420,13 @@ $allCategories = getAllCategoriesFlat();
 </head>
 
 <body>
-    <header><?php include 'php/header.php'; ?></header>
+    <?php include 'php/header.php'; ?>
+
     <main>
         <div class="products-container">
             <div class="filters">
-                <div class="search-sidebar">
-                    <h3>Быстрый поиск</h3>
-                    <form method="get" action="">
-                        <input type="text" name="search" value="<?= htmlspecialchars($filters['search']) ?>" 
-                               placeholder="Введите название или описание" 
-                               style="width: 100%; padding: 8px; margin-bottom: 10px;">
-                        <button type="submit" style="width: 100%; padding: 8px; background: rgb(28, 0, 66); color: white; border: none;">
-                            Найти
-                        </button>
-                    </form>
-                    
-                    <div class="quick-search">
-                        <h4>Популярные запросы:</h4>
-                        <ul style="list-style: none; padding: 0;">
-                            <li><a href="?search=кроссовки" style="color: #007bff;">Кроссовки</a></li>
-                            <li><a href="?search=футболка" style="color: #007bff;">Футболки</a></li>
-                            <li><a href="?search=гантели" style="color: #007bff;">Гантели</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <form method="get">
-                   <h3>Расширенный поиск</h3>
+                    <h3>Поиск</h3>
                     <input type="text" name="search" value="<?= htmlspecialchars($filters['search']) ?>"
                         placeholder="Название или описание" style="width: 100%; padding: 8px;">
 
@@ -136,8 +441,8 @@ $allCategories = getAllCategoriesFlat();
                                     <div class="category-item">
                                         <label>
                                             <input type="checkbox" name="categories[]"
-                                                value="<?= htmlspecialchars("$mainCat ($subCat)") ?>"
-                                                <?= in_array("$mainCat ($subCat)", $filters['categories']) ? 'checked' : '' ?>>
+                                                value="<?= htmlspecialchars($subCat) ?>"
+                                                <?= in_array($subCat, $filters['categories']) ? 'checked' : '' ?>>
                                             <?= htmlspecialchars($subCat) ?>
                                         </label>
                                     </div>
