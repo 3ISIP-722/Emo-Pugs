@@ -11,6 +11,7 @@ GithubPages: https://3isip-722.github.io/Emo-Pugs/index
 - Болотная Виктория @edi-hobi 
 - Гарас Кристина @KristinaGaras
 - Конова Елизавета @metal-telo
+- Кунаева Кира
 
 Счастливы красить кнопочки в розовый 💓💓💓
 
